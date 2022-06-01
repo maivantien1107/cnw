@@ -1,9 +1,10 @@
 <?php
 global $path_project;
 ?>
+
 <div class="nav_bar">
 	<div class="logo">
-		<a href=<?php echo "/" . $path_project . "/" ?>> Group 11</a>
+		<a href=<?php echo "/" . $path_project . "/" ?> style="font-weight:900; font-size:20px"> Group 11</a>
 	</div>
 	<nav id = "nav">
 			<ul id = "menuitem">

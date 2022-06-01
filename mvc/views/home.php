@@ -2,14 +2,14 @@
 require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php';
 ?>
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<html>
+    <head>
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="public/css/home.css" type="text/css">
 		<link rel="stylesheet" href="public/css/footer_container.css" type="text/css">
-		<link rel="stylesheet" href="public/css/nav_bar.css">
+		<link rel="stylesheet" type="text/css" href="public/css/nav_bar.css" >
 		<script>
 			var cnt = 1;
 			function convert(){
@@ -51,10 +51,10 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
             <img src="https://i0.wp.com/s1.uphinh.org/2021/04/25/zapmaster_serviceability_01_tcm2649_2908010_tcm2649_2908098_tcm2649-2908010.png">
         </div>
     </div> -->
-
+        <div class="root">
 		<div class="slideshow-container">
 			<div class="slides" id="home">
-				<div class="row">
+				<div class="row-img">
 					<div class="col-2" id="col-2-1" style="padding-left:10%;">
 						<h1>Tìm kiếm những mẫu máy tính mới nhất của chúng tôi!</h1><br>
 						<q>Khai thông sức mạnh, dẫn đâu xu hướng</q><br>
@@ -69,7 +69,22 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
 						<img id="img-1" src="public/images/logo/laptophome.png">
 						<img id="img-2" src="public/images/logo/aboutme.png" style="display:none">
 					</div>
+					<a class="prev" onclick="convert()">&#10094;</a>
+			    <a class="next" onclick="convert()">&#10095;</a>
 				</div>
+				<div class="about-list">
+					<a href=""><img id="about1" src="public/images/about/pc1.webp"></a>
+					<a href=""><img id="about2" src="public/images/about/pc2.webp"></a>
+					<div class="news-info">
+						<div class="news-header">
+						<h3>Thông tin nổi bật</h3>
+						<a href="" class="news-header-list">Xem tất cả</a>
+						</div>
+						
+					</div>
+				</div>
+				<!-- <a class="prev" onclick="convert()">&#10094;</a>
+			    <a class="next" onclick="convert()">&#10095;</a> -->
 			</div>
 
 			<!-- <div class="slides" id="collection">
@@ -82,8 +97,8 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
 			</div>
 			<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
 			<a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-			<a class="prev" onclick="convert()">&#10094;</a>
-			<a class="next" onclick="convert()">&#10095;</a>
+			<!-- <a class="prev" onclick="convert()">&#10094;</a>
+			<a class="next" onclick="convert()">&#10095;</a> -->
 		</div>
 
 		<div class="categories">
@@ -92,15 +107,154 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
 				<div class="row">
 					<div class="col-3">
 						<a href="search&label=laptop"><img src="public/images/logo/laptoplabel.jpg"></a>
-						<h3>Laptop</h3>
+						<h3>Laptop mỏng nhẹ</h3>
 					</div>
 					<div class="col-3">
 						<a href="search&label=pc"><img src="public/images/logo/pclabel.webp"></a>
+						<h3>Laptop gaming</h3>
+					</div>
+					<div class="col-3">
+						<a href="search&label=mouse"><img src="public/images/logo/mouselabel.jpg"></a>
+						<h3>Laptop đồ họa</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-3">
+						<a href="search&label=laptop"><img src="public/images/logo/laptoplabel.jpg"></a>
 						<h3>PC</h3>
+					</div>
+					<div class="col-3">
+						<a href="search&label=pc"><img src="public/images/logo/pclabel.webp"></a>
+						<h3>Laptop cũ</h3>
 					</div>
 					<div class="col-3">
 						<a href="search&label=mouse"><img src="public/images/logo/mouselabel.jpg"></a>
 						<h3>Phụ kiện</h3>
+					</div>
+				</div>
+				<div class="box-list">
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					
+				</div>
+				<div class="box-list">
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
+					</div>
+					<div class="col6-no box-product">
+						<a href="">
+							<div class="box-product-item">
+								<picture class="picture">
+								<img src="public/images/logo/laptoplabel.jpg">
+								</picture>
+								<div class="box-product-item-text">Laptop</div>
+							</div>
+						</a>
 					</div>
 				</div>
 			</div>
@@ -181,6 +335,8 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
 				</div>
 			</div>
 		</div>
-
+		</div>
+<!-- includes footer-->
+<?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php'; ?>
 		<!-- Js for slide show -->
 		<script type="text/javascript" src="public/javascript/home.js"></script>

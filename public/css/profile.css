@@ -241,11 +241,11 @@ html {
   border: 1px solid #a69696;
   padding: 3px;
   border-radius: 50%;
-  margin-right
+  /* margin-right */
 }
 .order_content .search input {
   width: 93%;
-  line-height:1.5;
+  line-height:1.5rem;
   border-radius: 5px;
   margin-top: 5px;
   background: #eeecec;
@@ -546,10 +546,10 @@ button:hover {
 .password button {
   margin: 10px;
 }
-.input span {
+/* .input span {
   color: #e1d9d9e7e7;
   background: #60d6e20;
-}
+} */
 
 
 
