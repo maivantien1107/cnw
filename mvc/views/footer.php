@@ -57,7 +57,7 @@
 </div>
 <hr>
 <div class="copyright">
-	<p>Copyright&#169; by MTHH</p>
+	<p>Copyright&#169; by Group11</p>
 </div>
 </div>
 </footer>
