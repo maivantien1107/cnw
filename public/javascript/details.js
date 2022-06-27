@@ -1,9 +1,9 @@
 var session = "";
-<?php
-			if(isset($_SESSION['username'])){
-					echo "session = '" . $_SESSION['username'] . "' ;";
-			}
-			?>
+// <?php
+// 			if(isset($_SESSION['username'])){
+// 					echo "session = '" . $_SESSION['username'] . "' ;";
+// 			}
+// 			?>
 
 function validComment() {
     if (session == "") {

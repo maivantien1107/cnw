@@ -253,9 +253,9 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
 		<div class="featured_products">
 			<div class="small-container">
 				<h1 class = "title">Sản phẩm mới nhất</h1>
-				<!-- <div class="row">
+				<div class="row">
 					<!-- insert new products -->
-					<!-- <?php $service = new LaptopServices();
+					<?php $service = new LaptopServices();
 					$listLaptop = $service->getAll();
 					$cnt = 0;
 					foreach ($listLaptop as $laptop){
@@ -277,8 +277,8 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
 					<?php
 					if($cnt > 2) break;
 					}
-					?> -->
-				</div> -->
+					?>
+				</div>
 			</div>
 		</div>
 		<!-- still not used -->
