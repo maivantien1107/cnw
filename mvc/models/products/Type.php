@@ -5,4 +5,5 @@ class Type {
     public const MOUSE = 1;
     public const PC = 2;
     public const LAPTOP = 3;
+    public const ACCESSORS = 4;
 }
