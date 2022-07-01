@@ -7,9 +7,9 @@
 			<div class="footer-col-1">
 				<h3>About Us</h3>
 				<p>
-					<a href="">+84794112293</a>
+					<a href="">+842232323</a>
 				</p>
-				<a href="mailto:buiviethoang12062000@gmail.com">contact@mthh.com</a>
+				<a href="#">hust$sis.edu.com</a>
 				<p>
 				<address>1 Dai Co Viet, Hai Ba Trung, Ha Noi</address>
 			</p>

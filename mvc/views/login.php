@@ -1,18 +1,42 @@
 
+<?php
+ob_start();
+session_start();
+if(array_key_exists("username", $_POST)){
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
+		$service = new GuestServices();
+		$checker = $service->checkAccount($username, $password);
+		if($checker === True){
+				$_SESSION['username'] = $username;
+				$_SESSION['password'] = $password;
+				// header("Location: profile");
+		}
+}
+if(isset($_SESSION['username']) && isset($_SESSION['password'])){
+		if($_SESSION['username'] != '' && $_SESSION['password'] != '') {
+				header("Location: profile");
+		}
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
-	<link rel="stylesheet" href="./public/css/login.css" >
-	<link rel="stylesheet" href="./public/css/footer_container.css" >
-	<link rel="stylesheet"  href="public/css/nav_bar.css" >
-    <link rel="stylesheet" href="/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
-    <title>Đăng kí</title>
-</head>
-<body>
-<div class="modal">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="public/css/account.css">
+		<link rel="stylesheet" href="public/css/nav_bar.css" type="text/css">
+		<link rel="stylesheet" href="public/css/footer_container.css" type="text/css">
+		<title>Home | MTHH</title>
+	</head>
+	<body>
+		<!-- includes nav bar -->
+		<?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'nav_bar.php'; ?>
+		<?php  ?>
+		<div class="container">
+        <div class="modal">
     <div class="modal__overlay"></div>
     <div class="modal__body">
         <!-- Login form -->
@@ -60,5 +84,4 @@
         </form>
     </div>
 </div>
-</body>
-</html>
+		</div>

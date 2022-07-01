@@ -22,6 +22,9 @@ class RouteController {
         }
 
         $urlArray = explode("/", $this->_url);
+        foreach ($urlArray as $tmp){
+            print $tmp;
+        }
         $controller = $urlArray[0]; array_shift($urlArray);
         $id = -1;
 
@@ -29,7 +32,7 @@ class RouteController {
         if(strcmp($controller, "details") == 0){
             $id = intval($urlArray[0]); array_shift($urlArray);
         }
-
+        
         // check if admin -> no footer
         if(strcmp($controller, "admin") == 0
             || strcmp($controller, "product-management") == 0
