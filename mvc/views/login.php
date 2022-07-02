@@ -3,33 +3,47 @@
 ob_start();
 session_start();
 if(array_key_exists("username", $_POST)){
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		require_once ROOT . DS . 'services' . DS . 'GuestServices.php';
-		$service = new GuestServices();
-		$checker = $service->checkAccount($username, $password);
+		$username = isset($_POST["username"]) ? addslashes($_POST["username"]) :'';
+		$password = isset($_POST["password"]) ? addslashes($_POST["password"]): '';
+		require_once ROOT . DS . 'services' . DS . 'UsersServices.php';
+        require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
+		$service = new UsersServices();
+        $checker = $service->checkAccount($username, $password);
 		if($checker === True){
+                $_SESSION['islogin']=true;
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
-				// header("Location: profile");
+                header("Location: home");
 		}
+        else{
+            ?>
+            <script type="text/javascript">
+            alert("Sai tên đăng nhập hoặc mật khẩu");
+            </script>
+<?php
+    }
 }
-if(isset($_SESSION['username']) && isset($_SESSION['password'])){
-		if($_SESSION['username'] != '' && $_SESSION['password'] != '') {
-				header("Location: profile");
-		}
-}
+// if(isset($_SESSION['islogin']) && $_SESSION['islogin']){
+//     if($_SESSION['username'] != '' && $_SESSION['password'] != '') {
+//             header("Location: profile");
+//     }
+// }
+// else{
+//         echo "Sai tên đăng nhập hoặc mật khẩu";
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="public/css/account.css">
-		<link rel="stylesheet" href="public/css/nav_bar.css" type="text/css">
-		<link rel="stylesheet" href="public/css/footer_container.css" type="text/css">
-		<title>Home | MTHH</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lovers+Quarrel" rel="stylesheet">
+	<link rel="stylesheet" href="./public/css/login.css" >
+	<link rel="stylesheet" href="./public/css/footer_container.css" >
+	<link rel="stylesheet"  href="public/css/nav_bar.css" >
+    <link rel="stylesheet" href="/fonts/fontawesome-free-5.15.4-web/css/all.min.css">
+    <title>Đăng nhập</title>
 	</head>
 	<body>
 		<!-- includes nav bar -->
@@ -40,35 +54,35 @@ if(isset($_SESSION['username']) && isset($_SESSION['password'])){
     <div class="modal__overlay"></div>
     <div class="modal__body">
         <!-- Login form -->
-        <form action="/KACoffe/v1/auth/login" method="POST" >
+        <form action="" method="POST" >
             <div class="auth-form auth-login">
                 <div class="container">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">Đăng nhập</h3>
-                        <a href="/cnw-1/register" class="auth-form__switch auth-form__switch-register">Đăng ký</a>
+                        <a href="/cnw-1/account" class="auth-form__switch auth-form__switch-register">Đăng ký</a>
                     </div>
 
                     <div class="auth-form__form">
                         <div class="auth-form__group">
-                            <input type="email" class="auth-form__input" name="email" placeholder="Email" required>
+                            <input type="text" class="auth-form__input" name="username" placeholder="Tài khoản" required>
                         </div>
                         <div class="auth-form__group">
                             <input type="password" class="auth-form__input" name="password" placeholder="Mật khẩu của bạn" required>
                         </div>
-                        <% if (warning) { %>
+                        <!-- <% if (warning) { %>
                             <div class="alert-warning mt-3 p-1 pl-2"><%= warning %></d>
-                        <% } %>
+                        <% } %> -->
                     </div>
 
                     <div class="auth-form__aside">
                         <div class="auth-form__help">
-                            <a href="/KACoffe/v1/auth/forgot-password" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu ?</a>
+                            <a href="cnw-1/forgot-password" class="auth-form__help-link auth-form__help-forgot">Quên mật khẩu ?</a>
                         </div>
                     </div>
                 
                     <div class="auth-form__controls">
-                        <a href="/KACoffe/v1" class="btn">TRỞ LẠI</a>
-                        <button type="submit" class="btn btn--primaryy">ĐĂNG NHẬP</button>
+                        <a href="home" class="btn">TRỞ LẠI</a>
+                        <button type="submit" class="btn btn--primaryy" name="btn-submit">ĐĂNG NHẬP</button>
                     </div>
 
                     <div class="auth-form__socials">
