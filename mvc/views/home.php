@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php';
 ?>
 <!DOCTYPE html>

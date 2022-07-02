@@ -12,7 +12,25 @@ global $path_project;
 				<li><a href=<?php echo "/" . $path_project . "/" . "about" ?>>Tin tức</a></li>
 				<li><a href=<?php echo "/" . $path_project . "/" . "products" ?>>Sản phẩm</a></li>
 				<li><a href=<?php echo "/" . $path_project . "/" . "contact" ?>>Liên hệ</a></li>
-				<li><a href=<?php echo "/" . $path_project . "/" . "login" ?>>Tài khoản</a></li>
+				<li><a href=<?php echo "/" . $path_project . "/" . "login" ?>>
+				<?php  
+				   if (isset($_SESSION['username'])!=''){
+					echo $_SESSION['username'];
+				   }
+				   else {
+					echo 'Đăng nhập';
+				   }
+
+				?>
+			
+			</a></li>
+			    <?php 
+				    if (isset($_SESSION['username'])!=''){
+						?>
+					<li><a href="library/logout.php">Logout</a></li>
+					<?php 
+					}
+				?>
 			</ul>
 
 	</nav>

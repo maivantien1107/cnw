@@ -1,8 +1,8 @@
 --table user
 CREATE TABLE `user` (
-  `user_name` varchar(50) COLLATE utf8_unicode_ci PRIMARY KEY not NULL,
+  user_id INT(11) primary key not null auto_increment,
+  `user_name` varchar(50) COLLATE utf8_unicode_ci  not NULL,
   `your_password` varchar(50) DEFAULT NULL,
-  `your_name` varchar(50) DEFAULT NULL,
     address varchar(200) COLLATE utf8_unicode_ci DEFAULT null,
     telephone int(11) DEFAULT null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -2,32 +2,21 @@
 
 require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'services' . DS . 'TypeProductsServices.php';
-require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Guest.php';
+require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Users.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Products.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . "Type.php";
 
-class GuestServices extends MySqlConnect {
-    /**
-     * The method support insert data to database
-     * @param Guest $guest
-     */
-    public function insert($guest) {
-        // add to guest table
-        // $query = "insert into guest(user_name, your_password, your_name)
-        //             value (" .
-        //             "'" . $guest->getUsername() . "' ," .
-        //             "'" . $guest->getPassword() . "' ," .
-        //             "'" . $guest->getName() . "'"
-        //                 . ")";
-        $username = $guest->getUsername();
-        $password = $guest->getPassword();
-        $name = $guest->getName();
-        $address = $guest->getAddress();
-        $telephone = $guest->getTelephone();
+class UsersServices extends MySqlConnect {
+    public function insert($users) {
+        
+        $username = $users->getUsername();
+        $password = $users->getPassword();
+        $address = $users->getAddress();
+        $telephone = $users->getTelephone();
 
-        $query = "insert into guest(user_name, your_password, your_name, address, telephone)
-                  value('$username', '$password', '$name', '$address', '$telephone')
+        $query = "insert into users(user_name, user_password, address, telephone)
+                  value('$username', '$password', '$address', '$telephone')
                   ";
 
         parent::addQuerry($query);
@@ -36,7 +25,7 @@ class GuestServices extends MySqlConnect {
         // when create guest, one cart will create
         $query = "insert into cart(user_name)
                     value (" .
-                    "'" . $guest->getUsername() . "'"
+                    "'" . $users->getUsername() . "'"
                         . ")";
         parent::addQuerry($query);
         parent::updateQuery();
@@ -47,8 +36,8 @@ class GuestServices extends MySqlConnect {
      * @param String $username
      */
     public function delete($username){
-        // next, delete row with user_name in evaluate table
-        $query = "delete from evaluate
+        // next, delete row with user_name in rate table
+        $query = "delete from rate
                   where user_name = '" . $username . "'";
         parent::addQuerry($query);
         parent::updateQuery();
@@ -66,8 +55,8 @@ class GuestServices extends MySqlConnect {
         parent::addQuerry($query);
         parent::updateQuery();
 
-        // next, delete row with user_name in guest table
-        $query = "delete from guest
+        // next, delete row with user_name in users table
+        $query = "delete from users
                   where user_name = '" . $username . "'";
         parent::addQuerry($query);
         parent::updateQuery();
@@ -79,32 +68,31 @@ class GuestServices extends MySqlConnect {
      */
     public function getAll(){
         $listGuest = array();
-        $query = "select * from guest";
+        $query = "select * from users";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
         while($row = mysqli_fetch_array($result)){
             $username = $row["user_name"];
             $password = $row["your_password"];
-            $name = $row["your_name"];
             $address = $row["address"];
             $telephone = $row["telephone"];
 
-            $guest = new Guest($username, $password, $name, $address, $telephone);
+            $users = new Users($username, $password, $address, $telephone);
 
-            array_push($listGuest, $guest);
+            array_push($listUsers, $users);
         }
 
-        return $listGuest;
+        return $listUsers;
     }
 
     /**
      * Return product have product_id = $product_id
      * @param String $username
-     * @return Guest
+     * @return Users
      */
     public function get($username){
-        $query = "select * from guest
+        $query = "select * from user
                     where user_name='" . $username . "'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
@@ -112,39 +100,26 @@ class GuestServices extends MySqlConnect {
         if($row = mysqli_fetch_array($result)){
             $username = $row["user_name"];
             $password = $row["your_password"];
-            $name = $row["your_name"];
             $address = $row["address"];
             $telephone = $row["telephone"];
 
-            $guest = new Guest($username, $password, $name, $address, $telephone);
-            return $guest;
+            $users = new Users($username, $password, $address, $telephone);
+            return $users;
         }
 
         return null;
     }
 
-    /**
-     * The method update data to database
-     * @param Guest $guest
-     */
+   
     public function update($guest) {
-        // update to products table
-        // $query = "update guest
-        //             set " .
-        //             "your_password = " . "'" . $guest->getPassword() . "' ," .
-        //             "your_name = " . "'" . $guest->getPassword() . "'" .
-        //             "where user_name = '" . $guest->getUsername() . "'"
-        //             . "";
 
         $username = $guest->getUsername();
         $password = $guest->getPassword();
-        $name = $guest->getName();
         $address = $guest->getAddress();
         $telephone = $guest->getTelephone();
 
-        $query = "update guest
+        $query = "update users
                   set your_password = '$password',
-                      your_name = '$name',
                       address = '$address',
                       telephone = '$telephone'
                   where user_name = '$username'
@@ -251,7 +226,7 @@ class GuestServices extends MySqlConnect {
     * @return bool
     */
     public function checkAccount($username, $password){
-        $query = "select * from guest where user_name = '$username' and your_password = '$password'";
+        $query = "select * from users where user_name = '$username' and user_pass = '$password'";
         parent::addQuerry($query);
 
         $result = parent::executeQuery();
