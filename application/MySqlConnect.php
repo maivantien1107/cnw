@@ -1,7 +1,7 @@
 <?php
 
 require_once ROOT . DS . 'config' . DS . 'db_config.php';
-require_once ROOT . DS . 'services' . DS . 'ISqlConnect.php';
+require_once ROOT . DS . 'application' . DS . 'ISqlConnect.php';
 
 class MySqlConnect implements ISqlConnect {
     private $db;

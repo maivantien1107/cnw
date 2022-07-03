@@ -1,8 +1,7 @@
 --table user
 CREATE TABLE `user` (
-  user_id INT(11) primary key not null auto_increment,
-  `user_name` varchar(50) COLLATE utf8_unicode_ci  not NULL,
-  `your_password` varchar(50) DEFAULT NULL,
+  `user_name` varchar(50) COLLATE utf8_unicode_ci primary key  not NULL,
+  `user_pass` varchar(50) DEFAULT NULL,
     address varchar(200) COLLATE utf8_unicode_ci DEFAULT null,
     telephone int(11) DEFAULT null
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -19,6 +18,7 @@ CREATE TABLE products (
   `model` varchar(50) DEFAULT NULL,
   `image` text DEFAULT NULL,
   `price` double DEFAULT NULL,
+  `size`  varchar(50) DEFAULT NULL,
   `weigh` double DEFAULT NULL,
   `color` varchar(10) DEFAULT NULL,
   `number_of_product` int(11) DEFAULT NULL,
@@ -62,12 +62,38 @@ CREATE TABLE `mouse_products` (
   `standard` tinyint(1) DEFAULT NULL,
   `protocol` varchar(50) DEFAULT NULL,
   `is_led` tinyint(1) DEFAULT NULL,
-  `size` varchar(50) DEFAULT NULL,
     FOREIGN key (product_id) REFERENCES products(product_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=3;
 
 
+CREATE TABLE `computer_products` (
+  `computer_product_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `s_cpu` varchar(50) DEFAULT NULL,
+  `s_ram` varchar(50) DEFAULT NULL,
+  `s_storage` int(11) DEFAULT NULL,
+  `screen` varchar(50) DEFAULT NULL,
+  `s_card` varchar(50) DEFAULT NULL,
+  `main_connection` varchar(50) DEFAULT NULL,
+  `os` varchar(50) DEFAULT NULL,
+   FOREIGN key (`product_id`) REFERENCES products(product_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+CREATE TABLE `pc` (
+  `pc_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `i_case` text DEFAULT NULL,
+    FOREIGN key (product_id) REFERENCES products(product_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ;
+
+
+CREATE TABLE `laptop` (
+  `laptop_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `pin` int(11) DEFAULT NULL,
+    FOREIGN key (product_id) REFERENCES products(product_id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 ----------------------------------------------------------------
@@ -76,3 +102,6 @@ CREATE table admin(
     admin_user varchar(50) COLLATE utf8_unicode_ci PRIMARY key not null,
     admin_password varchar(50) DEFAULT null
     )ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci  ;
+
+
+    --kết nối bảng

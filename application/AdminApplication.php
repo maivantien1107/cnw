@@ -1,7 +1,7 @@
 <?php
-require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
 
-class AdminServices extends MySqlConnect {
+class AdminApplication extends MySqlConnect {
     public function valid($username, $password){
         $query = "select * from admin where admin_username = '$username' and admin_password = '$password'";
 

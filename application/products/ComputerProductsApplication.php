@@ -1,9 +1,9 @@
 <?php
 
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'ComputerProducts.php';
-require_once ROOT . DS . 'services' . DS . 'products' . DS . 'ProductsServices.php';
+require_once ROOT . DS . 'application' . DS . 'products' . DS . 'ProductsApplication.php';
 
-class ComputerProductsServices extends ProductsServices {
+class ComputerProductsApplication extends ProductsApplication {
     /**
      * The method support insert data to database
      * @param ComputerProducts $computerProducts

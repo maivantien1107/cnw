@@ -1,9 +1,9 @@
 <?php
 
-require_once ROOT . DS . 'services' . DS . 'products' . DS . 'ProductsServices.php';
+require_once ROOT . DS . 'application' . DS . 'products' . DS . 'ProductsApplication.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'ComputerMouseProducts.php';
 
-class ComputerMouseProductsServices extends ProductsServices {
+class MouseProductsApplication extends ProductsApplication {
     /**
      * The method support insert data to database
      * @param ComputerMouseProducts $mouse
@@ -53,7 +53,7 @@ class ComputerMouseProductsServices extends ProductsServices {
             $size = $row["size"];
             $disable = $row["dis"];
 
-            $mouse = new ComputerMouseProducts($productID, $model, $image, $price, $weigh, $color, $numberOfProducts, 
+            $mouse = new MouseProducts($productID, $model, $image, $price, $weigh, $color, $numberOfProducts, 
                 $supplier, $standardConnection, $connectionProtocal, $isLed, $size, $description);
             $mouse->setDisable($disable);
 
@@ -92,7 +92,7 @@ class ComputerMouseProductsServices extends ProductsServices {
             $size = $row["size"];
             $disable = $row["dis"];
 
-            $mouse = new ComputerMouseProducts($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
+            $mouse = new MouseProducts($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
                 $supplier, $standardConnection, $connectionProtocal, $isLed, $size, $description);
             $mouse->setDisable($disable);
 
@@ -104,7 +104,7 @@ class ComputerMouseProductsServices extends ProductsServices {
     
     /**
      * The method update data to database
-     * @param ComputerMouseProducts $mouse
+     * @param MouseProducts $mouse
      */
     public function update($mouse) {
         // update to products table

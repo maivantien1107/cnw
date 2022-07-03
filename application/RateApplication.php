@@ -2,10 +2,10 @@
 // $path_project = 'selling-computer';
 #define('DS', DIRECTORY_SEPARATOR);
 #define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);
-require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Evaluate.php';
 
-class EvaluateServices extends MySqlConnect {
+class RateApplication extends MySqlConnect {
     /**
      * The method support insert data to database
      * @param Evaluate $evaluate

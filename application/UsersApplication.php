@@ -1,13 +1,13 @@
 <?php
 
-require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
-require_once ROOT . DS . 'services' . DS . 'TypeProductsServices.php';
+require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'application' . DS . 'TypeProductsApplication.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Users.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Products.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . "Type.php";
 
-class UsersServices extends MySqlConnect {
+class UsersApplication extends MySqlConnect {
     public function insert($users) {
         
         $username = $users->getUsername();
@@ -15,8 +15,8 @@ class UsersServices extends MySqlConnect {
         $address = $users->getAddress();
         $telephone = $users->getTelephone();
 
-        $query = "insert into users(user_name, user_password, address, telephone)
-                  value('$username', '$password', '$address', '$telephone')
+        $query = "insert into users(user_name, user_pass, address, telephone)
+                  values('$username', '$password', '$address', '$telephone')
                   ";
 
         parent::addQuerry($query);
@@ -24,9 +24,8 @@ class UsersServices extends MySqlConnect {
 
         // when create guest, one cart will create
         $query = "insert into cart(user_name)
-                    value (" .
-                    "'" . $users->getUsername() . "'"
-                        . ")";
+                    values ('$username')
+                 ";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -67,14 +66,14 @@ class UsersServices extends MySqlConnect {
      * @return array
      */
     public function getAll(){
-        $listGuest = array();
+        $listUsers= array();
         $query = "select * from users";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
         while($row = mysqli_fetch_array($result)){
             $username = $row["user_name"];
-            $password = $row["your_password"];
+            $password = $row["user_pass"];
             $address = $row["address"];
             $telephone = $row["telephone"];
 
@@ -87,19 +86,18 @@ class UsersServices extends MySqlConnect {
     }
 
     /**
-     * Return product have product_id = $product_id
      * @param String $username
      * @return Users
      */
     public function get($username){
-        $query = "select * from user
+        $query = "select * from users
                     where user_name='" . $username . "'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
         if($row = mysqli_fetch_array($result)){
             $username = $row["user_name"];
-            $password = $row["your_password"];
+            $password = $row["user_pass"];
             $address = $row["address"];
             $telephone = $row["telephone"];
 
@@ -119,7 +117,7 @@ class UsersServices extends MySqlConnect {
         $telephone = $guest->getTelephone();
 
         $query = "update users
-                  set your_password = '$password',
+                  set user_pass = '$password',
                       address = '$address',
                       telephone = '$telephone'
                   where user_name = '$username'
@@ -168,16 +166,16 @@ class UsersServices extends MySqlConnect {
         while($row = mysqli_fetch_array($result)){
             $product_id = $row["product_id"];
 
-            if(TypeProductsServices::checkType($product_id) == Type::LAPTOP){
-                $service = new LaptopServices();
+            if(TypeProductsApplication::checkType($product_id) == Type::LAP){
+                $service = new LaptopApplication();
                 $laptop = $service->get($product_id);
                 array_push($listCartProducts, $laptop);
-            } else if (TypeProductsServices::checkType($product_id) == Type::PC){
-                $service = new PCServices();
+            } else if (TypeProductsApplication::checkType($product_id) == Type::PC){
+                $service = new PCApplication();
                 $pc = $service->get($product_id);
                 array_push($listCartProducts, $pc);
-            } else if(TypeProductsServices::checkType($product_id) == Type::MOUSE){
-                $service = new ComputerMouseProductsServices();
+            } else if(TypeProductsApplication::checkType($product_id) == Type::MOUSE){
+                $service = new MouseProductsApplication();
                 $mouse = $service->get($product_id);
                 array_push($listCartProducts, $mouse);
             } else {

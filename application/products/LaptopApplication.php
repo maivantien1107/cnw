@@ -1,23 +1,23 @@
 <?php
 
-require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'PC.php';
-require_once ROOT . DS . 'services' . DS . 'products' . DS . 'ComputerProductsServices.php';
+require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Laptop.php';
+require_once ROOT . DS . 'application' . DS . 'products' . DS . 'ComputerProductsApplication.php';
 
-class PCServices extends  ComputerProductsServices {
+class LaptopApplication extends ComputerProductsApplication {
     /**
      * The method support insert data to database
-     * @param PC $pc
+     * @param Laptop $laptop
      */
-    public function insert($pc) {
+    public function insert($laptop) {
         // add to products table and computer_products table
-        parent::insert($pc);
+        parent::insert($laptop);
 
         // add to pc table
-        $query = "insert into pc(product_id, i_case)
+        $query = "insert into laptop(product_id, battery)
                     value (" .
-                    $pc->getProductID() . "," .
-                    "'" . $pc->getCase() . "'"
-                        . ")"; 
+                    $laptop->getProductID() . "," .
+                    $laptop->getPin()
+                        . ")";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -27,10 +27,10 @@ class PCServices extends  ComputerProductsServices {
      * @return array
      */
     public function getAll(){
-        $listPC = array();
+        $listLaptop = array();
         $query = "select * from
                     products p inner join computer_products cp on p.product_id = cp.product_id
-                    inner join pc pc on p.product_id = pc.product_id";
+                    inner join laptop l on p.product_id = l.product_id";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
@@ -39,6 +39,7 @@ class PCServices extends  ComputerProductsServices {
             $model = $row["model"];
             $image = $row["image"];
             $price = $row["price"];
+            $size= $row["size"];
             $weigh = $row["weigh"];
             $color = $row["color"];
             $numberOfProducts = $row["number_of_product"];
@@ -51,29 +52,29 @@ class PCServices extends  ComputerProductsServices {
             $card = $row["s_card"];
             $mainConnection = $row["main_connection"];
             $os = $row["os"];
-            $case = $row["i_case"];
+            $battery = $row["battery"];
             $disable = $row["dis"];
 
-            $pc = new PC($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $case, $description);
-            $pc->setDisable($disable);
+            $laptop = new Laptop($productID, $model, $image, $price, $size, $weigh, $color, $numberOfProducts,
+                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $battery, $description);
+            $laptop->setDisable($disable);
 
-            array_push($listPC, $pc);
+            array_push($listLaptop, $laptop);
         }
 
-        return $listPC;
+        return $listLaptop;
     }
 
     /**
      * Return product have product_id = $product_id
      * @param int $product_id
-     * @return PC
+     * @return Laptop
      */
     public function get($product_id){
         $query = "select * from
                     products p inner join computer_products cp on p.product_id = cp.product_id
-                    inner join pc pc on p.product_id = pc.product_id
-                    where p.product_id= $product_id ";
+                    inner join laptop l on p.product_id = l.product_id
+                    where p.product_id=" . $product_id;
         parent::addQuerry($query);
         $result = parent::executeQuery();
 
@@ -82,6 +83,7 @@ class PCServices extends  ComputerProductsServices {
             $model = $row["model"];
             $image = $row["image"];
             $price = $row["price"];
+            $size= $row["size"];
             $weigh = $row["weigh"];
             $color = $row["color"];
             $numberOfProducts = $row["number_of_product"];
@@ -94,14 +96,14 @@ class PCServices extends  ComputerProductsServices {
             $card = $row["s_card"];
             $mainConnection = $row["main_connection"];
             $os = $row["os"];
-            $case = $row["i_case"];
+            $battery = $row["battery"];
             $disable = $row["dis"];
 
-            $pc = new PC($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $case, $description);
-            $pc->setDisable($disable);
+            $laptop = new Laptop($productID, $model, $image, $price, $size, $weigh, $color, $numberOfProducts,
+                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $battery, $description);
+            $laptop->setDisable($disable);
 
-            return $pc;
+            return $laptop;
         }
 
         return null;
@@ -109,21 +111,20 @@ class PCServices extends  ComputerProductsServices {
 
     /**
      * The method update data to database
-     * @param PC $pc
+     * @param Laptop $laptop
      */
-    public function update($pc) {
+    public function update($laptop) {
         // update to products table and computer_products table
-        parent::update($pc);
+        parent::update($laptop);
 
         // update pc table
-        $query = "update pc
+        $query = "update laptop
                     set " .
-                    "i_case = " . "'" . $pc->getCase() . "' " .
-                    "where product_id = " . $pc->getProductID()
-                        . "";
+                    "battery = " . $laptop->getPin() . " " .
+                    "where product_id = " . $laptop->getProductID()
+                    . "";
+
         parent::addQuerry($query);
         parent::updateQuery();
-
-
     }
 }

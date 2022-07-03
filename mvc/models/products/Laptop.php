@@ -3,31 +3,31 @@
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'ComputerProducts.php';
 
 class Laptop extends ComputerProducts{
-    private $battery;       // int
+    private $pin;       // int
     
-    public function __construct($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
-        $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $battery, $description) {
-        parent::__construct($productID, $model, $image, $price, $weigh, $color, $numberOfProducts, 
+    public function __construct($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts,
+        $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $pin, $description) {
+        parent::__construct($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts, 
             $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $description);
-        self::setBattery($battery);
+        self::setPin($pin);
         
-        $this->type = Type::LAPTOP;
+        $this->type = Type::LAP;
     }
     
     /**
      * @return mixed
      */
-    public function getBattery()
+    public function getPin()
     {
-        return $this->battery;
+        return $this->pin;
     }
 
     /**
      * @param mixed $battery
      */
-    public function setBattery($battery)
+    public function setPin($pin)
     {
-        $this->battery = $battery;
+        $this->pin = $pin;
     }
 
 }

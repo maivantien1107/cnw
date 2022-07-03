@@ -1,9 +1,9 @@
 <?php
 
-require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Products.php';
 
-class ProductsServices extends  MySqlConnect {
+class ProductsApplication extends  MySqlConnect {
     /**
      * The method support insert data to database
      * @param Products $product

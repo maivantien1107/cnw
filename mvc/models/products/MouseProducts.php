@@ -2,7 +2,7 @@
 
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Products.php';
 
-class ComputerMouseProducts extends Products{
+class MouseProducts extends Products{
     private $standardConnection;        // boolean
     private $connectionProtocol;        // String 
     private $isLed;                     // boolean

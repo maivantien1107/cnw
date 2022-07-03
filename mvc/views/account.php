@@ -1,4 +1,26 @@
+<?php
+		if(array_key_exists("name", $_POST)){
+				$username = isset($_POST["name"]) ? addslashes($_POST["name"]) :'';
+				$password = isset($_POST["password"]) ? addslashes($_POST['password']):'';
+				$address = isset($_POST["address"]) ? addslashes($_POST['address']):'';
+				$telephone = isset($_POST["telephone"]) ? addslashes($_POST['telephone']):'';
+				require_once ROOT . DS .'services' . DS . 'UsersServices.php';
+				require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Users.php';
+				$guest = new Users($username, $password, $address, $telephone);
+				$service = new UsersServices();
 
+				$listUsers = $service->getAll();
+				$tmpUsers = $service->get($username);
+
+				if(!in_array($tmpUsers, $listUsers)){
+						$service->insert($guest);
+						header("Location: login");
+				} else {
+                    echo 'Thêm không thanh công';
+						echo "<script>alert('Tài khoản đã được sử dụng');</script>";
+				}
+		}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,12 +38,12 @@
     <div class="modal__overlay"></div>
     <div class="modal__body">
         <!-- Register form -->
-        <form action="/KACoffe/v1/auth/register" style=" padding-right:10px;" method="POST" >
+        <form action="" style=" padding-right:10px;" method="POST" >
             <div class="auth-form auth-register">
                 <div class="container">
                     <div class="auth-form__header">
                         <h3 class="auth-form__heading">Đăng ký</h3>
-                        <a href="/KACoffe/v1/auth/" class="auth-form__switch auth-form__switch-login">Đăng nhập</a>
+                        <a href="login" class="auth-form__switch auth-form__switch-login">Đăng nhập</a>
                     </div>
 
                     <div class="auth-form__form">
@@ -29,7 +51,7 @@
                             <input type="text" class="auth-form__input" name="name" placeholder="Username" required>
                         </div>
                         <div class="auth-form__group">
-                            <input type="email" class="auth-form__input" name="email" placeholder="Email" required>
+                            <input type="text" class="auth-form__input" name="address" placeholder="Address" required>
                         </div>
                         <div class="auth-form__group">
                             <input type="text" class="auth-form__input" name="phone" placeholder="Số điện thoại" required>
@@ -44,16 +66,16 @@
 
                     <div class="auth-form__aside">
                         <p class="auth-form__policy-text">
-                            Bằng việc đăng ký, bạn đã đồng ý với KACoffee về
+                            Bằng việc đăng ký, bạn đã đồng ý với chúng tôi về
                             <a href="" class="auth-form__policy-link">Điều khoản dịch vụ</a> &
                             <a href="" class="auth-form__policy-link">Chính sách bảo mật</a>
                         </p>
                     </div>
 
                     <div class="auth-form__controls">
-                        <a href="/KACoffe/v1" class="btn">TRỞ LẠI</a>
+                        <a href="/cnw-1/home" class="btn">TRỞ LẠI</a>
                         </a>
-                        <button type="submit" class="btn btn--primaryy">ĐĂNG KÝ</button>
+                        <button type="submit" class="btn btn--primaryy" name="btn-register">ĐĂNG KÝ</button>
                     </div>
 
                     <div class="auth-form__socials">
