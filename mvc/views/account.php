@@ -4,10 +4,10 @@
 				$password = isset($_POST["password"]) ? addslashes($_POST['password']):'';
 				$address = isset($_POST["address"]) ? addslashes($_POST['address']):'';
 				$telephone = isset($_POST["telephone"]) ? addslashes($_POST['telephone']):'';
-				require_once ROOT . DS .'services' . DS . 'UsersServices.php';
+				require_once ROOT . DS .'application' . DS . 'UsersApplication.php';
 				require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Users.php';
 				$guest = new Users($username, $password, $address, $telephone);
-				$service = new UsersServices();
+				$service = new UsersApplication();
 
 				$listUsers = $service->getAll();
 				$tmpUsers = $service->get($username);

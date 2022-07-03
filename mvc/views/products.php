@@ -1,21 +1,23 @@
 <?php
-	require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php';
-	require_once ROOT . DS . 'services' . DS . 'products' . DS . 'PCServices.php';
-	require_once ROOT . DS . 'services' . DS . 'products' . DS . 'ComputerMouseProductsServices.php';
-?>
+	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
+	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
+	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
+  ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FPT</title>
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/main_header.css">
+    <title>Sản phẩm</title>
+    <link rel="stylesheet" href="public/css/base.css">
+    <link rel="stylesheet" href="public/css/main_header.css">
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/main_banner.css">
-    <link rel="stylesheet" href="assets/css/main_product.css">
+    <link rel="stylesheet" href="public/css/main_banner.css">
+    <link rel="stylesheet" href="public/css/main_product.css">
+    <link rel="stylesheet" href="public/css/footer_container.css" type="text/css">
+		<link rel="stylesheet" type="text/css" href="public/css/nav_bar.css" >
     <!-- <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.1.1-web/css/all.css"> -->
 </head>
 <body>
@@ -1128,12 +1130,19 @@
                             </div>
 
                             <div class="cdt-product-wrapper m-b-20">
-
-                              <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
+                              <?php
+                                  //get all laptop 
+                                  $app=new LaptopApplication();
+                                  $listLaptop=$app->getAll();
+                                  foreach($listLaptop as $laptop){
+                                    $path = $laptop->getModel();
+					                          $path = str_replace(' ', '-', $path);
+                              ?>
+                                  <div class="cdt-product prd-lap product-sale">
+                                <div class="cdt-product__img" style="background-image: url(public/img/Img_product/backgroundproduct.webp); background-position: center center;
                                 background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
+                                  <a href="" title="<?php  echo $laptop->getModel(); ?> ">
+                                    <img src="<?php echo $laptop->getImage();?>" alt="" height="215">
                                   </a>
 
                                   <div class="cdt-product__label">
@@ -1144,11 +1153,11 @@
                                 </div>
 
                                 <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
+                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name"><?php echo $laptop->getModel(); ?></a>
                                   </h3>
 
                                   <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
+                                    <div class="progress pdiscount2"><?php echo $laptop->getPrice(); ?> ₫
                                       <div class="progress-bar" style="width: 87%;"></div>
                                     </div>
                                     <div class="strike-price"><strike>27.990.000 ₫</strike></div>
@@ -1157,7 +1166,7 @@
                                   <div class="cdt-product__config">
                                     <div class="cdt-product__config__param">
                                       <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
+                                        <i class="fa-thin fa-laptop"></i><?php echo $laptop->getScreen(); ?></span>
                                         <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
                                         <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
                                         <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
@@ -1184,178 +1193,235 @@
                                 </div>
 
                               </div>
-
-                              <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
-                                background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
-                                  </a>
-
-                                  <div class="cdt-product__label">
-                                    <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
-                                  </div>
-
-                                </div>
-
-                                <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
-                                  </h3>
-
-                                  <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
-                                    </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
-                                  </div>
-
-                                  <div class="cdt-product__config">
-                                    <div class="cdt-product__config__param">
-                                      <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
-                                    </div>
-
-                                    <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                  <div class="cdt-product__btn">
-                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
-                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
-                                  </div>
-                                </div>
-
-                              </div>
-
-                              <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
-                                background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
-                                  </a>
-
-                                  <div class="cdt-product__label">
-                                    <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
-                                  </div>
-
-                                </div>
-
-                                <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
-                                  </h3>
-
-                                  <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
-                                    </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
-                                  </div>
-
-                                  <div class="cdt-product__config">
-                                    <div class="cdt-product__config__param">
-                                      <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
-                                    </div>
-
-                                    <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                  <div class="cdt-product__btn">
-                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
-                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
-                                  </div>
-                                </div>
-
-                              </div>
-
-                              <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
-                                background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
-                                  </a>
-
-                                  <div class="cdt-product__label">
-                                    <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
-                                  </div>
-
-                                </div>
-
-                                <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
-                                  </h3>
-
-                                  <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
-                                    </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
-                                  </div>
-
-                                  <div class="cdt-product__config">
-                                    <div class="cdt-product__config__param">
-                                      <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
-                                    </div>
-
-                                    <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                  <div class="cdt-product__btn">
-                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
-                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
-                                  </div>
-                                </div>
-
-                              </div>
-
                               
+                        
+                             <?php 
+                             }
+                             ?>
 
+                              <!-- <div class="cdt-product prd-lap product-sale">
+                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
+                                background-repeat: no-repeat;">
+                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
+                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
+                                  </a>
 
+                                  <div class="cdt-product__label">
+                                    <span class="badge badge-warning">Trả góp 0%</span>
+                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
+                                  </div>
+
+                                </div>
+
+                                <div class="cdt-product-info">
+                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
+                                  </h3>
+
+                                  <div class="cdt-product__show-promo">
+                                    <div class="progress pdiscount2">24.490.000 ₫
+                                      <div class="progress-bar" style="width: 87%;"></div>
+                                    </div>
+                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
+                                  </div>
+
+                                  <div class="cdt-product__config">
+                                    <div class="cdt-product__config__param">
+                                      <span data-title="Màn hình">
+                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
+                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
+                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
+                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
+                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
+                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
+                                    </div>
+
+                                    <div class="cdt-product__img-promo">
+                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
+                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
+                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
+                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
+                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+                                  <div class="cdt-product__btn">
+                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
+                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="cdt-product prd-lap product-sale">
+                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
+                                background-repeat: no-repeat;">
+                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
+                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
+                                  </a>
+
+                                  <div class="cdt-product__label">
+                                    <span class="badge badge-warning">Trả góp 0%</span>
+                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
+                                  </div>
+
+                                </div>
+
+                                <div class="cdt-product-info">
+                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
+                                  </h3>
+
+                                  <div class="cdt-product__show-promo">
+                                    <div class="progress pdiscount2">24.490.000 ₫
+                                      <div class="progress-bar" style="width: 87%;"></div>
+                                    </div>
+                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
+                                  </div>
+
+                                  <div class="cdt-product__config">
+                                    <div class="cdt-product__config__param">
+                                      <span data-title="Màn hình">
+                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
+                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
+                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
+                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
+                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
+                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
+                                    </div>
+
+                                    <div class="cdt-product__img-promo">
+                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
+                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
+                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
+                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
+                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+                                  <div class="cdt-product__btn">
+                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
+                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="cdt-product prd-lap product-sale">
+                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
+                                background-repeat: no-repeat;">
+                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
+                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
+                                  </a>
+
+                                  <div class="cdt-product__label">
+                                    <span class="badge badge-warning">Trả góp 0%</span>
+                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
+                                  </div>
+
+                                </div>
+
+                                <div class="cdt-product-info">
+                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
+                                  </h3>
+
+                                  <div class="cdt-product__show-promo">
+                                    <div class="progress pdiscount2">24.490.000 ₫
+                                      <div class="progress-bar" style="width: 87%;"></div>
+                                    </div>
+                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
+                                  </div>
+
+                                  <div class="cdt-product__config">
+                                    <div class="cdt-product__config__param">
+                                      <span data-title="Màn hình">
+                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
+                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
+                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
+                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
+                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
+                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
+                                    </div>
+
+                                    <div class="cdt-product__img-promo">
+                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
+                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
+                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
+                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
+                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+                                  <div class="cdt-product__btn">
+                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
+                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
+                                  </div>
+                                </div>
+
+                              </div>
+
+                              <div class="cdt-product prd-lap product-sale">
+                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
+                                background-repeat: no-repeat;">
+                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
+                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
+                                  </a>
+
+                                  <div class="cdt-product__label">
+                                    <span class="badge badge-warning">Trả góp 0%</span>
+                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
+                                  </div>
+
+                                </div>
+
+                                <div class="cdt-product-info">
+                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
+                                  </h3>
+
+                                  <div class="cdt-product__show-promo">
+                                    <div class="progress pdiscount2">24.490.000 ₫
+                                      <div class="progress-bar" style="width: 87%;"></div>
+                                    </div>
+                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
+                                  </div>
+
+                                  <div class="cdt-product__config">
+                                    <div class="cdt-product__config__param">
+                                      <span data-title="Màn hình">
+                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
+                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
+                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
+                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
+                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
+                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
+                                    </div>
+
+                                    <div class="cdt-product__img-promo">
+                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
+                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
+                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
+                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
+                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
+
+                                      </div>
+                                    </div>
+
+                                  </div>
+
+                                  <div class="cdt-product__btn">
+                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
+                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
+                                  </div>
+                                </div>
+
+                              </div> -->
                             </div>
 
                             <div class="cdt-product--loadmore">

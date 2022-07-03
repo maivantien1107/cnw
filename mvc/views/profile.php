@@ -5,8 +5,8 @@ session_start();
 if(!isset($_SESSION['username']) || $_SESSION['username'] == ''){
 		header("Location: login");
 }
-require_once ROOT . DS . 'services' . DS . 'UsersServices.php';
-$service = new UsersServices();
+require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
+$service = new UsersApplication();
 $username = $_SESSION['username'];
 $person = $service->get($username);
 ?>

@@ -13,7 +13,7 @@ class LaptopApplication extends ComputerProductsApplication {
         parent::insert($laptop);
 
         // add to pc table
-        $query = "insert into laptop(product_id, battery)
+        $query = "insert into laptop(product_id, pin)
                     value (" .
                     $laptop->getProductID() . "," .
                     $laptop->getPin()
@@ -47,16 +47,15 @@ class LaptopApplication extends ComputerProductsApplication {
             $description = $row["p_description"];
             $cpu = $row["s_cpu"];
             $ram = $row["s_ram"];
-            $storage = $row["s_storage"];
+            $storage = $row["s_memory"];
             $screen = $row["screen"];
             $card = $row["s_card"];
-            $mainConnection = $row["main_connection"];
             $os = $row["os"];
-            $battery = $row["battery"];
+            $battery = $row["pin"];
             $disable = $row["dis"];
 
             $laptop = new Laptop($productID, $model, $image, $price, $size, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $battery, $description);
+                $supplier, $cpu, $ram, $storage, $screen, $card, $os, $battery, $description);
             $laptop->setDisable($disable);
 
             array_push($listLaptop, $laptop);
@@ -91,16 +90,15 @@ class LaptopApplication extends ComputerProductsApplication {
             $description = $row["p_description"];
             $cpu = $row["s_cpu"];
             $ram = $row["s_ram"];
-            $storage = $row["s_storage"];
+            $storage = $row["s_memory"];
             $screen = $row["screen"];
             $card = $row["s_card"];
-            $mainConnection = $row["main_connection"];
             $os = $row["os"];
-            $battery = $row["battery"];
+            $battery = $row["pin"];
             $disable = $row["dis"];
 
             $laptop = new Laptop($productID, $model, $image, $price, $size, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $battery, $description);
+                $supplier, $cpu, $ram, $storage, $screen, $card, $os, $battery, $description);
             $laptop->setDisable($disable);
 
             return $laptop;

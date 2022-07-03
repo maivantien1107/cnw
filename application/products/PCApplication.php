@@ -39,6 +39,7 @@ class PCApplication extends  ComputerProductsApplication {
             $model = $row["model"];
             $image = $row["image"];
             $price = $row["price"];
+            $size = $row["size"];
             $weigh = $row["weigh"];
             $color = $row["color"];
             $numberOfProducts = $row["number_of_product"];
@@ -46,16 +47,15 @@ class PCApplication extends  ComputerProductsApplication {
             $description = $row["p_description"];
             $cpu = $row["s_cpu"];
             $ram = $row["s_ram"];
-            $storage = $row["s_storage"];
+            $memory = $row["s_memory"];
             $screen = $row["screen"];
             $card = $row["s_card"];
-            $mainConnection = $row["main_connection"];
             $os = $row["os"];
             $case = $row["i_case"];
             $disable = $row["dis"];
 
-            $pc = new PC($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $case, $description);
+            $pc = new PC($productID, $model, $image,$size, $price, $weigh, $color, $numberOfProducts,
+                $supplier, $cpu, $ram, $memory, $screen, $card, $os, $case, $description);
             $pc->setDisable($disable);
 
             array_push($listPC, $pc);
@@ -64,11 +64,6 @@ class PCApplication extends  ComputerProductsApplication {
         return $listPC;
     }
 
-    /**
-     * Return product have product_id = $product_id
-     * @param int $product_id
-     * @return PC
-     */
     public function get($product_id){
         $query = "select * from
                     products p inner join computer_products cp on p.product_id = cp.product_id
@@ -83,13 +78,14 @@ class PCApplication extends  ComputerProductsApplication {
             $image = $row["image"];
             $price = $row["price"];
             $weigh = $row["weigh"];
+            $size = $row["size"];
             $color = $row["color"];
             $numberOfProducts = $row["number_of_product"];
             $supplier = $row["supplier"];
             $description = $row["p_description"];
             $cpu = $row["s_cpu"];
             $ram = $row["s_ram"];
-            $storage = $row["s_storage"];
+            $memory = $row["s_memory"];
             $screen = $row["screen"];
             $card = $row["s_card"];
             $mainConnection = $row["main_connection"];
@@ -97,8 +93,8 @@ class PCApplication extends  ComputerProductsApplication {
             $case = $row["i_case"];
             $disable = $row["dis"];
 
-            $pc = new PC($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $mainConnection, $os, $case, $description);
+            $pc = new PC($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts,
+                $supplier, $cpu, $ram, $memory, $screen, $card, $os, $case, $description);
             $pc->setDisable($disable);
 
             return $pc;

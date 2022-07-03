@@ -3,88 +3,52 @@
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Products.php';
 
 class MouseProducts extends Products{
-    private $standardConnection;        // boolean
-    private $connectionProtocol;        // String 
-    private $isLed;                     // boolean
-    private $size;                      // String 
+    private $connection;        // boolean
+    private $protocol;        // String 
+    private $isLed;                     // boolean                  
 
-    /**
-     * {@inheritDoc}
-     * @see Products::__construct()
-     */
-    public function __construct($productID, $model, $image, $price, $weigh, $color, $numberOfProducts, 
-        $supplier, $standardConnection, $connectionProtocal, $isLed, $size, $description) {
-        parent::__construct($productID, $model, $image, $price, $weigh, $color, $numberOfProducts, $supplier, $description);
-        self::setStandardConnection($standardConnection);
-        self::setConnectionProtocon($connectionProtocal);
+   
+    public function __construct($productID, $model, $image, $price, $size,$weigh, $color, $number, 
+        $supplier, $connection, $protocal, $isLed, $description) {
+        parent::__construct($productID, $model, $image, $price, $size,$weigh, $color, $number, $supplier, $description);
+        self::setConnection($connection);
+        self::setProtocon($protocal);
         self::setIsLed($isLed);
-        self::setSize($size);
         
         $this->type = Type::MOUSE;
     }
     
-    /**
-     * @return mixed
-     */
-    public function getStandardConnection()
+   
+    public function getConnection()
     {
-        return $this->standardConnection;
+        return $this->connection;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getConnectionProtocon()
+   
+    public function getProtocon()
     {
-        return $this->connectionProtocol;
+        return $this->protocol;
     }
 
-    /**
-     * @return mixed
-     */
     public function getIsLed()
     {
         return $this->isLed;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSize()
+    public function setConnection($connection)
     {
-        return $this->size;
+        $this->connection = $connection;
     }
 
-    /**
-     * @param mixed $standardConnection
-     */
-    public function setStandardConnection($standardConnection)
+    public function setProtocon($protocon)
     {
-        $this->standardConnection = $standardConnection;
+        $this->protocol = $protocon;
     }
 
-    /**
-     * @param mixed $connectionProtocon
-     */
-    public function setConnectionProtocon($connectionProtocon)
-    {
-        $this->connectionProtocol = $connectionProtocon;
-    }
-
-    /**
-     * @param mixed $isLed
-     */
     public function setIsLed($isLed)
     {
         $this->isLed = $isLed;
     }
 
-    /**
-     * @param mixed $size
-     */
-    public function setSize($size)
-    {
-        $this->size = $size;
-    }
     
 }

@@ -2,7 +2,7 @@
 // $path_project = 'selling-computer';
 #define('DS', DIRECTORY_SEPARATOR);
 #define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);
-require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'database' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Evaluate.php';
 
 class RateApplication extends MySqlConnect {

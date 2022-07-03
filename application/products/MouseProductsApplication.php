@@ -1,7 +1,7 @@
 <?php
 
 require_once ROOT . DS . 'application' . DS . 'products' . DS . 'ProductsApplication.php';
-require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'ComputerMouseProducts.php';
+require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'MouseProducts.php';
 
 class MouseProductsApplication extends ProductsApplication {
     /**
@@ -13,14 +13,12 @@ class MouseProductsApplication extends ProductsApplication {
         parent::insert($mouse);
         
         // add to computer_mouse_products table
-        $query = "insert into computer_mouse_products(product_id, standard_connection, connection_protocol, is_led, size)
+        $query = "insert into mouse_products(product_id, connection, protocol, is_led)
                     value (" .
                     $mouse->getProductID() . "," .
                     $mouse->getStandardConnection() . ", " .
                     "'" . $mouse->getConnectionProtocon() . "' ," .
-                    $mouse->getIsLed() . " ," .
-                    "'" . $mouse->getSize() . "' "
-                        . ")";
+                    $mouse->getIsLed() . ")";
         
         parent::addQuerry($query);
         parent::updateQuery();
@@ -33,7 +31,7 @@ class MouseProductsApplication extends ProductsApplication {
     public function getAll(){
         $listMouse = array();
         $query = "select * from
-                    products p inner join computer_mouse_products cmp on p.product_id = cmp.product_id";
+                    products p inner join mouse_products cmp on p.product_id = cmp.product_id";
         parent::addQuerry($query);
         $result = parent::executeQuery();
         
@@ -42,19 +40,19 @@ class MouseProductsApplication extends ProductsApplication {
             $model = $row["model"];
             $image = $row["image"];
             $price = $row["price"];
+            $size = $row["size"];
             $weigh = $row["weigh"];
             $color = $row["color"];
             $numberOfProducts = $row["number_of_product"];
             $supplier = $row["supplier"];
             $description = $row["p_description"];
-            $standardConnection = $row["standard_connection"];
-            $connectionProtocal = $row["connection_protocol"];
+            $connection = $row["connection"];
+            $protocal = $row["protocol"];
             $isLed = $row["is_led"];
-            $size = $row["size"];
             $disable = $row["dis"];
 
-            $mouse = new MouseProducts($productID, $model, $image, $price, $weigh, $color, $numberOfProducts, 
-                $supplier, $standardConnection, $connectionProtocal, $isLed, $size, $description);
+            $mouse = new MouseProducts($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts, 
+                $supplier, $connection, $protocal, $isLed, $description);
             $mouse->setDisable($disable);
 
             array_push($listMouse, $mouse);
@@ -70,7 +68,7 @@ class MouseProductsApplication extends ProductsApplication {
      */
     public function get($product_id){
         $query = "select * from
-                    products p inner join computer_mouse_products cmp on p.product_id = cmp.product_id 
+                    products p inner join mouse_products cmp on p.product_id = cmp.product_id 
                     where p.product_id=" . $product_id;
         
         parent::addQuerry($query);
@@ -81,19 +79,19 @@ class MouseProductsApplication extends ProductsApplication {
             $model = $row["model"];
             $image = $row["image"];
             $price = $row["price"];
+            $size = $row["size"];
             $weigh = $row["weigh"];
             $color = $row["color"];
             $numberOfProducts = $row["number_of_product"];
             $supplier = $row["supplier"];
             $description = $row["p_description"];
-            $standardConnection = $row["standard_connection"];
-            $connectionProtocal = $row["connection_protocol"];
+            $connection = $row["connection"];
+            $protocal = $row["protocol"];
             $isLed = $row["is_led"];
-            $size = $row["size"];
             $disable = $row["dis"];
 
-            $mouse = new MouseProducts($productID, $model, $image, $price, $weigh, $color, $numberOfProducts,
-                $supplier, $standardConnection, $connectionProtocal, $isLed, $size, $description);
+            $mouse = new MouseProducts($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts,
+                $supplier, $connection, $protocal, $isLed, $description);
             $mouse->setDisable($disable);
 
             return $mouse;
@@ -111,12 +109,11 @@ class MouseProductsApplication extends ProductsApplication {
         parent::update($mouse);
         
         // update computer_mouse_products table
-        $query = "update computer_mouse_products
+        $query = "update mouse_products
                     set " .
-                    "standard_connection = " . $mouse->getStandardConnection() . ", " . 
-                    "connection_protocol = " . "'" . $mouse->getConnectionProtocon() . "' ," . 
+                    "connection = " . $mouse->getConnection() . ", " . 
+                    "protocol = " . "'" . $mouse->getProtocon() . "' ," . 
                     "is_led = " . $mouse->getIsLed() . ", " .
-                    "size = " . "'" . $mouse->getSize() . "'" .
                     "where product_id = " . $mouse->getProductID()
                     . "";
         

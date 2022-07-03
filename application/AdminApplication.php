@@ -1,5 +1,5 @@
 <?php
-require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'database' . DS . 'MySqlConnect.php';
 
 class AdminApplication extends MySqlConnect {
     public function valid($username, $password){

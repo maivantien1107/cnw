@@ -1,6 +1,6 @@
 <?php
 
-require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'database' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Products.php';
 
 class ProductsApplication extends  MySqlConnect {
@@ -10,17 +10,18 @@ class ProductsApplication extends  MySqlConnect {
      */
     public function insert($product) {
         // add to products table
-        $query = "insert into products(product_id, model, image, price, weigh, color, number_of_product, supplier, p_description, dis)
+        $query = "insert into products(product_id, model, image,size, price, weigh, color, number_of_product, supplier, p_description, dis)
                     value (" .
                     $product->getProductID() . "," .
                     "'" . $product->getModel() . "' ," .
                     "'" . $product->getImage() . "' ," .
                     $product->getPrice() . "," .
+                    $product->getSize() . "," .
                     $product->getWeigh() . "," .
                     "'" . $product->getColor() . "' ," .
-                    $product->getNumberOfProducts() . "," .
+                    $product->getNumber() . "," .
                     "'" . $product->getSupplier() . "' ," .
-                    "'" . $product->getDescription() . "' ," .
+                    "'" . $product->getDes() . "' ," .
                    $product->getDisable()
                         . ")";
 
@@ -33,20 +34,20 @@ class ProductsApplication extends  MySqlConnect {
      * @param int $product_id
      */
     public function delete($product_id){
-        // first, delete row with product_id in pc table
+        //  delete row with product_id in pc table
         $query = "delete from pc
                   where product_id = " . $product_id;
         parent::addQuerry($query);
         parent::updateQuery();
 
-        // next, delete row with product_id in evalute table
-        $query = "delete from evaluate
+        // delete row with product_id in rate table
+        $query = "delete from rate
                   where product_id = " . $product_id;
         parent::addQuerry($query);
         parent::updateQuery();
 
-        // next, delete row with product_id in computer_mouse_products table
-        $query = "delete from computer_mouse_products
+        // delete row with product_id in computer_mouse_products table
+        $query = "delete from mouse_products
                   where product_id = " . $product_id;
         parent::addQuerry($query);
         parent::updateQuery();
@@ -87,11 +88,12 @@ class ProductsApplication extends  MySqlConnect {
                     "model = " . "'" . $product->getModel() . "' ," .
                     "image = " . "'" . $product->getImage() . "' ," .
                     "price = " . $product->getPrice() . "," .
+                    "size = " . $product->getSize() . "," .
                     "weigh = " . $product->getWeigh() . "," .
                     "color = " . "'" . $product->getColor() . "' ," .
-                    "number_of_product = " . $product->getNumberOfProducts() . "," .
+                    "number_of_product = " . $product->getNumber() . "," .
                     "supplier = " . "'" . $product->getSupplier() . "' ," .
-                    "p_description = " . "'" . $product->getDescription() . "' ," .
+                    "p_description = " . "'" . $product->getDes() . "' ," .
                     "dis = " . $product->getDisable() . " " .
                     "where product_id = " . $product->getProductID()
                     . "";
@@ -122,7 +124,4 @@ class ProductsApplication extends  MySqlConnect {
     }
 }
 
-// $products = new ProductsServices().getAll();
-// for($products as $product){
-//   echo $products;
-// }
+

@@ -5,9 +5,9 @@ session_start();
 if(array_key_exists("username", $_POST)){
 		$username = isset($_POST["username"]) ? addslashes($_POST["username"]) :'';
 		$password = isset($_POST["password"]) ? addslashes($_POST["password"]): '';
-		require_once ROOT . DS . 'services' . DS . 'UsersServices.php';
-        require_once ROOT . DS . 'services' . DS . 'MySqlConnect.php';
-		$service = new UsersServices();
+		require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
+        require_once ROOT . DS . 'database' . DS . 'MySqlConnect.php';
+		$service = new UsersApplication();
         $checker = $service->checkAccount($username, $password);
 		if($checker === True){
                 $_SESSION['islogin']=true;

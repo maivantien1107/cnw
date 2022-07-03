@@ -1,5 +1,5 @@
 <?php session_start();
-require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php';
+require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -255,7 +255,7 @@ require_once ROOT . DS . 'services' . DS . 'products' . DS . 'LaptopServices.php
 				<h1 class = "title">Sản phẩm mới nhất</h1>
 				<div class="row">
 					<!-- insert new products -->
-					<?php $service = new LaptopServices();
+					<?php $service = new LaptopApplication();
 					$listLaptop = $service->getAll();
 					$cnt = 0;
 					foreach ($listLaptop as $laptop){

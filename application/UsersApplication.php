@@ -1,6 +1,6 @@
 <?php
 
-require_once ROOT . DS . 'application' . DS . 'MySqlConnect.php';
+require_once ROOT . DS . 'database' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'application' . DS . 'TypeProductsApplication.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Users.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill.php';
@@ -357,10 +357,4 @@ class UsersApplication extends MySqlConnect {
     }
 }
 
-// require_once ROOT . DS . 'services' . DS . 'products' . DS . 'PCServices.php';
-// require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'PC.php';
-//
-// $service = new PCServices();
-// $pc = $service->get(30001); echo $pc->getProductID();
-// $service = new GuestServices();
-// $service->insertProduct("huy0628", $pc, 5);
+
