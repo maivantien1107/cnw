@@ -14,7 +14,7 @@ class MouseProductsApplication extends ProductsApplication {
         
         // add to computer_mouse_products table
         $query = "insert into mouse_products(product_id, connection, protocol, is_led)
-                    value (" .
+                    values (" .
                     $mouse->getProductID() . "," .
                     $mouse->getStandardConnection() . ", " .
                     "'" . $mouse->getConnectionProtocon() . "' ," .

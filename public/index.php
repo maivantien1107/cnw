@@ -12,8 +12,3 @@ $url = isset($_GET["url"]) ? $_GET["url"] : "/";
 
 $route = new RouteController($url);
 $route->show();
-
-/**
- * Footer includes infomation about group, contact and other
- */
-// include ROOT . DS . 'mvc' . DS . 'views' . DS . 'footer.php';

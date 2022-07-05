@@ -1,7 +1,7 @@
 <?php
 
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Type.php';
-
+require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Supplier.php';
 class Products {
     private $productID;         // int
     private $model;             // String
@@ -11,7 +11,7 @@ class Products {
     private $weigh;             // double
     private $color;             // String
     private $number;  // int
-    private $supplier;          // String
+    private $supplier;             //sting
     private $des;       // String
     private $disable;           // 0 or 1, 0 : no disable, 1 : disable
 
@@ -46,7 +46,10 @@ class Products {
     {
         return $this->model;
     }
+    public function getSupplier(){
 
+    return $this->supplier;
+    }
     /**
      * @return mixed
      */
@@ -82,13 +85,6 @@ class Products {
         return $this->number;
     }
 
-   
-    public function getSupplier()
-    {
-        return $this->supplier;
-    }
-
-    
     public function getDisable()
     {
         return $this->disable;
@@ -136,14 +132,9 @@ class Products {
     {
         $this->number = $number;
     }
-
-   
-    public function setSupplier($supplier)
-    {
+    public function setSupplier($supplier){
         $this->supplier = $supplier;
     }
-
-   
     public function getDes()
     {
         return $this->des;

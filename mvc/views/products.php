@@ -2,6 +2,7 @@
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
+  require_once ROOT . DS . 'application' . DS .'SupplierApplication.php';
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -303,7 +304,7 @@
 
                       <div class="col-3 p-8 p-r-3=">
                         <div class="cdt-filter">
-
+                            <!-- left menu supplier -->
                           <div class="cdt-filter__block">
                             
                             <div class="cdt-filter__title" >Hãng sản xuất
@@ -315,8 +316,24 @@
                                 <a title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
-
+                              <?php 
+                                 $sup= new SupplierApplication();
+                                 $listsupplier=$sup->getAll();
+                                 foreach($listsupplier as $supplier){
+                              ?> 
                               <div class="checkbox frowitem" >
+                                <a href="" title="<?php echo $supplier->getSupplier(); ?>">
+
+                                  <i class="fa-thin fa-square"></i>
+                                  <label for=""> <?php echo $supplier->getSupplier();?></label>
+                                  
+                                </a>
+                              </div>
+
+                              <?php
+                                 }
+                              ?>
+                              <!-- <div class="checkbox frowitem" >
                                 <a href="" title="Apple (MacBook)">
 
                                   <i class="fa-thin fa-square"></i>
@@ -432,7 +449,7 @@
                                   <label for="">Masstel</label>
                                   
                                 </a>
-                              </div>
+                              </div> -->
 
                             </div>
 
@@ -1128,7 +1145,7 @@
                               </div>
 
                             </div>
-
+                         <!-- // Sản phẩm -->
                             <div class="cdt-product-wrapper m-b-20">
                               <?php
                                   //get all laptop 
@@ -1167,14 +1184,14 @@
                                     <div class="cdt-product__config__param">
                                       <span data-title="Màn hình">
                                         <i class="fa-thin fa-laptop"></i><?php echo $laptop->getScreen(); ?></span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
+                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i><?php echo $laptop->getCpu(); ?></span>
+                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i><?php echo $laptop->getRam(); ?></span>
+                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i><?php echo $laptop->getMemory(); ?></span>
+                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i><?php echo $laptop->getCard(); ?></span>
+                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i><?php echo $laptop->getWeigh(); ?> kg</span>
                                     </div>
 
-                                    <div class="cdt-product__img-promo">
+                                    <!-- <div class="cdt-product__img-promo">
                                       <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
                                       <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
                                       <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
@@ -1182,7 +1199,7 @@
                                       <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
 
                                       </div>
-                                    </div>
+                                    </div> -->
 
                                   </div>
 

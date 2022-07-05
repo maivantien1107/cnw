@@ -96,6 +96,12 @@ CREATE TABLE `laptop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+create table supplier(
+    supplier_id int(11) PRIMARY key not null  AUTO_INCREMENT,
+    supplier varchar(50) COLLATE utf8_unicode_ci not null
+    
+    )
+
 ----------------------------------------------------------------
 --table admin
 CREATE table admin(
@@ -113,3 +119,15 @@ CREATE table admin(
     INSERT into products(product_id,model,image,price,size,weigh,color,number_of_product,supplier,p_description) VALUES(1,'Acer Nitro Gaming AN515-58-52SP/i5-12500H','public/img/Img_product/Acernitrogamingan515-58-52sp.webp',24990000,'30cm*20cm*1.8cm',1.24,'yellow',10,'Acer','máy tính');
     INSERT INTO computer_products(computer_product_id,product_id,s_cpu,s_ram,s_memory,screen,s_card,os) VALUES (101, 1, 'core i5', '8 GB', 512, '15.6 in', 'GTX 1060 4GB' ,'Win 10');
     INSERT INTO laptop(laptop_id, product_id, pin) VALUES (1001,1,40);
+    insert into supplier(supplier) VALUES ('Acer'),
+                                      ('Asus'),
+                                      ('Apple'),
+                                      ('Avita'),
+                                      
+                                      ('Chuwi'),
+                                      ('Dell'),
+                                      ('Gigabyte'),
+                                      ('Lenovo'),
+                                      ('Microsoft'),
+                                      ('HP'),
+                                      ('MSI');
