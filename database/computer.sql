@@ -101,7 +101,15 @@ create table supplier(
     supplier varchar(50) COLLATE utf8_unicode_ci not null
     
     )
-
+create table cpu(
+  cpu_id varchar(20) collate utf8_unicode_ci primary key not null,
+  cpu varchar(50) collate utf8_unicode_ci not null
+)
+create table search(
+    search_id int(11) PRIMARY key not null AUTO_INCREMENT,
+    content text COLLATE utf8_unicode_ci not null,
+    times int(11) DEFAULT null
+    )
 ----------------------------------------------------------------
 --table admin
 CREATE table admin(
@@ -131,3 +139,13 @@ CREATE table admin(
                                       ('Microsoft'),
                                       ('HP'),
                                       ('MSI');
+    insert into cpu(cpu_id, cpu) VALUES('cpu1','Intel celeron'),
+                                   ('cpu2','Intel pentium'),
+                                   ('cpu3', 'Intel Core i3'),
+                                   ('cpu4', 'Intel Core i5 '),
+                                   ('cpu5', 'Intel Core i7 '),
+                                   ('cpu6', 'Intel Core i9 '),
+                                   ('cpu7', 'AMD Ryzen 3 '),
+                                   ('cpu8', 'AMD Ryzen 5 '),
+                                   ('cpu9', 'AMD Ryzen 7 '),
+                                   ('cpu10', 'AMD Ryzen 9 ');

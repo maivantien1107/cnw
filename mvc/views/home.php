@@ -6,10 +6,10 @@ require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplicati
     <head>
         
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="public/css/home.css" type="text/css">
 		<link rel="stylesheet" href="public/css/footer_container.css" type="text/css">
 		<link rel="stylesheet" type="text/css" href="public/css/nav_bar.css" >
+		<link rel="stylesheet" href="public/html/assets/fonts/fontawesome-free-6.1.1-web/css/all.css">
 		<script>
 			var cnt = 1;
 			function convert(){
