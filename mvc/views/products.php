@@ -1,8 +1,9 @@
-<?php
+<?php session_start();
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
   require_once ROOT . DS . 'application' . DS .'SupplierApplication.php';
+  require_once ROOT . DS . 'application' . DS . 'products' . DS . 'CPUApplication.php';
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,129 +24,7 @@
 </head>
 <body>
     <div class="app">
-        <header class="fs-header">
-            
-
-                <div class="f-hdtop">
-                    <div class="f-wrap">
-                        <a class="fs-logo" href="/" title="" aria-label="FPTShop" >
-                            <i class="ficon f-logo">
-                            </i>
-                        </a>
-
-                        <ul class="fs-hdmn">
-                
-                
-                            <li>
-                                <a href="/tin-tuc" title="" >
-                                    <div class="base-ic">
-                                        <i class="fa-solid fa-hands-asl-interpreting"></i>
-                                       
-                                    </div>
-                                    <span>Thông tin hay</span>
-                                </a>
-                                <ul class="fs-hdmsub fs-hdmsnews">
-                                    <li class=""><a href="/tin-tuc" title="">Tin mới</a></li>
-                                    <li><a href="/tin-tuc/tin-khuyen-mai" title="">Khuyến mãi</a></li>
-                                    <li><a href="/tin-tuc/thu-thuat" title="">Thủ thuật</a></li>
-                                    <li><a href="/tin-tuc/for-gamers" title="">For Gamers</a></li>
-                                    <li><a href="/tin-tuc/video-hot" title="">Video hot</a></li>
-                                    <li><a href="/tin-tuc/danh-gia" title="">Đánh giá - tư vấn</a></li>
-                                    <li><a href="/tin-tuc/giai-tri" title="">App &amp; Game</a></li>
-                                    <li><a href="/tin-tuc/su-kien" title="">Sự kiện</a></li>
-                                    
-                                    
-                                    
-                                </ul>
-                            </li>
-                            
-                            
-                            <li>
-                                <a href="/dich-vu" title="Thanh toán &amp; tiện ích" onclick="ga('send', 'event', 'Header ', 'Click Header', 'Thanh toán &amp; tiện ích');">
-                                    <div class="base-ic">
-                                        <i class="fa-brands fa-facebook-square"></i>
-                                </div>
-                                    <span>Thanh toán &amp; tiện ích</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/cart" title="" >
-                                    <div class="base-ic">
-                                        <i class="fa-regular fa-cart-arrow-down"></i>
-                                    </div>
-                                    <span>Giỏ hàng</span>
-                                    <b class="fs-cartic countTotalCart" style="display: none;">0</b>
-                                </a>
-                            </li>
-                        </ul>
-
-                        <div class="fs-search">
-                            <form action="" method="get" autocomplete="off">
-                                <label for="key" class="mf-vhiditem">Nhập tên điện thoại, máy tính, phụ kiện... cần tìm</label>
-                                <input class="fs-stxt" type="text" id="key" name="" placeholder="Nhập tên điện thoại, máy tính, phụ kiện... cần tìm" autocomplete="off" maxlength="50">
-                                <span class="icon-cance" id="icon-cance" style="display:none" title="Xóa">✕</span>
-                                <button type="submit" aria-label="Tìm kiếm" class="search-button" title="Tìm kiếm">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-                                <div class="fs-sresult" id="result" style="display : none !important;">
-                                    <div class="fs-sremain">
-                                        <ul></ul>
-                                    </div>
-                                </div>
-                                
-                                <div class="fs-result suggest-box sugg-his" style="display: none;">
-                                    <div class="suggest-title">Lịch sử tìm kiếm
-                                        <span class="ic-clear">Xóa</span>
-                                    </div>
-                                    <ul>
-                                    </ul>
-                                </div>
-                                <div class="fs-result suggest-box suggest-box-propensity" style="display: none;">
-                                    <div class="suggest-title">Xu hướng tìm kiếm
-                                    </div>
-                                    <ul>
-                                    </ul>
-                                </div>
-                                <div class="fs-result suggest suggest-box" style="display: none;">
-                                    <div class="suggest-left">
-                                    <div class="fs-result-box fs-suggest-page" style="display: none;">
-                                                
-                                        </div>
-                                        <div class="fs-result-box fs-suggest-text">
-                                            <ul></ul>
-                                        </div>
-                                        <!--<div class="line"></div> -->
-                                        <div class="fs-result-box fs-suggest-cate">
-                                            <ul></ul>
-                                        </div>
-                                    </div>
-                                    <div class="suggest-right">
-                                        <div class="fs-result-box fs-suggest-product">
-                                            <div class="suggest-title">Sản phẩm được tìm nhiều
-                                            </div>
-                                            <ul></ul>
-                                            <div class="suggest-title suggest-news">Bài viết được tìm nhiều
-                                            </div>
-                                            <ul class="news-list"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end new -->
-                            </form>
-                        </div>
-                    </div>
-    
-                </div>
-
-                <nav class="fs-menu">
-
-                </nav>
-
-
-    
-                
-        </header>
-
+        <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'nav_bar.php'; ?>
         <div class="container">
             <main>
                 <div class="category_container">
@@ -156,69 +35,69 @@
                     <div class="cdt-banner m-b-20">
                         <div class="img-slider">
                             <div class="slide active">
-                              <img src="./assets/img/Slider/1.webp" alt="">
+                              <img src="public/html/assets/img/Slider/1.webp" alt="">
                               
                             </div>
                             <div class="slide">
-                              <img src="./assets/img/Slider/2.webp" alt="">
+                              <img src="public/html/assets/img/Slider/2.webp" alt="">
                               
                                 
                             </div>
                             <div class="slide">
-                              <img src="./assets/img/Slider/3.webp" alt="">
+                              <img src="public/html/assets/img/Slider/3.webp" alt="">
                               
                             </div>
                             <div class="slide">
-                              <img src="./assets/img/Slider/4.webp" alt="">
+                              <img src="public/html/assets/img/Slider/4.webp" alt="">
                               
                             </div>
                             <div class="slide">
-                              <img src="./assets/img/Slider/5.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="./assets/img/Slider/6.webp" alt="">
+                              <img src="public/html/assets/img/Slider/5.webp" alt="">
                               
                             </div>
                       
                             <div class="slide">
-                              <img src="./assets/img/Slider/7.webp" alt="">
+                              <img src="public/html/assets/img/Slider/6.webp" alt="">
+                              
+                            </div>
+                      
+                            <div class="slide">
+                              <img src="public/html/assets/img/Slider/7.webp" alt="">
                               
                             </div>
                             
                             <div class="slide">
-                              <img src="./assets/img/Slider/8.webp" alt="">
+                              <img src="public/html/assets/img/Slider/8.webp" alt="">
                               
                             </div>
                       
                             <div class="slide">
-                              <img src="./assets/img/Slider/9.webp" alt="">
+                              <img src="public/html/assets/img/Slider/9.webp" alt="">
                               
                             </div>
                       
                             <div class="slide">
-                              <img src="./assets/img/Slider/10.webp" alt="">
+                              <img src="public/html/assets/img/Slider/10.webp" alt="">
                               
                             </div>
                       
                             <div class="slide">
-                              <img src="./assets/img/Slider/11.webp" alt="">
+                              <img src="public/html/assets/img/Slider/11.webp" alt="">
                               
                             </div>
                       
                             <div class="slide">
-                              <img src="./assets/img/Slider/12.webp" alt="">
+                              <img src="public/html/assets/img/Slider/12.webp" alt="">
                               
                             </div>
                       
                             <div class="slide">
-                              <img src="./assets/img/Slider/13.webp" alt="">
+                              <img src="public/html/assets/img/Slider/13.webp" alt="">
                               
                             </div>
                       
                             <div class="slide">
-                              <img src="./assets/img/Slider/14.webp" alt="">
+                              <img src="public/html/assets/img/Slider/14.webp" alt="">
                               
                             </div>
                       
@@ -332,130 +211,17 @@
 
                               <?php
                                  }
-                              ?>
+                              ?>                             
                               <!-- <div class="checkbox frowitem" >
-                                <a href="" title="Apple (MacBook)">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Apple (MacBook)</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Asus">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Asus</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="HP">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">HP</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Acer">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Acer</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="MSI">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">MSI</label>
-                                  
-                                </a>
-                              </div>
-
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Lenovo">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Lenovo</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Dell">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Dell</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Microsoft (Surface)">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Microsoft (Surface)</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Gigabyte">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Gigabyte</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Fujitsu">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Fujitsu</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Chuwi">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Chuwi</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Avita">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Avita</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
                                 <a href="" title="Masstel">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Masstel</label>
                                   
                                 </a>
-                              </div> -->
+                              </div>  -->
 
                             </div>
-
-
-
-
                           </div>
 
                           <div class="cdt-filter__block">
@@ -634,100 +400,23 @@
                                 <a title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
+                              <?php 
+                                 $cpu_tmp=new CPUApplication();
+                                 $listcpu=$cpu_tmp->getAll();
+                                 foreach($listcpu as $cpu){
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Intel celeron">
+                              ?>
+                               <div class="checkbox frowitem" >
+                                <a href="" title="<?php echo $cpu->getCPU(); ?>">
 
                                   <i class="fa-thin fa-square"></i>
-                                  <label>Intel celeron</label>
+                                  <label><?php echo $cpu->getCPU();?></label>
                                   
                                 </a>
                               </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Intel Pentium">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Intel Pentium</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Intel Core i3">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Intel Core i3</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Intel Core i5">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Intel Core i5</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Intel Core i7">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Intel Core i7</label>
-                                  
-                                </a>
-                              </div>
-
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Intel Core i9">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Intel Core i9</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="AMD Ryzen 3">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">AMD Ryzen 3</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="AMD Ryzen 5">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">AMD Ryzen 5</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="AMD Ryzen 7">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">AMD Ryzen 7</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="AMD Ryzen 9">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">AMD Ryzen 9</label>
-                                  
-                                </a>
-                              </div>
-
-                              
-
+                              <?php    
+                                 }
+                              ?>
                             </div>
 
 
@@ -772,18 +461,8 @@
                                   <label>Card onboard</label>
                                   
                                 </a>
-                              </div>
-
-                              
-
-                              
-                              
-
+                              </div>                                                                    
                             </div>
-
-
-
-
                           </div>
 
                           <div class="cdt-filter__block">
@@ -832,18 +511,8 @@
                                   <label>SSD 128 gb</label>
                                   
                                 </a>
-                              </div>
-
-                              
-
-                              
-                              
-
+                              </div>                                                                                        
                             </div>
-
-
-
-
                           </div>
 
                           <div class="cdt-filter__block">
@@ -910,18 +579,8 @@
                                   <label>Mở khoá vân tay</label>
                                   
                                 </a>
-                              </div>
-
-                              
-
-                              
-                              
-
+                              </div>                                                                                      
                             </div>
-
-
-
-
                           </div>
 
                           <div class="cdt-filter__block">
@@ -979,21 +638,11 @@
                                   <label>Mỏng nhẹ</label>
                                   
                                 </a>
-                              </div>
-
-                              
-
-                              
-                              
-
+                              </div>                                                                                         
                             </div>
-
-
-
-
                           </div>
 
-                          <div class="cdt-filter__block">
+                          <!-- <div class="cdt-filter__block">
                             
                             <div class="cdt-filter__title" >Laptop khuyến mãi
 
@@ -1012,23 +661,15 @@
                                   <label>Asus TUF Gaming</label>
                                    
                                 </a>
-                              </div>
-
-                              
-
-                              
-
-                              
-                              
-
+                              </div>                                                                                                                   
                             </div>
 
 
 
 
-                          </div>
+                          </div> -->
 
-                          <div class="cdt-filter__block">
+                          <!-- <div class="cdt-filter__block">
                             
                             <div class="cdt-filter__title" >Trả góp ưu đãi
 
@@ -1073,7 +714,7 @@
 
 
 
-                          </div>
+                          </div> -->
 
 
                         
@@ -1186,7 +827,7 @@
                                         <i class="fa-thin fa-laptop"></i><?php echo $laptop->getScreen(); ?></span>
                                         <span data-title="CPU"><i class="fa-solid fa-microchip"></i><?php echo $laptop->getCpu(); ?></span>
                                         <span data-title="RAM"><i class="fa-solid fa-memory"></i><?php echo $laptop->getRam(); ?></span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i><?php echo $laptop->getMemory(); ?></span>
+                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i><?php echo $laptop->getMemory();?> GB</span>
                                         <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i><?php echo $laptop->getCard(); ?></span>
                                         <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i><?php echo $laptop->getWeigh(); ?> kg</span>
                                     </div>
@@ -1272,173 +913,7 @@
 
                               </div>
 
-                              <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
-                                background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
-                                  </a>
-
-                                  <div class="cdt-product__label">
-                                    <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
-                                  </div>
-
-                                </div>
-
-                                <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
-                                  </h3>
-
-                                  <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
-                                    </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
-                                  </div>
-
-                                  <div class="cdt-product__config">
-                                    <div class="cdt-product__config__param">
-                                      <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
-                                    </div>
-
-                                    <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                  <div class="cdt-product__btn">
-                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
-                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
-                                  </div>
-                                </div>
-
-                              </div>
-
-                              <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
-                                background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
-                                  </a>
-
-                                  <div class="cdt-product__label">
-                                    <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
-                                  </div>
-
-                                </div>
-
-                                <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
-                                  </h3>
-
-                                  <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
-                                    </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
-                                  </div>
-
-                                  <div class="cdt-product__config">
-                                    <div class="cdt-product__config__param">
-                                      <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
-                                    </div>
-
-                                    <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                  <div class="cdt-product__btn">
-                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
-                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
-                                  </div>
-                                </div>
-
-                              </div>
-
-                              <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
-                                background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
-                                  </a>
-
-                                  <div class="cdt-product__label">
-                                    <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
-                                  </div>
-
-                                </div>
-
-                                <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
-                                  </h3>
-
-                                  <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
-                                    </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
-                                  </div>
-
-                                  <div class="cdt-product__config">
-                                    <div class="cdt-product__config__param">
-                                      <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
-                                    </div>
-
-                                    <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                  <div class="cdt-product__btn">
-                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
-                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
-                                  </div>
-                                </div>
-
-                              </div> -->
+                              -->
                             </div>
 
                             <div class="cdt-product--loadmore">
@@ -1462,11 +937,4 @@
             </main>
 
         </div>
-
-        <div class="footer">
-            
-
-        </div>
     </div>
-</body>
-</html>

@@ -15,6 +15,7 @@
 				if(!in_array($tmpUsers, $listUsers)){
 						$service->insert($guest);
 						header("Location: login");
+                        exit();
 				} else {
                     echo 'Thêm không thanh công';
 						echo "<script>alert('Tài khoản đã được sử dụng');</script>";
