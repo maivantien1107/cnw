@@ -15,7 +15,7 @@ CREATE table cart(
 --table sản phẩm
 CREATE TABLE products (
   `product_id` int(11) PRIMARY KEY NOT NULL,
-  `model` varchar(50) DEFAULT NULL,
+  `model` varchar(50) collate utf8_unicode_ci DEFAULT NULL,
   `image` text DEFAULT NULL,
   `price` double DEFAULT NULL,
   `size`  varchar(50) DEFAULT NULL,
@@ -110,6 +110,17 @@ create table search(
     content text COLLATE utf8_unicode_ci not null,
     times int(11) DEFAULT null
     )
+
+  CREATE TABLE news(
+    title varchar(250) COLLATE utf8_unicode_ci not null,
+    news_id int(11) PRIMARY key not null AUTO_INCREMENT,
+    description text COLLATE utf8_unicode_ci DEFAULT null,
+    time datetime DEFAULT null,
+    img varchar(250) COLLATE utf8_unicode_ci DEFAULT null,
+    overview text COLLATE utf8_unicode_ci DEFAULT null
+    )
+
+    ALTER TABLE `news` ADD `category` VARCHAR(250) COLLATE utf8_unicode_ci DEFAULT NULL AFTER `news_id`;
 ----------------------------------------------------------------
 --table admin
 CREATE table admin(
@@ -120,11 +131,13 @@ CREATE table admin(
 
     --kết nối bảng
 
-
+--index 
+CREATE FULLTEXT INDEX index_search
+ON products(model,feature);
 
     --insert
     INSERT into users(user_name,user_pass,address,telephone) VALUES('maitien','a12345','thanh hóa','12345');
-    INSERT into products(product_id,model,image,price,size,weigh,color,number_of_product,supplier,p_description) VALUES(1,'Acer Nitro Gaming AN515-58-52SP/i5-12500H','public/img/Img_product/Acernitrogamingan515-58-52sp.webp',24990000,'30cm*20cm*1.8cm',1.24,'yellow',10,'Acer','máy tính');
+    INSERT into products(product_id,model,image,price,size,weigh,color,number_of_product,supplier,p_description,feature) VALUES(1,'Acer Nitro Gaming AN515-58-52SP/i5-12500H','public/img/Img_product/Acernitrogamingan515-58-52sp.webp',24990000,'30cm*20cm*1.8cm',1.24,'yellow',10,'Acer','máy tính','tính năng 1');
     INSERT INTO computer_products(computer_product_id,product_id,s_cpu,s_ram,s_memory,screen,s_card,os) VALUES (101, 1, 'core i5', '8 GB', 512, '15.6 in', 'GTX 1060 4GB' ,'Win 10');
     INSERT INTO laptop(laptop_id, product_id, pin) VALUES (1001,1,40);
     insert into supplier(supplier) VALUES ('Acer'),
@@ -149,3 +162,4 @@ CREATE table admin(
                                    ('cpu8', 'AMD Ryzen 5 '),
                                    ('cpu9', 'AMD Ryzen 7 '),
                                    ('cpu10', 'AMD Ryzen 9 ');
+  INSERT INTO `news`(`title`, `category`, `description`, `time`, `img`, `overview`) VALUES ('Hè rộn ràng - lưu trữ an toàn cùng Seagate','Khuyến mãi','descript2','2022/07/09','https://www.phucanh.vn/media/news/1806_he-ron-rang-luu-tru-cung-seagate.jpg','Nhắm mắt thấy mùa hè, mở mắt thấy chương trình ưu đãi về. Từ ngày 20/06 - 30/07/2022, chương trình ưu đãi “MUA Ổ CỨNG TẶNG THẺ CÀO” sẽ được áp dụng khi khách hàng mua sản phẩm ổ cứng gắn ngoài của Seagate từ 2TB trở lên tại tất cả các showroom của cửa hàng');
