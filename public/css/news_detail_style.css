@@ -33,7 +33,7 @@
 }
 .fs-search{
     float: left;
-    width: 100%;
+    /* width: 100%; */
 
 }
 
@@ -63,7 +63,7 @@
     align-items: center;
     position: relative;
 }
-#nav li a{
+/* #nav li a{
    color: aliceblue;
     text-decoration: none;
     line-height: 36px;
@@ -84,7 +84,7 @@
 ul {
     list-style-type: none;
 
-}
+} */
 .header {
     margin-bottom: 40px;
 }

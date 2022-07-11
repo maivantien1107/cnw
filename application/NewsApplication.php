@@ -95,6 +95,26 @@ class NewsApplication extends MySqlConnect{
         }
         return $listPromotion;
     }
+    public function getNewsdetail($new_id){
+        $query = "select * from news n
+                    where n.news_id= $new_id ";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+
+        if($row = mysqli_fetch_array($result)){
+            $title=$row['title'];
+            $news_id=$row['news_id'];
+            $category=$row['category'];
+            $description=$row['description'];
+            $time=$row['time'];
+            $img=$row['img'];
+            $overview=$row['overview'];
+            $news= new News($news_id,$title,$category,$description,$time,$img,$overview) ;
+            return $news;
+        }
+
+        return null;
+    }
 }
 
 ?>

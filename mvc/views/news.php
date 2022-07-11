@@ -7,8 +7,9 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
       <meta charset="UTF-8">
       <meta name = "viewport" content="width = device-width, initial-sacale = 1.0">
       <link rel="stylesheet" href="public/css/footer_container.css" type="text/css">
-		<link rel="stylesheet" type="text/css" href="public/css/nav_bar.css" >
-      <link rel="stylesheet" href="public//css/news_home_style.css">
+	
+      <link rel="stylesheet" href="public/css/news_home_style.css">
+      <link rel="stylesheet" href="public/css/nav_bar.css" >
       <link rel="stylesheet" href="public/fonts/themify-icons/themify-icons.css">
       <script src="https://kit.fontawesome.com/daab9b5831.js" crossorigin="anonymous"></script>
       <!-- <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> -->
@@ -31,11 +32,13 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                               <div class="news-top__left" bis_skin_checked="1">
                               <?php $newss=new NewsApplication();
                                            $news_top=$newss->get();
+                                           $path=$news_top->getTitle();
+                                           $path = str_replace(' ', '-', $path);
                                          
                                       ?>
                               <div class="news-top__item" bis_skin_checked="1" id="<?php echo $news_top->getNews_id(); ?>">
                                    
-                                    <a href="/tin-tuc/danh-gia/tren-tay-oppo-a57-147296" class="news-top__item__img">
+                                    <a href="<?php echo "newsdetail/".$news_top->getNews_id()."/".$path ?>" class="news-top__item__img">
                                     <img src="<?php echo $news_top->getImg(); ?>" alt="" width="490" height="326">
                                     </a>
                                     <a href="/tin-tuc/danh-gia/tren-tay-oppo-a57-147296">
@@ -53,14 +56,17 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                                        $news=$newss->getAll(1,4);
                                        $cnt=1;
                                        foreach($news as $new){
+                                          $path1= $new->getTitle();
+                                          $path1=str_replace(' ','-',$path1);
+
                                         if ($cnt<=4){ 
                                             ?>
                                     <div class="news-hor__item" bis_skin_checked="1" id="<?php echo $new->getNews_id(); ?>">
-                                       <a href="/tin-tuc/tin-moi/oppo-a57-mo-ban-chinh-thuc-147287" class="news-hor__item__img">
+                                       <a href="<?php echo "newsdetail/".$new->getNews_id()."/".$path1 ?>" class="news-hor__item__img">
                                        <img src="<?php echo $new->getImg(); ?>" alt="" width="120" height="80">
                                        </a>
                                        <div class="news-hor__item__info" bis_skin_checked="1">
-                                          <a href="/tin-tuc/tin-moi/oppo-a57-mo-ban-chinh-thuc-147287">
+                                          <a href="<?php echo "newsdetail/".$new->getNews_id()."/".$path1 ?>">
                                              <h3 class="news-hor__item__title"><?php echo $new->getTitle(); ?></h3>
                                           </a>
                                           <p class="news-hor__item__time">
@@ -82,12 +88,15 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                                  <?php 
                                     $news_tmp=$newss->getAll(5,14);
                                     foreach($news_tmp as $new_tmp){
+                                       $path2=$new_tmp->getTitle();
+                                       $path2=str_replace(' ', '-', $path2);
+ 
                                        ?>
                                   <div class="news__item" bis_skin_checked="1" id="<?php echo $new_tmp->getNews_id(); ?>">
-                                    <a href="/tin-tuc/danh-gia/airpods-pro-2-va-airpods-max-2-loat-tai-nghe-co-gi-hap-dan-147387" class="news__item__img"><img src="<?php echo $new_tmp->getImg(); ?>" alt="AirPods Pro 2 và AirPods Max 2 sắp ra mắt có gì hấp dẫn?" width="300" height="200"></a>
+                                    <a href="<?php echo "newsdetail/".$new_tmp->getNews_id()."/".$path2 ?>" class="news__item__img"><img src="<?php echo $new_tmp->getImg(); ?>" alt="AirPods Pro 2 và AirPods Max 2 sắp ra mắt có gì hấp dẫn?" width="300" height="200"></a>
                                     <div class="news-item__info" bis_skin_checked="1">
                                        <a class="news__item__cate" href="/tin-tuc/danh-gia"><?php echo $new_tmp->getCategory(); ?></a>
-                                       <a href="/tin-tuc/danh-gia/airpods-pro-2-va-airpods-max-2-loat-tai-nghe-co-gi-hap-dan-147387">
+                                       <a href="<?php echo "newsdetail/".$new_tmp->getNews_id()."/".$path2 ?>">
                                           <h3 class="news__item__tit"><?php echo $new_tmp->getTitle(); ?></h3>
                                        </a>
                                        <div class="news__item__text" bis_skin_checked="1"><?php echo $new_tmp->getOverview(); ?></div>
@@ -204,9 +213,11 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                               <?php
                                   $listPromotion=$newss->getPromotion();
                                   foreach($listPromotion as $promotion){
+                                    $path3=$promotion->getTitle();
+                                    $path3=str_replace(' ','-',$path3);
                               ?> 
                                  <li class="promo__item" id="<?php echo $promotion->getNews_id(); ?>">
-                                 <a href="/tin-tuc/tin-khuyen-mai/fpt-shop-tang-goi-bao-hanh-samsung-care-cho-khach-mua-galaxy-a53-5g-va-a73-5g-147340" class="promo__link">
+                                 <a href="<?php echo "newsdetail/".$promotion->getNews_id()."/".$path3 ?>" class="promo__link">
                                     <span><img style="width:300px; height:200px;" src="<?php echo $promotion->getImg(); ?>"></span>
                                     <h3 class="promo__title"><?php echo $promotion->getTitle(); ?></h3>
                                  </a>

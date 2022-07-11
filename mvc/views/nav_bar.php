@@ -63,7 +63,7 @@ global $path_project;
 	<nav id = "nav">
 			<ul id = "menuitem">
 				<li><a href=<?php echo "/" . $path_project . "/"?>><span>Trang chủ</span></a></li>
-				<li><a href=<?php echo "/" . $path_project . "/" . "about" ?>>Tin tức</a></li>
+				<li><a href=<?php echo "/" . $path_project . "/" . "news" ?>>Tin tức</a></li>
 				<li><a href=<?php echo "/" . $path_project . "/" . "products" ?>>Sản phẩm</a></li>
 				<li><a href=<?php echo "/" . $path_project . "/" . "contact" ?>>Liên hệ</a></li>
 				<li><a href=<?php echo "/" . $path_project . "/" . "login" ?>>

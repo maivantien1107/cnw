@@ -22,15 +22,17 @@ class RouteController {
         }
 
         $urlArray = explode("/", $this->_url);
-        foreach ($urlArray as $tmp){
-            print $tmp;
-        }
+        // foreach ($urlArray as $tmp){
+        //     print $tmp;
+        // }
+       
         $controller = $urlArray[0]; array_shift($urlArray);
         $id = -1;
 
         // check if details -> add id to url
-        if(strcmp($controller, "details") == 0){
-            $id = intval($urlArray[0]); array_shift($urlArray);
+        if(strcmp($controller, "newsdetail") == 0){
+            $id = intval($urlArray[0]); 
+            array_shift($urlArray);
         }
         
         // check if admin -> no footer
