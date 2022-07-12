@@ -25,6 +25,18 @@ CREATE TABLE products (
   `supplier` varchar(50) DEFAULT NULL,
   `p_description` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ALTER TABLE `products` ADD `overview` TEXT NOT NULL AFTER `dis`,
+ADD `des1` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `overview`,
+ADD `des2` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des1`,
+ADD `des3` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des2`, 
+ADD `des4` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des3`,
+ADD `des5` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des4`,
+ADD `des6` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des5`,
+ADD `des7` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des6`,
+ADD `des8` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des7`, 
+ADD `image1` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `des8`,
+ADD `image2` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `image1`,
+ADD `image3` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `image2`;
 -- table bình luận
 CREATE TABLE comment (
     `cmt_id` int(11) PRIMARY key NOT null AUTO_INCREMENT,

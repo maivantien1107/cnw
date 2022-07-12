@@ -15,15 +15,26 @@ class ProductsApplication extends  MySqlConnect {
                     $product->getProductID() . "," .
                     "'" . $product->getModel() . "' ," .
                     "'" . $product->getImage() . "' ," .
-                    $product->getPrice() . "," .
-                    $product->getSize() . "," .
+                    $product->getPrice() . ",'" .
+                    $product->getSize() . "'," .
                     $product->getWeigh() . "," .
                     "'" . $product->getColor() . "' ," .
                     $product->getNumber() . "," .
                     "'" . $product->getSupplier() . "' ," .
                     "'" . $product->getDes() . "' ," .
-                   $product->getDisable()
-                        . ")";
+                   $product->getDisable().",'".
+                   $product->getOverview()."','".
+                   $product->getDes1()."','".
+                   $product->getDes2()."','".
+                   $product->getDes3()."','".
+                   $product->getDes4()."','".
+                   $product->getDes5()."','".
+                   $product->getDes6()."','".
+                   $product->getDes7()."','".
+                   $product->getDes8()."','".
+                   $product->getImage1()."','".
+                   $product->getImage2()."','".
+                   $product->getImage3()."')";
 
         parent::addQuerry($query);
         parent::updateQuery();
@@ -88,13 +99,25 @@ class ProductsApplication extends  MySqlConnect {
                     "model = " . "'" . $product->getModel() . "' ," .
                     "image = " . "'" . $product->getImage() . "' ," .
                     "price = " . $product->getPrice() . "," .
-                    "size = " . $product->getSize() . "," .
+                    "size = '" . $product->getSize() . "'," .
                     "weigh = " . $product->getWeigh() . "," .
                     "color = " . "'" . $product->getColor() . "' ," .
                     "number_of_product = " . $product->getNumber() . "," .
                     "supplier = " . "'" . $product->getSupplier() . "' ," .
                     "p_description = " . "'" . $product->getDes() . "' ," .
                     "dis = " . $product->getDisable() . " " .
+                    "overview= '".$product->getOverview()."',".
+                    "des1= '".$product->getDes1(). "'," .
+                    "des2= '".$product->getDes2(). "'," .
+                    "des3= '".$product->getDes3(). "'," .
+                    "des4= '".$product->getDes4(). "'," .
+                    "des5= '".$product->getDes5(). "'," .
+                    "des6= '".$product->getDes6(). "'," .
+                    "des7= '".$product->getDes7(). "'," .
+                    "des8= '".$product->getDes8(). "'," .
+                    "image1 '".$product->getImage1()."',".
+                    "image2 '".$product->getImage2()."',".
+                    "image3 '".$product->getImage3()."'".
                     "where product_id = " . $product->getProductID()
                     . "";
         parent::addQuerry($query);

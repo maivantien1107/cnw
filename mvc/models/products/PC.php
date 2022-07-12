@@ -5,10 +5,9 @@ require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Compute
 class PC extends ComputerProducts {
     private $case;  // string
 
-    public function __construct($productID, $model, $image, $price,$size, $weigh, $color, $number, $supplier, 
-        $cpu, $ram, $memory, $screen, $card,  $os, $case, $description) {
-        parent::__construct($productID, $model, $image, $price,$size, $weigh, $color, $number, 
-            $supplier, $cpu, $ram, $memory, $screen, $card, $os, $description);
+    public function __construct($productID, $model, $image, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, 
+        $cpu, $ram, $memory, $screen, $card,  $os, $case) {
+        parent::__construct($productID, $model, $image, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os);
         self::setCase($case);
         
         $this->type = Type::PC;

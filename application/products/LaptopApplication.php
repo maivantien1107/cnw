@@ -45,17 +45,28 @@ class LaptopApplication extends ComputerProductsApplication {
             $numberOfProducts = $row["number_of_product"];
             $supplier = $row["supplier"];
             $description = $row["p_description"];
+            $feature= $row["feature"];
             $cpu = $row["s_cpu"];
             $ram = $row["s_ram"];
-            $storage = $row["s_memory"];
+            $memory = $row["s_memory"];
             $screen = $row["screen"];
             $card = $row["s_card"];
             $os = $row["os"];
-            $battery = $row["pin"];
+            $pin = $row["pin"];
             $disable = $row["dis"];
-
-            $laptop = new Laptop($productID, $model, $image, $price, $size, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $os, $battery, $description);
+            $overview = $row["overview"];
+            $des1 = $row["des1"];
+            $des2 = $row["des2"];
+            $des3 = $row["des3"];
+            $des4 = $row["des4"];
+            $des5 = $row["des5"];
+            $des6 = $row["des6"];
+            $des7 = $row["des7"];
+            $des8 = $row["des8"];
+            $image1= $row["image1"];
+            $image2= $row["image2"];
+            $image3= $row["image3"];
+            $laptop = new Laptop($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts, $supplier, $description,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os, $pin);
             $laptop->setDisable($disable);
 
             array_push($listLaptop, $laptop);
@@ -88,17 +99,29 @@ class LaptopApplication extends ComputerProductsApplication {
             $numberOfProducts = $row["number_of_product"];
             $supplier = $row["supplier"];
             $description = $row["p_description"];
+            $feature= $row["feature"];
             $cpu = $row["s_cpu"];
             $ram = $row["s_ram"];
-            $storage = $row["s_memory"];
+            $memory = $row["s_memory"];
             $screen = $row["screen"];
             $card = $row["s_card"];
             $os = $row["os"];
-            $battery = $row["pin"];
+            $pin = $row["pin"];
             $disable = $row["dis"];
+            $overview = $row["overview"];
+            $des1 = $row["des1"];
+            $des2 = $row["des2"];
+            $des3 = $row["des3"];
+            $des4 = $row["des4"];
+            $des5 = $row["des5"];
+            $des6 = $row["des6"];
+            $des7 = $row["des7"];
+            $des8 = $row["des8"];
+            $image1= $row["image1"];
+            $image2= $row["image2"];
+            $image3= $row["image3"];
 
-            $laptop = new Laptop($productID, $model, $image, $price, $size, $weigh, $color, $numberOfProducts,
-                $supplier, $cpu, $ram, $storage, $screen, $card, $os, $battery, $description);
+            $laptop = new Laptop($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts, $supplier, $description,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os, $pin);
             $laptop->setDisable($disable);
 
             return $laptop;

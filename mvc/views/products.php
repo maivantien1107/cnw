@@ -799,7 +799,7 @@
                                   <div class="cdt-product prd-lap product-sale">
                                 <div class="cdt-product__img" style="background-image: url(public/img/Img_product/backgroundproduct.webp); background-position: center center;
                                 background-repeat: no-repeat;">
-                                  <a href="" title="<?php  echo $laptop->getModel(); ?> ">
+                                  <a href="<?php echo "/cnw-1/productdetail/".$laptop->getProductID()."/".$path; ?>" title="<?php  echo $laptop->getModel(); ?> ">
                                     <img src="<?php echo $laptop->getImage();?>" alt="" height="215">
                                   </a>
 
@@ -811,7 +811,7 @@
                                 </div>
 
                                 <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name"><?php echo $laptop->getModel(); ?></a>
+                                  <h3><a href="<?php echo "/cnw-1/productdetail/".$laptop->getProductID()."/".$path; ?>" title="<?php echo $laptop->getModel(); ?>" class="cdt-product__name"><?php echo $laptop->getModel(); ?></a>
                                   </h3>
 
                                   <div class="cdt-product__show-promo">
