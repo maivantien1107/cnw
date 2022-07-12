@@ -2,10 +2,29 @@
 require_once ROOT . DS . 'database' . DS . 'MySqlConnect.php';
 require_once ROOT . DS . 'mvc'.DS.'models'.DS.'News.php';
 class NewsApplication extends MySqlConnect{
-    public function insert($title,$category,$description,$time,$img,$overview){
-        $query="INSERT INTO news(title,category,description,time,img,overview) VALUES($title,$category,$description,$time,$img,$overview);";
+    public function insert($news){
+        $query="INSERT INTO news(title,category,description,time,img,overview) VALUES('"
+        .$news->getTitle()."','"
+        .$news->getCategory()."','"
+        .$news->getDescription()."',"
+        .$news->getTime().",'"
+        .$news->getImg()."','"
+        .$news->getOverview()."');";
         parent::addQuerry($query);
         parent::updateQuery();
+    }
+    public function update($news){
+        $query="UPDATE news SET title='".
+        $news->getTitle()."',category='".
+        $news->getCategory()."',description='".
+        $news->getDescription()."',time=".
+        $news->getTime().",img='".
+        $news->getImg()."',overview='".
+        $news->getOverview()."' where news_id=".
+        $news->getNews_id().");";
+        parent::addQuerry($query);
+        parent::updateQuery();
+        
     }
     public function time($date1){
            date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -58,7 +77,7 @@ class NewsApplication extends MySqlConnect{
         }
          return $listNews;
     }
-    public function get(){
+    public function getButtom(){
         $query = "SELECT * FROM news order by news_id DESC limit 1";
         parent::addQuerry($query);
         $result = parent::executeQuery();

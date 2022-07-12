@@ -31,7 +31,7 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                            <div class="card card-news news-top" bis_skin_checked="1">
                               <div class="news-top__left" bis_skin_checked="1">
                               <?php $newss=new NewsApplication();
-                                           $news_top=$newss->get();
+                                           $news_top=$newss->getButtom();
                                            $path=$news_top->getTitle();
                                            $path = str_replace(' ', '-', $path);
                                          

@@ -14,10 +14,10 @@ class NewsdetailController extends DefaultController implements Controller {
     }
 
     public function rendernewsdetail($news_id) {
-        require_once ROOT . DS . 'application' . DS . 'NewsApplication.php';
+        require_once ROOT . DS . 'application' . DS . 'NewsDescriptionApplication.php';
 
-        $news=new NewsApplication();
-		$news_detail = $news->getNewsdetail($news_id);
+        $news=new NewsDescriptionApplication();
+		$news_detail = $news->get($news_id);
 		// var_dump($news_detail);
 		include ROOT . DS . 'mvc' . DS . 'views' . DS . 'newsdetail.php';
     }
