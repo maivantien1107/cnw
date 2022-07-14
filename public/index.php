@@ -1,6 +1,6 @@
 <?php
 
-$path_project = 'cnw-1';
+$path_project = 'cnw';
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ROOT', $_SERVER['DOCUMENT_ROOT'] . DS . $path_project);
