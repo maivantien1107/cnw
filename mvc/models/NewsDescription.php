@@ -8,11 +8,11 @@
     private $des5;   //string
     private $des6;   //string
     private $des7;   //string
-    private $image1; //string
-    private $image2; //string
-    private $image3; //string
+    private $des8; //string
+    private $des9; //string
+    private $des10; //string
  
- public function __construct($news_id, $title,$category, $description,$time, $img, $overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$image1,$image2,$image3){
+ public function __construct($news_id, $title,$category, $description,$time, $img, $overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$des9,$des10){
     parent::__construct($news_id,$title,$category,$description,$time,$img,$overview);
     self::setDes1($des1);
     self::setDes2($des2);
@@ -21,9 +21,9 @@
     self::setDes5($des5);
     self::setDes6($des6);
     self::setDes7($des7);
-    self::setImage1($image1);
-    self::setImage2($image2);
-    self::setImage3($image3);
+    self::setDes8($des8);
+    self::setDes9($des9);
+    self::setDes10($des10);
  }
  public function getDes1(){ 
    return $this->des1;
@@ -46,13 +46,13 @@
  public function getDes7(){ 
     return  $this->des7;
  }
- public function getImage1(){
+ public function getDes8(){
     return  $this->image1;
  }
- public function getImage2(){
+ public function getDes9(){
     return $this->image2;
  }
- public function getImage3(){
+ public function getDes10(){
     return  $this->image3;
  }
  public function setDes1($des1){
@@ -76,14 +76,14 @@
  public function setDes7($des7){
     $this->des7 = $des7;
  }
- public function setImage1($image1){
-    $this->image1 = $image1;
+ public function setDes8($des8){
+    $this->des8 = $des8;
  }
- public function setImage2($image2){
-    $this->image2 = $image2;
+ public function setDes9($des9){
+    $this->des9 = $des9;
  }
- public function setImage3($image3){
-    $this->image3 = $image3;
+ public function setDes10($des10){
+    $this->des10 = $des10;
  }
 }
 ?>

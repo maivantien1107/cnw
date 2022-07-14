@@ -42,7 +42,7 @@ require_once ROOT . DS . 'application'. DS .'products'.DS. 'LaptopApplication.ph
 
       <div class="son-middle">
         <div class="left">
-          <img src="<?php echo $product->getImage(); ?>" alt="637639340541330187_msi-gaming-gf63-den-1" class="" />
+          <img src="../../../public/img/products/<?php echo $product->getProductID(); ?>_image1.webp" alt="637639340541330187_msi-gaming-gf63-den-1" class="" />
         </div>
 
         <div class="right">
@@ -122,7 +122,7 @@ require_once ROOT . DS . 'application'. DS .'products'.DS. 'LaptopApplication.ph
             </p>
 
             <p style="text-align: center">
-              <b><img alt="laptop MSI Gaming GF63 Thin 10SC-481VN i7 (ảnh 1)" src="<?php echo $product->getImage1(); ?>"/></b>
+              <b><img alt="laptop MSI Gaming GF63 Thin 10SC-481VN i7 (ảnh 1)" src="../../../public/img/products/<?php echo $product->getProductID(); ?>_image2.webp"/></b>
             </p>
 
             <h3 style="text-align: justify">
@@ -179,7 +179,7 @@ require_once ROOT . DS . 'application'. DS .'products'.DS. 'LaptopApplication.ph
             <p style="text-align: center">
               <img
                 alt="laptop MSI Gaming GF63 Thin 10SC-481VN i7 (ảnh 2)"
-                src="<?php echo $product->getImage2(); ?>"
+                src="../../../public/img/products/<?php echo $product->getProductID(); ?>_image3.webp"
               />
             </p>
 
@@ -240,7 +240,7 @@ require_once ROOT . DS . 'application'. DS .'products'.DS. 'LaptopApplication.ph
             <p style="text-align: center">
               <img
                 alt="laptop MSI Gaming GF63 Thin 10SC-481VN i7 (ảnh 3)"
-                src="<?php echo $product->getImage3(); ?>"
+                src="../../../public/img/products/<?php echo $product->getProductID(); ?>_image4.webp"
               />
             </p>
 

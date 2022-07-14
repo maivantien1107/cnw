@@ -10,8 +10,8 @@ class ComputerProducts extends Products{
     private $card;              // String
     private $os;                // String   
 
-    public function __construct($productID, $model, $image, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram,$memory, $screen, $card, $os) {
-        parent::__construct($productID, $model, $image, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3);
+    public function __construct($productID, $model, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$des9,$des10,$des11, $cpu, $ram,$memory, $screen, $card, $os) {
+        parent::__construct($productID, $model, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$des9,$des10,$des11);
         self::setCpu($cpu);
         self::setRam($ram);
         self::setMemory($memory);

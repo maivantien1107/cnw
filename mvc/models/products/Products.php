@@ -24,17 +24,16 @@ class Products {
     private $des6;
     private $des7;
     private $des8;
-    private $image1;
-    private $image2;
-    private $image3;
+    private $des9;
+    private $des10;
+    private $des11;
 
     public $type = Type::NONE;
 
-    public function __construct($productID, $model, $image, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3) {
+    public function __construct($productID, $model, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$des9,$des10,$des11) {
         self::setDisable(0);  // new products is no disable
         self::setProductID($productID);
         self::setModel($model);
-        self::setImage($image);
         self::setPrice($price);
         self::setSize($size);
         self::setWeigh($weigh);
@@ -53,9 +52,9 @@ class Products {
         self::setDes6($des6);
         self::setDes7($des7);
         self::setDes8( $des8);
-        self::setImage1($image1);
-        self::setImage2($image2);
-        self::setImage3($image3);
+        self::setDes9($des9);
+        self::setDes10($des10);
+        self::setDes11($des11);
     }
 
     /**
@@ -141,16 +140,15 @@ class Products {
         return $this->des7;
     }
     public function getDes8(){
-        return  $this->des8;
+        return  $this->dedes9;}
+    public function getDes9(){
+        return  $this->des9;
     }
-    public function getImage1(){
-        return  $this->image1;
+    public function getDes10(){
+        return $this->des10;
     }
-    public function getImage2(){
-        return $this->image2;
-    }
-    public function getImage3(){
-        return  $this->image3;
+    public function getDes11(){
+        return  $this->des11;
     }
     
     public function setProductID($productID)
@@ -240,14 +238,14 @@ class Products {
     public function setDes8($des8){
         $this->des8 = $des8;
     }
-    public function setImage1($image1){
-        $this->image1 = $image1;
+    public function setDes9($des9){
+        $this->des9 = $des9;
     }
-    public function setImage2($image2){
-        $this->image2 = $image2;
+    public function setDes10($des10){
+        $this->des10 = $des10;
     }
-    public function setImage3($image3){
-        $this->image3 = $image3;
+    public function setDes11($des11){
+        $this->des11 = $des11;
     }
     public function getFeature(){
         return $this->feature;

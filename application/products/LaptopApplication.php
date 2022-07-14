@@ -37,7 +37,6 @@ class LaptopApplication extends ComputerProductsApplication {
         while($row = mysqli_fetch_array($result)){
             $productID = $row["product_id"];
             $model = $row["model"];
-            $image = $row["image"];
             $price = $row["price"];
             $size= $row["size"];
             $weigh = $row["weigh"];
@@ -63,10 +62,11 @@ class LaptopApplication extends ComputerProductsApplication {
             $des6 = $row["des6"];
             $des7 = $row["des7"];
             $des8 = $row["des8"];
-            $image1= $row["image1"];
-            $image2= $row["image2"];
-            $image3= $row["image3"];
-            $laptop = new Laptop($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts, $supplier, $description,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os, $pin);
+            $image1= $row["des9"];
+            $image2= $row["des10"];
+            $image3= $row["des11"];
+            $laptop = new Laptop($productID, $model, $price,$size, $weigh, $color, $numberOfProducts, $supplier, $description,$feature,
+                $disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os, $pin);
             $laptop->setDisable($disable);
 
             array_push($listLaptop, $laptop);
@@ -91,7 +91,6 @@ class LaptopApplication extends ComputerProductsApplication {
         if($row = mysqli_fetch_array($result)){
             $productID = $row["product_id"];
             $model = $row["model"];
-            $image = $row["image"];
             $price = $row["price"];
             $size= $row["size"];
             $weigh = $row["weigh"];
@@ -117,11 +116,11 @@ class LaptopApplication extends ComputerProductsApplication {
             $des6 = $row["des6"];
             $des7 = $row["des7"];
             $des8 = $row["des8"];
-            $image1= $row["image1"];
-            $image2= $row["image2"];
-            $image3= $row["image3"];
+            $image1= $row["des9"];
+            $image2= $row["des10"];
+            $image3= $row["des11"];
 
-            $laptop = new Laptop($productID, $model, $image, $price,$size, $weigh, $color, $numberOfProducts, $supplier, $description,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os, $pin);
+            $laptop = new Laptop($productID, $model, $price,$size, $weigh, $color, $numberOfProducts, $supplier, $description,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os, $pin);
             $laptop->setDisable($disable);
 
             return $laptop;

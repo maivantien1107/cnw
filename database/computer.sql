@@ -175,6 +175,11 @@ CREATE table admin(
     ALTER TABLE `products` CHANGE `image3` `des11` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
     ----
     ALTER TABLE `products` CHANGE `overview` `overview` TEXT COLLATE utf8_general_ci DEFAULT NULL;
+    ----------------
+    ALTER TABLE `news_description` CHANGE `image1` `des8` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci  DEFAULT NULL;
+    ALTER TABLE `news_description` CHANGE `image2` `des9` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci  DEFAULT NULL;
+    ALTER TABLE `news_description` CHANGE `image3` `des10` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci  DEFAULT NULL;
+
 
 --index 
 -- CREATE FULLTEXT INDEX index_search
