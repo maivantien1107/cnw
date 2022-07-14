@@ -198,3 +198,12 @@ main{
       bottom: 10px;
     }
   }
+  .check_search{
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-right: 7px;
+  }
+.selected .check_search{
+  background: rgb(245, 18, 6);
+}

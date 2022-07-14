@@ -31,11 +31,14 @@ class RouteController {
 
         // check if details -> add id to url
         var_dump($controller);
-        if(strcmp($controller, "newsdetail") == 0 || strcmp($controller, "product-details")==0){
+        if(strcmp($controller, "newsdetail") == 0){
             $id = intval($urlArray[0]); 
             array_shift($urlArray);
         }
-        
+        if(strcmp($controller, "details") == 0){
+            $id = intval($urlArray[0]); 
+            array_shift($urlArray);
+        }
         // check if admin -> no footer
         if(strcmp($controller, "admin") == 0
             || strcmp($controller, "product-management") == 0
@@ -49,7 +52,7 @@ class RouteController {
         $controller = ucwords($controller);
         $controller = str_replace(' ', '', $controller);
         $controller .= "Controller"; // example : AboutController, ContactController,...
-var_dump($controller);
+
         // include controller
         require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . $controller . '.php';
         if($id == -1){

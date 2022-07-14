@@ -1,8 +1,9 @@
 <?php session_start();
-	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
+
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
   require_once ROOT . DS . 'application' . DS .'SupplierApplication.php';
+  require_once ROOT . DS . 'application' . DS .'FilterApplication.php';
   require_once ROOT . DS . 'application' . DS . 'products' . DS . 'CPUApplication.php';
   ?>
 <!DOCTYPE html>
@@ -32,153 +33,6 @@
                         <p>Trang san pham</p>
                     </div>
 
-                    <div class="cdt-banner m-b-20">
-                        <div class="img-slider">
-                            <div class="slide active">
-                              <img src="public/html/assets/img/Slider/1.webp" alt="">
-                              
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/2.webp" alt="">
-                              
-                                
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/3.webp" alt="">
-                              
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/4.webp" alt="">
-                              
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/5.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/6.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/7.webp" alt="">
-                              
-                            </div>
-                            
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/8.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/9.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/10.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/11.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/12.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/13.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/14.webp" alt="">
-                              
-                            </div>
-                      
-                      
-                            
-                            <div class="navigation">
-                              <div class="btn active"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                      
-                            </div>
-                          </div>
-                      
-                          <script type="text/javascript">
-                          var slides = document.querySelectorAll('.slide');
-                          var btns = document.querySelectorAll('.btn');
-                          let currentSlide = 1;
-                      
-                          // Javascript for image slider manual navigation
-                          var manualNav = function(manual){
-                            slides.forEach((slide) => {
-                              slide.classList.remove('active');
-                      
-                              btns.forEach((btn) => {
-                                btn.classList.remove('active');
-                              });
-                            });
-                      
-                            slides[manual].classList.add('active');
-                            btns[manual].classList.add('active');
-                          }
-                      
-                          btns.forEach((btn, i) => {
-                            btn.addEventListener("click", () => {
-                              manualNav(i);
-                              currentSlide = i;
-                            });
-                          });
-                      
-                          // Javascript for image slider autoplay navigation
-                          var repeat = function(activeClass){
-                            let active = document.getElementsByClassName('active');
-                            let i = 1;
-                      
-                            var repeater = () => {
-                              setTimeout(function(){
-                                [...active].forEach((activeSlide) => {
-                                  activeSlide.classList.remove('active');
-                                });
-                      
-                              slides[i].classList.add('active');
-                              btns[i].classList.add('active');
-                              i++;
-                      
-                              if(slides.length == i){
-                                i = 0;
-                              }
-                              if(i >= slides.length){
-                                return;
-                              }
-                              repeater();
-                            }, 10000);
-                            }
-                            repeater();
-                          }
-                          repeat();
-                          </script>
-
-                    </div>
-
                     <div class="row fspdbox">
 
                       <div class="col-3 p-8 p-r-3=">
@@ -196,15 +50,20 @@
                                 <input name='chkmasv[]'  value='' class='check_search' type='checkbox'/>Tất cả</a>
                               </div>
                               <?php 
+                                 $app=new FilterApplication();
+                                 $data_url=$app->getUrl();
                                  $sup= new SupplierApplication();
                                  $listsupplier=$sup->getAll();
+                                
                                  foreach($listsupplier as $supplier){
+                                  $supplier1=$supplier->getSupplier();
+                                  $result=$app->getHref('nha-san-xuat',$supplier1);
                               ?> 
                               <div class="checkbox frowitem" >
-                                <a href="filter&nha-san-xuat=<?php echo $supplier->getSupplier(); ?>" title="<?php echo $supplier->getSupplier(); ?>">
+                                <a href="filter&<?php echo $result?>" title="<?php echo $supplier->getSupplier(); ?>">
 
                                 <input name='chkmasv[]'  value='' class='check_search' type='checkbox'/>
-                                  <label for=""> <?php echo $supplier->getSupplier();?></label>
+                                  <label for=""> <?php echo $supplier->getSupplier(); ?></label>
                                   
                                 </a>
                               </div>
@@ -212,14 +71,6 @@
                               <?php
                                  }
                               ?>                             
-                              <!-- <div class="checkbox frowitem" >
-                                <a href="" title="Masstel">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Masstel</label>
-                                  
-                                </a>
-                              </div>  -->
 
                             </div>
                           </div>
@@ -229,13 +80,13 @@
 
                             <div class="cdt-filter__checklist listfilterv4  filterPrice">
                               
-                              <div class="checkbox checkboxAll frowitem active">
+                              <div class="checkbox checkboxAll frowitem ">
                                 <a title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
 
                               <div class="checkbox frowitem" >
-                                <a href="" title="Dưới 10 triệu">
+                                <a href="filter&muc-gia=1" title="Dưới 10 triệu">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Dưới 10 triệu</label>
@@ -514,75 +365,6 @@
                               </div>                                                                                        
                             </div>
                           </div>
-
-                          <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Tính năng đặc biệt
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Hỗ trợ công nghệ optane">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Hỗ trợ công nghệ optane</label>
-                                   
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="CPU intel 10th">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>CPU intel 10th</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Sử dụng tấm nền ips">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Sử dụng tấm nền ips</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Màn hình cảm ứng">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Màn hình cảm ứng</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Window bản quyền">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Window bản quyền</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Mở khoá vân tay">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Mở khoá vân tay</label>
-                                  
-                                </a>
-                              </div>                                                                                      
-                            </div>
-                          </div> -->
-
                           <div class="cdt-filter__block">
                             
                             <div class="cdt-filter__title" >Nhu cầu
@@ -641,84 +423,6 @@
                               </div>                                                                                         
                             </div>
                           </div>
-
-                          <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Laptop khuyến mãi
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Gaming đồ hoạ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Asus TUF Gaming</label>
-                                   
-                                </a>
-                              </div>                                                                                                                   
-                            </div>
-
-
-
-
-                          </div> -->
-
-                          <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Trả góp ưu đãi
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trả góp 0%">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Trả góp 0%</label>
-                                   
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trả góp 0Đ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Trả góp 0Đ</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trả góp 0% và 0Đ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Trả góp 0% và 0Đ</label>
-                                  
-                                </a>
-                              </div>
-                              
-
-                            </div>
-
-
-
-
-                          </div> -->
-
-
-                        
-
                         </div>
 
                       </div>
@@ -726,7 +430,7 @@
                       <div class="col-9 p-0">
                         <div class="card fplistbox">
                           
-                          <!-- <div class="card-body p-0 p-t-15 p-b-30 fplistbox">
+                          <div class="card-body p-0 p-t-15 p-b-30 fplistbox">
 
                             <div class="cdt-normal p-l-15 p-r-15 m-b-25 sortfirstbox">
                               <div class="cdt-list-tab" >
@@ -786,13 +490,12 @@
                               </div>
 
                             </div>
-                          </div> -->
                          <!-- // Sản phẩm -->
                             <div class="cdt-product-wrapper m-b-20">
                               <?php
                                   //get all laptop 
-                                  $app=new LaptopApplication();
                                   $listLaptop=$app->getAll();
+                                  if ($listLaptop){
                                   foreach($listLaptop as $laptop){
                                     $path = $laptop->getModel();
 					                          $path = str_replace(' ', '-', $path);
@@ -856,6 +559,10 @@
                         
                              <?php 
                              }
+                            }
+                            else { 
+                              echo "Không có sản phẩm phù hợp";
+                            }
                              ?>
 
                               <!-- <div class="cdt-product prd-lap product-sale">

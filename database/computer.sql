@@ -162,6 +162,20 @@ CREATE table admin(
 
     --kết nối bảng
 
+
+
+
+    --update data
+    ALTER TABLE `computer_products` CHANGE `s_memory` `s_memory` VARCHAR(50) NULL DEFAULT NULL;
+-----
+    ALTER TABLE `products` DROP `image`;
+    ----------------------------------------------------------------
+    ALTER TABLE `products` CHANGE `image1` `des9` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+    ALTER TABLE `products` CHANGE `image2` `des10` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+    ALTER TABLE `products` CHANGE `image3` `des11` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+    ----
+    ALTER TABLE `products` CHANGE `overview` `overview` TEXT COLLATE utf8_general_ci DEFAULT NULL;
+
 --index 
 -- CREATE FULLTEXT INDEX index_search
 -- ON products(model,feature);
