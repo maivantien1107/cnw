@@ -1,5 +1,6 @@
+drop database computer
 --table user
-CREATE TABLE `user` (
+CREATE TABLE `users` (
   `user_name` varchar(50) COLLATE utf8_unicode_ci primary key  not NULL,
   `user_pass` varchar(50) DEFAULT NULL,
     address varchar(200) COLLATE utf8_unicode_ci DEFAULT null,
@@ -10,7 +11,7 @@ CREATE TABLE `user` (
 CREATE table cart(
     cart_id int (11) PRIMARY KEY NOT null AUTO_INCREMENT,
     user_name varchar(50) COLLATE utf8_unicode_ci  DEFAULT null,
-    CONSTRAINT `cart_fk1` FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`)
+    CONSTRAINT `cart_fk1` FOREIGN KEY (`user_name`) REFERENCES `users` (`user_name`)
     )ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
 --table sản phẩm
 CREATE TABLE products (
@@ -23,7 +24,9 @@ CREATE TABLE products (
   `color` varchar(10) DEFAULT NULL,
   `number_of_product` int(11) DEFAULT NULL,
   `supplier` varchar(50) DEFAULT NULL,
-  `p_description` text DEFAULT NULL
+  `p_description` text DEFAULT NULL,
+  feature text default NULL,
+  `dis` TINYINT(1)  DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ALTER TABLE `products` ADD `overview` TEXT NOT NULL AFTER `dis`,
 ADD `des1` TEXT COLLATE utf8_unicode_ci DEFAULT NULL AFTER `overview`,
@@ -45,7 +48,7 @@ CREATE TABLE comment (
   `star` int(11) DEFAULT NULL,
   `your_comment` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
   `date_comment` datetime DEFAULT NULL,
-     FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`),
+     FOREIGN KEY (`user_name`) REFERENCES `users` (`user_name`),
      FOREIGN KEY (`product_id`) REFERENCES `products` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 -- table hóa đơn từng sản phẩm
@@ -65,7 +68,7 @@ create table bill (
     total_money int,
     primary key (bill_id),
     foreign key (product_id) references products(product_id),
-    foreign key (user_name) references user(user_name)
+    foreign key (user_name) references users(user_name)
 );
 --table chuột
 CREATE TABLE `mouse_products` (
@@ -83,7 +86,7 @@ CREATE TABLE `computer_products` (
   `product_id` int(11) NOT NULL,
   `s_cpu` varchar(50) DEFAULT NULL,
   `s_ram` varchar(50) DEFAULT NULL,
-  `s_storage` int(11) DEFAULT NULL,
+  `s_memory` int(11) DEFAULT NULL,
   `screen` varchar(50) DEFAULT NULL,
   `s_card` varchar(50) DEFAULT NULL,
   `main_connection` varchar(50) DEFAULT NULL,
@@ -126,13 +129,13 @@ create table search(
   CREATE TABLE news(
     title varchar(250) COLLATE utf8_unicode_ci not null,
     news_id int(11) PRIMARY key not null AUTO_INCREMENT,
+    category varchar(250) COLLATE utf8_unicode_ci default NULL,
     description text COLLATE utf8_unicode_ci DEFAULT null,
     time datetime DEFAULT null,
     img varchar(250) COLLATE utf8_unicode_ci DEFAULT null,
     overview text COLLATE utf8_unicode_ci DEFAULT null
     )
 
-    ALTER TABLE `news` ADD `category` VARCHAR(250) COLLATE utf8_unicode_ci DEFAULT NULL AFTER `news_id`;
     create table news_description(
     news_id int(11) not null,
     des1 text COLLATE utf8_unicode_ci DEFAULT null,
@@ -160,8 +163,8 @@ CREATE table admin(
     --kết nối bảng
 
 --index 
-CREATE FULLTEXT INDEX index_search
-ON products(model,feature);
+-- CREATE FULLTEXT INDEX index_search
+-- ON products(model,feature);
 
     --insert
     INSERT into users(user_name,user_pass,address,telephone) VALUES('maitien','a12345','thanh hóa','12345');
