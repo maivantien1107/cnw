@@ -1,9 +1,13 @@
 <?php session_start();
-	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
-  require_once ROOT . DS . 'application' . DS .'SupplierApplication.php';
+  require_once ROOT . DS . 'application' . DS .'products' . DS . 'SupplierApplication.php';
+  require_once ROOT . DS . 'application' . DS .'products' . DS . 'RamApplication.php';
+  require_once ROOT . DS . 'application' . DS .'products' . DS . 'CardApplication.php';
+  require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MemoryApplication.php';
+  require_once ROOT . DS . 'application' . DS .'FilterApplication.php';
   require_once ROOT . DS . 'application' . DS . 'products' . DS . 'CPUApplication.php';
+  $app=new FilterApplication();
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -182,7 +186,7 @@
                     <div class="row fspdbox">
 
                       <div class="col-3 p-8 p-r-3=">
-                        <div class="cdt-filter">
+                      <div class="cdt-filter">
                             <!-- left menu supplier -->
                           <div class="cdt-filter__block">
                             
@@ -191,20 +195,24 @@
                             </div>
 
                             <div class="cdt-filter__checklist listfilterv4 filterBrand">
-                              <div class="checkbox checkboxAll frowitem">
-                                <a title="Tất cả">
-                                <input name='chkmasv[]'  value='' class='check_search' type='checkbox'/>Tất cả</a>
+                              <div class="checkbox checkboxAll frowitem <?php if ($app->check('nha-san-xuat','all') ||$app->checkAll('nha-san-xuat')) : ?>active <?php endif;?>">
+                                <a href="<?php echo $app->getHrefAll('nha-san-xuat');?>" title="Tất cả">
+                                <i class="fa-thin fa-square"></i> Tất cả</a>
                               </div>
                               <?php 
+                                 
+                                 $data_url=$app->getUrl();
                                  $sup= new SupplierApplication();
                                  $listsupplier=$sup->getAll();
+                                
                                  foreach($listsupplier as $supplier){
+                                  $supplier1=$supplier->getSupplier();
+                                  $result=$app->getHref('nha-san-xuat',$supplier1);
                               ?> 
-                              <div class="checkbox frowitem" >
-                                <a href="filter&nha-san-xuat=<?php echo $supplier->getSupplier(); ?>" title="<?php echo $supplier->getSupplier(); ?>">
-
-                                <input name='chkmasv[]'  value='' class='check_search' type='checkbox'/>
-                                  <label for=""> <?php echo $supplier->getSupplier();?></label>
+                              <div class="checkbox frowitem <?php if ($app->check('nha-san-xuat',$supplier1)) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $result?>" title="<?php echo $supplier->getSupplier(); ?>">
+                                  <i class="fa-thin fa-square"></i>                                  
+                                  <label for=""> <?php echo $supplier->getSupplier(); ?></label>
                                   
                                 </a>
                               </div>
@@ -212,14 +220,6 @@
                               <?php
                                  }
                               ?>                             
-                              <!-- <div class="checkbox frowitem" >
-                                <a href="" title="Masstel">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label for="">Masstel</label>
-                                  
-                                </a>
-                              </div>  -->
 
                             </div>
                           </div>
@@ -229,13 +229,13 @@
 
                             <div class="cdt-filter__checklist listfilterv4  filterPrice">
                               
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
+                              <div class="checkbox checkboxAll frowitem <?php if ($app->check('muc-gia','all') ||$app->checkAll('muc-gia')) : ?>active <?php endif;?> ">
+                                <a href="<?php echo $app->getHrefAll('muc-gia');?>" title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Dưới 10 triệu">
+                              <div class="checkbox frowitem <?php if ($app->check('muc-gia',1)) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('muc-gia',1);?>" title="Dưới 10 triệu">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Dưới 10 triệu</label>
@@ -243,8 +243,8 @@
                                 </a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Từ 10-15 triệu">
+                              <div class="checkbox frowitem <?php if ($app->check('muc-gia',2)) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('muc-gia',2);?>" title="Từ 10-15 triệu">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Từ 10-15 triệu</label>
@@ -252,8 +252,8 @@
                                 </a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Từ 15-20 triệu">
+                              <div class="checkbox frowitem <?php if ($app->check('muc-gia',3)) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('muc-gia',3);?>" title="Từ 15-20 triệu">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Từ 15-20 triệu</label>
@@ -261,8 +261,8 @@
                                 </a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Từ 20-25 triệu">
+                              <div class="checkbox frowitem <?php if ($app->check('muc-gia',4)) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('muc-gia',4);?>" title="Từ 20-25 triệu">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Từ 20-25 triệu</label>
@@ -270,8 +270,8 @@
                                 </a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trên 25 triệu">
+                              <div class="checkbox frowitem <?php if ($app->check('muc-gia',5)) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('muc-gia',5);?>" title="Trên 25 triệu">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Trên 25 triệu</label>
@@ -290,13 +290,13 @@
                             </div>
 
                             <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
+                              <div class="checkbox checkboxAll frowitem <?php if ($app->check('man-hinh','all') ||$app->checkAll('man-hinh')) : ?>active <?php endif;?>">
+                                <a href="<?php echo $app->getHrefAll('man-hinh');?>" title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Khoảng 13 inch">
+                              <div class="checkbox frowitem <?php if ($app->check('man-hinh','13 inch')) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('man-hinh','13 inch');?>" title="Khoảng 13 inch">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label>Khoảng 13 inch</label>
@@ -304,8 +304,8 @@
                                 </a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Khoảng 14 inch">
+                              <div class="checkbox frowitem <?php if ($app->check('man-hinh','14 inch')) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('man-hinh','14 inch');?>" title="Khoảng 14 inch">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Khoảng 14 inch</label>
@@ -313,8 +313,8 @@
                                 </a>
                               </div>
 
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trên 15 inch">
+                              <div class="checkbox frowitem <?php if ($app->check('man-hinh','15 inch')) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('man-hinh','15 inch');?>" title="Trên 15 inch">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label for="">Trên 15 inch</label>
@@ -334,59 +334,33 @@
                           <div class="cdt-filter__block">
                             
                             <div class="cdt-filter__title" >RAM
-
                             </div>
 
                             <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
+                              
+                              <div class="checkbox checkboxAll frowitem <?php if ($app->check('RAM','all') ||$app->checkAll('RAM')) : ?>active <?php endif;?>"> 
+                                <a href="<?php echo $app->getHrefAll('RAM');?>" title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="4 GB">
+                              <?php  
+                                 $ram_app=new RamApplication();
+                                 $listram=$ram_app->getAll();
+                                 foreach($listram as $ram){
+                                  $href_ram=$app->getHref('RAM',$ram->getRam());
+                                  $ram_tmp=$ram->getRam();
+                                  ?>
+                                  <div class="checkbox frowitem <?php if ($app->check('RAM',$ram_tmp)) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $href_ram; ?>" title="<?php echo $ram->getRam(); ?>">
 
                                   <i class="fa-thin fa-square"></i>
-                                  <label>4 GB</label>
+                                  <label><?php echo $ram->getRam(); ?></label>
                                   
                                 </a>
                               </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="8 GB">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>8 GB</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="16 GB">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>16 GB</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="32 GB">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>32 GB</label>
-                                  
-                                </a>
-                              </div>
-
-                              
-                              
-
+                              <?php    
+                                 }
+                              ?>                              
                             </div>
-
-
-
-
                           </div>
 
                           <div class="cdt-filter__block">
@@ -396,18 +370,19 @@
                             </div>
 
                             <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
+                              <div class="checkbox checkboxAll frowitem <?php if ($app->check('CPU','all') ||$app->checkAll('CPU')) : ?>active <?php endif;?>">
+                                <a href="<?php echo $app->getHrefAll('CPU');?>" title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
                               <?php 
                                  $cpu_tmp=new CPUApplication();
                                  $listcpu=$cpu_tmp->getAll();
                                  foreach($listcpu as $cpu){
+                                  $href_cpu=$app->getHref('CPU',$cpu->getCPU());
 
                               ?>
-                               <div class="checkbox frowitem" >
-                                <a href="" title="<?php echo $cpu->getCPU(); ?>">
+                               <div class="checkbox frowitem <?php if ($app->check('CPU',$cpu->getCPU())) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $href_cpu; ?>" title="<?php echo $cpu->getCPU(); ?>">
 
                                   <i class="fa-thin fa-square"></i>
                                   <label><?php echo $cpu->getCPU();?></label>
@@ -418,172 +393,65 @@
                                  }
                               ?>
                             </div>
-
-
-
-
                           </div>
 
                           <div class="cdt-filter__block">
                             
-                            <div class="cdt-filter__title" >Card Đồ Hoạ
-
-                            </div>
+                            <div class="cdt-filter__title" >Card Đồ Hoạ</div>
 
                             <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
+                              <div class="checkbox checkboxAll frowitem <?php if ($app->check('Card-do-hoa','all') ||$app->checkAll('Card-do-hoa')) : ?>active <?php endif;?>">
+                                <a href="<?php echo $app->getHrefAll('Card-do-hoa');?>" title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Nvidia Geforce Series">
+                               <?php 
+                                  $app_card=new CardApplication();
+                                  $listcard=$app_card->getAll();
+                                  foreach($listcard as $card){
+                                ?>
+                                  <div class="checkbox frowitem <?php if ($app->check('Card-do-hoa',$card->getCard())) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('Card-do-hoa',$card->getCard()); ?>" title="<?php echo $card->getCard(); ?>">
 
                                   <i class="fa-thin fa-square"></i>
-                                  <label>Nvidia Geforce Series</label>
+                                  <label><?php echo $card->getCard(); ?></label>
                                   
                                 </a>
                               </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Amd  radeon series">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Amd  radeon series</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Card onboard">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Card onboard</label>
-                                  
-                                </a>
-                              </div>                                                                    
+                                <?php
+                                  }
+                               ?>                                                                 
                             </div>
                           </div>
 
                           <div class="cdt-filter__block">
                             
-                            <div class="cdt-filter__title" >Ổ cứng
-
-                            </div>
+                            <div class="cdt-filter__title" >Ổ cứng</div>
 
                             <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
+                              <div class="checkbox checkboxAll frowitem <?php if ($app->check('o-cung','all') ||$app->checkAll('o-cung')) : ?>active <?php endif;?>">
+                                <a href="<?php echo $app->getHrefAll('o-cung');?>" title="Tất cả">
                                   <i class="fa-thin fa-square"></i>Tất cả</a>
                               </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="SSD 1 tb">
+                              <?php 
+                                $app_memory=new MemoryApplication();
+                                $listmemory=$app_memory->getAll();
+                                foreach($listmemory as $memory){
+                              ?>
+                              <div class="checkbox frowitem <?php if ($app->check('o-cung',$memory->getMemory())) : ?>active <?php endif;?>" >
+                                <a href="filter&<?php echo $app->getHref('o-cung',$memory->getMemory());?>" title="<?php echo $memory->getMemory(); ?>">
 
                                   <i class="fa-thin fa-square"></i>
-                                  <label>SSD 1 tb</label>
+                                  <label><?php echo $memory->getMemory(); ?></label>
                                    
                                 </a>
                               </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="SSD 512 gb">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>SSD 512 gb</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="SSD 256 gb">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>SSD 256 gb</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="SSD 128 gb">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>SSD 128 gb</label>
-                                  
-                                </a>
-                              </div>                                                                                        
+                              
+                              <?php
+                                }
+                               ?>                                                                               
                             </div>
                           </div>
-
                           <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Tính năng đặc biệt
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Hỗ trợ công nghệ optane">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Hỗ trợ công nghệ optane</label>
-                                   
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="CPU intel 10th">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>CPU intel 10th</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Sử dụng tấm nền ips">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Sử dụng tấm nền ips</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Màn hình cảm ứng">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Màn hình cảm ứng</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Window bản quyền">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Window bản quyền</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Mở khoá vân tay">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Mở khoá vân tay</label>
-                                  
-                                </a>
-                              </div>                                                                                      
-                            </div>
-                          </div> -->
-
-                          <div class="cdt-filter__block">
                             
                             <div class="cdt-filter__title" >Nhu cầu
 
@@ -640,85 +508,7 @@
                                 </a>
                               </div>                                                                                         
                             </div>
-                          </div>
-
-                          <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Laptop khuyến mãi
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Gaming đồ hoạ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Asus TUF Gaming</label>
-                                   
-                                </a>
-                              </div>                                                                                                                   
-                            </div>
-
-
-
-
                           </div> -->
-
-                          <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Trả góp ưu đãi
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trả góp 0%">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Trả góp 0%</label>
-                                   
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trả góp 0Đ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Trả góp 0Đ</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Trả góp 0% và 0Đ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Trả góp 0% và 0Đ</label>
-                                  
-                                </a>
-                              </div>
-                              
-
-                            </div>
-
-
-
-
-                          </div> -->
-
-
-                        
-
                         </div>
 
                       </div>
