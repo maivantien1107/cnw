@@ -60,9 +60,16 @@
   .st-rating__star li {
     margin-right: 5px;
   }
+  .st-rating__star2 li {
+    margin-right: 5px;
+  }
   
   .st-rating__star li span {
     color: #ea9d02;
+    font-size: 15px;
+  }
+  .st-rating__star2 li span {
+    color: #a4a3a0;
     font-size: 15px;
   }
   
@@ -410,14 +417,18 @@
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: flex-start;
+    position: relative;
   }
   
   .card-title--badge .badge {
-    margin-left: 8px;
+    margin-left: 260px;
+    margin-top: 3px;
     padding: 4px 8px;
     font-size: 12px;
     font-weight: 500;
-    line-height: 1.33;
+    line-height: 1.4;
+    position: absolute;
+    background: rgb(220, 53, 69);
   }
   
   .badge {
@@ -505,6 +516,28 @@
     color: #ea9d02;
     font-size: 18px;
   }
+  .ye-star3 {
+    color: #a4a3a0;
+    position: relative;
+    /* overflow: hidden; */
+  }
+  .ye-star_persent{
+    background-color: #48bb78;
+    -webkit-transition: 0.3s all linear;
+    -o-transition: 0.3s all linear;
+    transition: 0.3s all linear;
+    height: 100%;
+    position: absolute;
+    left: 0%;
+    top: 0;
+    display: inline-block;
+    animation: progress 3s ease-in-out forwards;
+    -webkit-animation: progress 3s ease-in-out forwards;
+  }
+  .ye-star2 {
+    color: #a4a3a0;
+    font-size: 18px;
+  }
   
   .c-rate-star {
     padding-bottom: 16px;
@@ -533,6 +566,9 @@
   }
   
   .ye-star.small {
+    font-size: 13px;
+  }
+  .ye-star2.small {
     font-size: 13px;
   }
   
@@ -660,6 +696,7 @@
     align-items: center;
     font-size: 18px;
     line-height: 24px;
+    margin-bottom: 5px;
   }
   
   .c-comment .list-star {
@@ -683,10 +720,14 @@
     -webkit-box-pack: start;
     -ms-flex-pack: start;
     justify-content: start;
+    margin-top: 5px;
+    margin-bottom:8px;
   }
   
   .c-comment .list-star span {
-    font-size: small;
+    margin-left: 10px;
+    font-size: 15px;
+    margin-top: 1.5px;
   }
   
   .list-star ul {
@@ -698,6 +739,145 @@
   }
   
   .c-comment-text {
-    font-size: small;
+    font-size: 16px;
+    margin-top: 13px;
   }
-  
+  /* tỉ lệ ngôi sao */
+  .rate_icon{
+    width: 14.86px;
+    height: 18.81px;
+    position: relative;
+  }
+  .rate_icon__lit{
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
+  .rating-stars__primary-star {
+    color: #ee4d2d;
+    stroke: #ee4d2d;
+    display: block;
+    position: absolute;
+    left: 0;
+    overflow-x: hidden;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+.rating-stars__hollow-star {
+  color: #a4a3a0;
+  display: block;
+  stroke: currentColor;
+}
+.svg-icon {
+
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  position: relative;
+}
+.detail_btn-primary {
+  color: rgb(220, 53, 69);
+}
+/* đánh gia của khách hàng */
+.c-user-rate{
+  height: 100px;
+  width: 100%;
+  display: flex;
+}
+.c-user-list_star{
+  height: 100%;
+  width:40%;
+}
+.c-user-comment{
+  height: 100%;
+  width:60%;
+  text-align:center;
+}
+.c-user-comment input{
+  display: block;
+  height:60%;
+  width:80%;
+  text-align: center;
+}
+.c-user-rate-form{
+  position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+.c-user-rate-form textarea{
+  width: 100%;
+    height: 68px;
+    border-radius: 4px;
+    border: solid 1px #ced4da;
+    background-color: #fff;
+    padding: 8px 123px 8px 8px;
+    outline: 0;
+}
+.f-err{
+  margin: 8px 0;
+    font-weight: 300;
+    color:red;
+}
+.c-user-rate-form .btn{
+  position: absolute;
+  background-color: rgb(220, 53, 69);
+    top: 4px;
+    right: 20px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    padding: 6px 15px;
+    height:36px;
+}
+.user-comment{
+  height:60%;
+  width:70%;
+}
+.c-user-star{
+  margin:6px 20px;
+  text-align:center;
+  font-size: 18px;
+  font-weight: 400;
+}
+.ye-star.large{
+  font-size: 24px;
+    line-height: 1;
+    display: inline-block;
+}
+.ye-star.non-star{
+  color: #99a2aa;
+}
+.c-user-rate-form{
+  width: 100%;
+  height: 100%;
+}
+.c-user-list_star .list-star .rate{
+  display: none;
+}
+.list-star label{
+  font-size: 26px;
+  color: #99a2aa;
+  padding: 1px;;
+  float: right;
+  transition: all 0.2s ease;
+}
+
+input:not(:checked) ~ label:hover,
+input:not(:checked) ~ label:hover ~ label{
+  color: #ea9d02;
+}
+input:checked ~ label{
+  color: #ea9d02;
+}
+input#rate-5:checked ~ label{
+  color: #ea9d02;
+  text-shadow: 0 0 20px #952;
+}

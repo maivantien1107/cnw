@@ -237,3 +237,12 @@ create TABLE card (
     memory varchar(250) COLLATE utf8_unicode_ci DEFAULT null
     )
   INSERT INTO memory(memory) VALUES ('SSD 128 GB'),('SSD 256 GB'),('SSD 512 GB'),('SSD 1TB'),('HHD 512 GB'),('HHD 1TB');
+
+  --bảng rate 
+  CREATE TABLE rate (
+    rate_id int(11) PRIMARY key not null AUTO_INCREMENT,
+    product_id int(11),
+    user_name varchar(50) COLLATE utf8_unicode_ci DEFAULT null,
+    star int(11) default null,
+    content text COLLATE utf8_unicode_ci DEFAULT null,
+    date_cmt datetime DEFAULT null)

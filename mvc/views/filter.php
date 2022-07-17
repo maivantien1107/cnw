@@ -490,9 +490,12 @@
                              <?php 
                              }
                             }
-                            else { 
-                              echo "Không có sản phẩm phù hợp";
-                            }
+                            else { ?>
+                              <div class="filter_null">
+                                <h3 style="text-align: center;">Rất tiếc không có sản phẩm nào phù hợp với tiêu chí của bạn</h3>
+                              </div>
+
+                           <?php }
                              ?>
                             </div>
 

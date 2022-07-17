@@ -7,6 +7,7 @@
   require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MemoryApplication.php';
   require_once ROOT . DS . 'application' . DS .'FilterApplication.php';
   require_once ROOT . DS . 'application' . DS . 'products' . DS . 'CPUApplication.php';
+  require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
   $app=new FilterApplication();
   ?>
 <!DOCTYPE html>
@@ -38,7 +39,22 @@
 
                     <div class="cdt-banner m-b-20">
                         <div class="img-slider">
-                            <div class="slide active">
+                        <?php $newss=new NewsApplication();
+                                           $news_discounts=$newss->getPromotion();
+                                           $cnt_newsdis=1;
+                                           foreach($news_discounts as $news_discount){  
+                                            if ($cnt_newsdis<=10){                                    
+                                           $path=$news_discount->getTitle();
+                                           $path = str_replace(' ', '-', $path);?>
+                              <div class="slide">
+                              <a href="<?php echo "newsdetail/".$news_discount->getNews_id()."/".$path ?>">
+                              <img src="../../public/img/news/<?php echo $news_discount->getNews_id(); ?>_image1.webp" alt="">
+                              </a>                                                       
+                            </div>
+                                         <?php
+                                           }
+                                           $cnt_newsdis++;}?>
+                            <!-- <div class="slide active">
                               <img src="public/html/assets/img/Slider/1.webp" alt="">
                               
                             </div>
@@ -103,7 +119,7 @@
                             <div class="slide">
                               <img src="public/html/assets/img/Slider/14.webp" alt="">
                               
-                            </div>
+                            </div> -->
                       
                       
                             
@@ -118,11 +134,6 @@
                               <div class="btn"></div>
                               <div class="btn"></div>
                               <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                              <div class="btn"></div>
-                      
                             </div>
                           </div>
                       
@@ -130,6 +141,7 @@
                           var slides = document.querySelectorAll('.slide');
                           var btns = document.querySelectorAll('.btn');
                           let currentSlide = 1;
+                          slides[0].classList.add('active');
                       
                           // Javascript for image slider manual navigation
                           var manualNav = function(manual){
@@ -581,8 +593,8 @@
                             <div class="cdt-product-wrapper m-b-20">
                               <?php
                                   //get all laptop 
-                                  $app=new LaptopApplication();
-                                  $listLaptop=$app->getAll();
+                                  $apps=new LaptopApplication();
+                                  $listLaptop=$apps->getAll();
                                   foreach($listLaptop as $laptop){
                                     $path = $laptop->getModel();
 					                          $path = str_replace(' ', '-', $path);
@@ -591,7 +603,7 @@
                                 <div class="cdt-product__img" style="background-image: url(public/img/Img_product/backgroundproduct.webp); background-position: center center;
                                 background-repeat: no-repeat;">
                                   <a href="<?php echo "details/".$laptop->getProductID()."/".$path; ?>" title="<?php  echo $laptop->getModel(); ?> ">
-                                    <img src="../../../public/img/products/<?php echo $product->getProductID(); ?>_image1.webp" alt="" height="215">
+                                    <img src="public/img/products/<?php echo $laptop->getProductID(); ?>_image1.webp" alt="" height="215">
                                   </a>
 
                                   <div class="cdt-product__label">

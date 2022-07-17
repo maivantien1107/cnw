@@ -362,7 +362,11 @@ class FilterApplication extends LaptopApplication
    public function checkAll($label){
     $data=self::getUrl();
     if(isset($data[$label])){
-        return false;
+        if ($data[$label]==''){
+            return true;
+        }
+        else{
+        return false;}
     }
     else {
         return true;
