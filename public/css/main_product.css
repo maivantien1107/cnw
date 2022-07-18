@@ -84,7 +84,21 @@
     border: solid 1px #cb1c22;
     background-color: #cb1c22;
 }
-
+.cdt-filter__checklist .checkbox.active .fa-square:before {
+    content: "";
+    position: absolute;
+    top: -1px;
+    left: 5px;
+    display: table;
+    width: 5px;
+    height: 11px;
+    border: 2px solid #fff;
+    border-top-width: 0;
+    border-left-width: 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 .cdt-filter__checklist .checkbox>a .fa-square{
     display: inline-block;
     vertical-align: middle;

@@ -36,6 +36,7 @@ class NewsApplication extends MySqlConnect{
            $minutes = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24 - $days*60*60*24 - $hours*60*60) / 60);     
          
            if ($years>0|| $months>0 || $days>7){
+            $date1=new DateTime($date1);
             return date_format($date1,"d-m-Y");
            }
            elseif ($days>=1 && $days<=7) {

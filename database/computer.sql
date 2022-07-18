@@ -162,6 +162,32 @@ CREATE table admin(
 
     --kết nối bảng
 
+
+
+
+    --update data
+    ALTER TABLE `computer_products` CHANGE `s_memory` `s_memory` VARCHAR(50) NULL DEFAULT NULL;
+-----
+    ALTER TABLE `products` DROP `image`;
+    ----------------------------------------------------------------
+    ALTER TABLE `products` CHANGE `image1` `des9` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+    ALTER TABLE `products` CHANGE `image2` `des10` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+    ALTER TABLE `products` CHANGE `image3` `des11` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;
+    ----
+    ALTER TABLE `products` CHANGE `overview` `overview` TEXT COLLATE utf8_general_ci DEFAULT NULL;
+    ----------------
+    ALTER TABLE `news_description` CHANGE `image1` `des8` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci  DEFAULT NULL;
+    ALTER TABLE `news_description` CHANGE `image2` `des9` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci  DEFAULT NULL;
+    ALTER TABLE `news_description` CHANGE `image3` `des10` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci  DEFAULT NULL;
+
+--create RAM
+CREATE TABLE ram(
+    ram varchar(200) COLLATE utf8_unicode_ci DEFAULT null
+    );
+insert into ram(ram) values('4 GB'),
+                         ('8 GB'),
+                         ('16 GB'),
+                         ('32 GB');
 --index 
 -- CREATE FULLTEXT INDEX index_search
 -- ON products(model,feature);
@@ -186,12 +212,37 @@ CREATE table admin(
     insert into cpu(cpu_id, cpu) VALUES('cpu1','Intel celeron'),
                                    ('cpu2','Intel pentium'),
                                    ('cpu3', 'Intel Core i3'),
-                                   ('cpu4', 'Intel Core i5 '),
-                                   ('cpu5', 'Intel Core i7 '),
-                                   ('cpu6', 'Intel Core i9 '),
-                                   ('cpu7', 'AMD Ryzen 3 '),
-                                   ('cpu8', 'AMD Ryzen 5 '),
-                                   ('cpu9', 'AMD Ryzen 7 '),
-                                   ('cpu10', 'AMD Ryzen 9 ');
+                                   ('cpu4', 'Intel Core i5'),
+                                   ('cpu5', 'Intel Core i7'),
+                                   ('cpu6', 'Intel Core i9'),
+                                   ('cpu7', 'AMD Ryzen 3'),
+                                   ('cpu8', 'AMD Ryzen 5'),
+                                   ('cpu9', 'AMD Ryzen 7'),
+                                   ('cpu10', 'AMD Ryzen 9');
   INSERT INTO `news`(`title`, `category`, `description`, `time`, `img`, `overview`) VALUES ('Hè rộn ràng - lưu trữ an toàn cùng Seagate','Khuyến mãi','descript2','2022/07/09','https://www.phucanh.vn/media/news/1806_he-ron-rang-luu-tru-cung-seagate.jpg','Nhắm mắt thấy mùa hè, mở mắt thấy chương trình ưu đãi về. Từ ngày 20/06 - 30/07/2022, chương trình ưu đãi “MUA Ổ CỨNG TẶNG THẺ CÀO” sẽ được áp dụng khi khách hàng mua sản phẩm ổ cứng gắn ngoài của Seagate từ 2TB trở lên tại tất cả các showroom của cửa hàng');
 INSERT INTO `news_description`(`news_id`, `des1`, `des2`, `des3`, `des4`, `des5`, `des6`, `des7`,image1,image2,image3) VALUES (12,'Theo báo cáo từ công ty quản lý tài chính nổi tiếng Morgan Stanley, doanh thu mảng PC của AMD dự kiến sẽ bị sụt giảm mạnh trong năm nay. Cụ thể, doanh số của đội Đỏ có thể sẽ chứng kiến mức sụt giảm lên tới 26% trong năm 2022 này. Nhu cầu về linh kiện PC nói chung đang giảm mạnh sau khi đại dịch qua đi và chuỗi cung ứng được nối lại, khiến cho hàng hóa trở nên dồi dào hơn. Thêm vào đó, lạm phát tăng cao cũng khiến cho người tiêu dùng nói chung dè dặt hơn trong việc mua sắm.Theo báo cáo từ công ty quản lý tài chính nổi tiếng Morgan Stanley, doanh thu mảng PC của AMD dự kiến sẽ bị sụt giảm mạnh trong năm nay. Cụ thể, doanh số của đội Đỏ có thể sẽ chứng kiến mức sụt giảm lên tới 26% trong năm 2022 này. Nhu cầu về linh kiện PC nói chung đang giảm mạnh sau khi đại dịch qua đi và chuỗi cung ứng được nối lại, khiến cho hàng hóa trở nên dồi dào hơn. Thêm vào đó, lạm phát tăng cao cũng khiến cho người tiêu dùng nói chung dè dặt hơn trong việc mua sắm.','Điều này cho thấy tầm quan trọng cực lớn của CPU Ryzen 7000 đối với kết quả kinh doanh của AMD. Bộ vi xử lý mới có thể sẽ trở thành cứu cánh của đội Đỏ nếu như có thể đánh bại được đối thủ Raptor Lake tới từ Intel. Thậm chí, đó có thể sẽ là cách duy nhất để AMD tiến lên vào lúc này khi Alder Lake đã giúp cho Intel lấy lại ngôi vương CPU từ tay AMD.','Trong khi Alder Lake mang tới một loạt những cải tiến, bao gồm cả kiến trúc dạng lai (hybrid) kết hợp các nhân hiệu năng cao và các nhân tiết kiệm năng lượng. Đồng thời, con chip của Intel cũng bổ sung thêm RAM DDR5 và hỗ trợ PCIe 5.0, những điều mà AMD vẫn chưa thể làm được với Ryzen 5000. Chính vì vậy, những người dùng muốn build một bộ PC cao cấp với CPU đời mới thường sẽ chọn Intel thay vì AMD trong thời gian vừa qua.','Sự trở lại đầy mạnh mẽ của Intel đã khiến AMD bị lép vế trong một thời gian dài. Đội Đỏ cũng đã đáp trả bằng việc phát hành Ryzen 7 5800X3D, một con quái vật thực sự cho dòng CPU gaming với kiến trúc V-Cache. Ngoài ra, đầu năm nay AMD cũng đã cho ra mắt bộ vi xử lý mới Ryzen 9 5950X, tuy nhiên xét về hiệu năng thì sản phẩm này vẫn chưa thể so với Intel Core i9-12900K. Nhìn chung, thị trường CPU vẫn đang chứng kiến thế thượng phong của đội Xanh.','Cả bối cảnh hiện tại và tương lai đều không ủng hộ AMD, chính vì vậy giờ sẽ là lúc mà đội Đỏ cần phải đánh một trận “tất tay” với Ryzen 7000 nói riêng và CPU Zen 4 nói chung hòng lật ngược thế cờ. Đã có những thông tin cho rằng AMD có ý định lùi ngày phát hành Ryzen 7000 để có thêm thời gian đẩy nốt số hàng tồn kho của Ryzen 5000. Tuy nhiên kế hoạch đó có thể sẽ thay đổi và CPU Zen 4 đầu tiên sẽ trình làng sớm hơn dự kiến.','Trận chiến giữa Intel và AMD trên mặt trận CPU bao giờ cũng căng thẳng, và có lẽ cuộc đối đầu năm 2022 này sẽ còn khốc liệt hơn nhiều. Nên nhớ rằng nhu cầu PC giảm cũng ảnh hưởng không nhỏ tới Intel, và đương nhiên họ cũng muốn Raptor Lake duy trì mạch chiến thắng của Alder Lake để vượt qua khoảng thời gian khó khăn sắp tới.','Xanh và Đỏ, ai sẽ là người chiến thắng? Hãy cùng chờ xem!','https://www.tncstore.vn/image/catalog/Tin tức website/với CPU Ryzen 7000/4.png','https://www.tncstore.vn/image/catalog/Tin tức website/với CPU Ryzen 7000/4.png','https://www.tncstore.vn/image/catalog/Tin tức website/với CPU Ryzen 7000/4.png');
+
+
+
+
+
+---update 16/07
+create TABLE card (
+    card varchar(250) COLLATE utf8_unicode_ci DEFAULT null
+    )
+  INSERT INTO card(card) VALUES ('Nvidia Geforce Series'), ('Amd  radeon series'), ('Card onboard');
+
+  -----------------------------
+  CREATE table memory (
+    memory varchar(250) COLLATE utf8_unicode_ci DEFAULT null
+    )
+  INSERT INTO memory(memory) VALUES ('SSD 128 GB'),('SSD 256 GB'),('SSD 512 GB'),('SSD 1TB'),('HHD 512 GB'),('HHD 1TB');
+
+  --bảng rate 
+  CREATE TABLE rate (
+    rate_id int(11) PRIMARY key not null AUTO_INCREMENT,
+    product_id int(11),
+    user_name varchar(50) COLLATE utf8_unicode_ci DEFAULT null,
+    star int(11) default null,
+    content text COLLATE utf8_unicode_ci DEFAULT null,
+    date_cmt datetime DEFAULT null)

@@ -4,7 +4,7 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
 class NewsDescriptionApplication extends NewsApplication{
     public function insert($newsdes){
         parent::insert($newsdes);
-        $query="INSERT INTO news_description(news_id,des1,des2,des3,des4,des5,des6,des7,image1,image2,image3) VALUES(
+        $query="INSERT INTO news_description(news_id,des1,des2,des3,des4,des5,des6,des7,des8,des9,des10) VALUES(
             ".$newsdes->getNews_id().",'".
             $newsdes->getDes1()."','".
             $newsdes->getDes2()."','".
@@ -13,9 +13,9 @@ class NewsDescriptionApplication extends NewsApplication{
             $newsdes->getDes5()."','".
             $newsdes->getDes6()."','".
             $newsdes->getDes7()."','".
-            $newsdes->getImage1()."','".
-            $newsdes->getImage2()."','".
-            $newsdes->getImage3() ."');";
+            $newsdes->getDes8()."','".
+            $newsdes->getDes9()."','".
+            $newsdes->getDes10() ."');";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -23,15 +23,15 @@ class NewsDescriptionApplication extends NewsApplication{
         parent::update($newsdes);
         $query="Update news_description set des1='".
         $newsdes->getDes1()."','".
-        $newsdes->getDes2()."','".
-        $newsdes->getDes3()."','".
-        $newsdes->getDes4()."','".
-        $newsdes->getDes5()."','".
-        $newsdes->getDes6()."','".
-        $newsdes->getDes7()."','".
-        $newsdes->getImage1()."','".
-        $newsdes->getImage2()."','".
-        $newsdes->getImage3()."');";
+        "des2='".$newsdes->getDes2()."',".
+        "des3='".$newsdes->getDes3()."',".
+        "des4='".$newsdes->getDes4()."',".
+        "des5='".$newsdes->getDes5()."',".
+        "des6='".$newsdes->getDes6()."',".
+        "des7='".$newsdes->getDes7()."',".
+        "des8='".$newsdes->getDes8()."',".
+        "des9='".$newsdes->getDes9()."',".
+        "des10='".$newsdes->getDes10()."');";
     parent::addQuerry($query);
     parent::updateQuery();
 
@@ -52,9 +52,9 @@ class NewsDescriptionApplication extends NewsApplication{
             $des5=$row['des5'];
             $des6=$row['des6'];
             $des7=$row['des7'];
-            $image1=$row['image1'];
-            $image2=$row['image2'];
-            $image3=$row['image3'];
+            $image1=$row['des8'];
+            $image2=$row['des9'];
+            $image3=$row['des10'];
             $title=$row['title'];
             $description=$row['description'];
             $category=$row['category'];

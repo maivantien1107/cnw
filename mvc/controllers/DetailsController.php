@@ -2,7 +2,7 @@
 require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'Controller.php';
 require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'DefaultController.php';
 
-class ProductdetailController extends DefaultController implements Controller {
+class DetailsController extends DefaultController implements Controller {
 		private $id; 					// int
 
 		public function __construct($id){
@@ -37,6 +37,6 @@ class ProductdetailController extends DefaultController implements Controller {
         }
 
 				$product = $service->get($product_id);
-				include ROOT . DS . 'mvc' . DS . 'views' . DS . 'productdetail.php';
+				include ROOT . DS . 'mvc' . DS . 'views' . DS . 'detail.php';
     }
 }

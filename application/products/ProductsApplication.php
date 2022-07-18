@@ -10,11 +10,11 @@ class ProductsApplication extends  MySqlConnect {
      */
     public function insert($product) {
         // add to products table
-        $query = "insert into products(product_id, model, image,size, price, weigh, color, number_of_product, supplier, p_description, dis)
+        $query = "insert into products(product_id, model,size, price, weigh, color, number_of_product, supplier, p_description, dis,overview,
+                       des1,des2,des3,des4,des5,des6,des7,des8,des9,des10,des11)
                     value (" .
                     $product->getProductID() . "," .
                     "'" . $product->getModel() . "' ," .
-                    "'" . $product->getImage() . "' ," .
                     $product->getPrice() . ",'" .
                     $product->getSize() . "'," .
                     $product->getWeigh() . "," .
@@ -32,9 +32,9 @@ class ProductsApplication extends  MySqlConnect {
                    $product->getDes6()."','".
                    $product->getDes7()."','".
                    $product->getDes8()."','".
-                   $product->getImage1()."','".
-                   $product->getImage2()."','".
-                   $product->getImage3()."')";
+                   $product->getDes9()."','".
+                   $product->getDes10()."','".
+                   $product->getDes11()."')";
 
         parent::addQuerry($query);
         parent::updateQuery();
@@ -115,9 +115,9 @@ class ProductsApplication extends  MySqlConnect {
                     "des6= '".$product->getDes6(). "'," .
                     "des7= '".$product->getDes7(). "'," .
                     "des8= '".$product->getDes8(). "'," .
-                    "image1 '".$product->getImage1()."',".
-                    "image2 '".$product->getImage2()."',".
-                    "image3 '".$product->getImage3()."'".
+                    "image1 '".$product->getDes9()."',".
+                    "image2 '".$product->getDes10()."',".
+                    "image3 '".$product->getDes11()."'".
                     "where product_id = " . $product->getProductID()
                     . "";
         parent::addQuerry($query);
