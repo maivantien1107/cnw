@@ -89,7 +89,7 @@ CREATE TABLE `computer_products` (
   `s_memory` int(11) DEFAULT NULL,
   `screen` varchar(50) DEFAULT NULL,
   `s_card` varchar(50) DEFAULT NULL,
-  `main_connection` varchar(50) DEFAULT NULL,
+
   `os` varchar(50) DEFAULT NULL,
    FOREIGN key (`product_id`) REFERENCES products(product_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

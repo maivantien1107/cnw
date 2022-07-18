@@ -2,6 +2,17 @@
 <?php session_start();
 require_once ROOT . DS . 'application'. DS .'products'.DS. 'LaptopApplication.php';
 require_once ROOT . DS . 'application'.DS.'RateApplication.php';
+require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
+$service = new UsersApplication();
+$username = $_SESSION['username'];
+
+if (isset($_POST['mua-ngay'])){
+   var_dump(22);
+    $product_id1=intval(addslashes($_POST['buy_now']));
+    $service->insertProduct($username,$product_id1,1);
+    header("Location: ../cart");
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang = "en">
@@ -132,14 +143,29 @@ require_once ROOT . DS . 'application'.DS.'RateApplication.php';
           </div>
 
           <div class="st-price-main" style="color: rgb(245, 18, 6);"><?php echo $product->getPrice(); ?>₫</div>
-
-          <button class="btn btn-primary btn-xl btn-full" id="btn_buy_now" style="background: rgb(245, 18, 6); color: #fff;">
+          <?php if (isset($_SESSION['username'])){ ?>
+            <a href=<?php echo "/".$path_project . "/"."cart"?> style="display: none;" class="link-header_cart"></a>
+          <form action="validate/insert_cart.php" class="form-button_cart" method="post">
+          <input type="text" name="buy_now" value="<?php echo $product->getProductID();?>" style="display:none;">
+          <button class="btn btn-primary btn-xl btn-full " type="submit" id="btn_buy_now" name="mua-ngay"style="background: rgb(245, 18, 6); color: #fff;">
+           
             <div><strong>MUA NGAY</strong></div>
           </button>
-
-          <button class="btn btn-primary btn-xl btn-full" id="btn_add_cart" style="background: rgb(245, 18, 6); color:#fff;">
+          <input type="text" name="add_now" value="<?php echo $product->getProductID();?>" style="display:none;">
+          <button class="btn btn-primary btn-xl btn-full" type="submit" id="btn_add_cart" name="add-cart" style="background: rgb(245, 18, 6); color:#fff;">
             <div><strong>THÊM VÀO GIỎ</strong></div>
           </button>
+          </form>
+          <?php } 
+          else {
+            ?>
+            <div class="no_session_text" style="font-size:20px;">Bạn cần đăng nhập để mua hàng&
+              <a href=<?php echo "/" . $path_project . "/" . "login" ?> style="color:red;font-size:22px;">Đăng nhập</a>
+            </div>
+
+          <?php }
+          ?>
+
         </div>
       </div>
 

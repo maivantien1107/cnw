@@ -51,4 +51,13 @@ for( i=0;i<star_larges.length;i++) {
     })
 
 }
+var button1=document.querySelector('#btn_buy_now');
+// var button2=document.querySelector('#btn_add_cart');
+
+ button1.addEventListener('click',function(){
+  document.querySelector('.link-header_cart').click();
+})
+// button2.addEventListener('click',function(){
+//     button2.querySelector('input').click();
+// })
 
