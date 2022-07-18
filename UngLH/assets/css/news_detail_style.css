@@ -217,6 +217,75 @@ img {
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
 }
+.sub-header-btn{
+    display: block;
+    color: aliceblue;
+}
+.nav__overlay{
+    position: fixed; 
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color:rgba(0,0,0,0.3);  
+    z-index: 10;
+    display: none;
+    -webkit-animation: fadein linear 1s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein linear 1s; /* Firefox < 16 */
+     -ms-animation: fadein linear 1s; /* Internet Explorer */
+      -o-animation: fadein linear 1s; /* Opera < 12.1 */
+         animation: fadein linear 1s;
+}
+.nav-mobile {
+    position: fixed;
+    left: 0;
+    top: 0px;
+    bottom: 0;
+    width: 320px;
+    max-width: 100%;
+    background-color: #0A2558;
+    z-index: 10;
+    display: none;
+    -webkit-animation: fadein linear 0.2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein linear 0.2s; /* Firefox < 16 */
+     -ms-animation: fadein linear 0.2s; /* Internet Explorer */
+      -o-animation: fadein linear 0.2s; /* Opera < 12.1 */
+         animation: fadein linear 0.2s;
+
+} 
+/* mobile */
+.nav-mobile .nav__mobile-list li{
+    display: block;
+    margin-top: 25px;
+    line-height: 50px;
+    justify-content:center;
+}
+.nav__mobile-list{
+   padding-top: 30px;
+   align-items: center;
+   width: 100%;
+}
+.nav-mobile .nav__mobile-list li a{
+    color:  white;
+    text-decoration: none;
+    line-height: 36px;
+    padding-left: 20px;
+    font-size: 1.4rem;
+}
+.nav__mobile-close{
+    font-size: 1.4rem;
+    color: white;
+    position: absolute;
+    top: 1rem;
+    width: 28px;
+    height: 28px;
+    right: 1rem;
+}   
+.nav__mobile-list :hover{
+    cursor: pointer;
+    background-color:#081D45 ;
+    
+}
 a, a:active, a:focus, a:hover {
     outline: none;
     text-decoration: none;
@@ -265,3 +334,52 @@ div {
     color: #fff;
     text-decoration: none;
 }
+
+@media (max-width: 1023px) {
+    .sub-header-btn{
+        display: inline;
+        font-size: 25px;
+        margin-left: 10px;
+    }
+   .nav__pc-list{
+        display: none;
+    }
+    
+    .footer {
+        margin-top: 10px;
+    }
+    
+    .footer .footer__top .f__links {
+        display: flex;
+        flex-direction: column;
+        padding-top: 30px;   
+    }
+    .footer .footer__top .f__store__info {
+        margin-top: 40px;
+    }
+    .footer .footer__top .f__links .f__links__group {
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+    .container {
+        width: calc(100% - 28px);
+        overflow: hidden;
+    }
+    .single-post .content .post_title {
+        font-size: 28px!important;
+    }
+
+    .single-post .content iframe, .single-post .content img {
+        max-width: 100%;
+    }
+    .single-post .content {
+        width: 100%!important;
+    }
+
+}
+
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
