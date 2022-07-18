@@ -25,31 +25,69 @@
       </div>
       <div id = "sub-header">
          <ul id="nav">
-            <li><a href="#">
-               <i class="ti-home"></i>
-               Trang chủ</a>
-            </li>
-            <li><a href="#band">
-               <i class="fa-solid fa-laptop"></i>
-               Laptop</a>
-            </li>
-            <li><a href="#band">
-               <i class="fa-solid fa-computer"></i>
-               PC</a>
-            </li>
-            <li><a href="#band">
-               <i class="fa-solid fa-headphones"></i>
-               Phụ kiện</a>
-            </li>
-            <li><a href="#tour">
-               <i class="fa-solid fa-microchip"></i>
-               Linh kiện máy tính </a>
-            </li>
-            <li><a href="#contact">
-               <i class="fa-solid fa-tags"></i>
-               Khuyến mãi</a>
-            </li>
+            <div class="nav__pc-list">
+               <li><a href="#">
+                  <i class="ti-home"></i>
+                  Trang chủ</a>
+               </li>
+               <li><a href="#band">
+                  <i class="fa-solid fa-laptop"></i>
+                  Laptop</a>
+               </li>
+               <li><a href="#band">
+                  <i class="fa-solid fa-computer"></i>
+                  PC</a>
+               </li>
+               <li><a href="#band">
+                  <i class="fa-solid fa-headphones"></i>
+                  Phụ kiện</a>
+               </li>
+               <li><a href="#tour">
+                  <i class="fa-solid fa-microchip"></i>
+                  Linh kiện máy tính </a>
+               </li>
+               <li><a href="#contact">
+                  <i class="fa-solid fa-tags"></i>
+                  Khuyến mãi</a>
+               </li>
+            </div>
+            <div class = "sub-header-btn">
+               <i class="fa-solid fa-bars"></i>
+            </div>
          </ul>
+         <div class = "nav__overlay"></div>
+         <div class="nav-mobile">
+            <div class="nav__mobile-close">
+               <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div class="nav__mobile-list">
+               <li><a href="#">
+                  <i class="ti-home"></i>
+                  Trang chủ</a>
+               </li>
+               <li><a>
+                  <i class="fa-solid fa-laptop"></i>
+                  Laptop</a>
+               </li>
+               <li><a>
+                  <i class="fa-solid fa-computer"></i>
+                  PC</a>
+               </li>
+               <li><a>
+                  <i class="fa-solid fa-headphones"></i>
+                  Phụ kiện</a>
+               </li>
+               <li><a>
+                  <i class="fa-solid fa-microchip"></i>
+                  Linh kiện máy tính </a>
+               </li>
+               <li><a >
+                  <i class="fa-solid fa-tags"></i>
+                  Khuyến mãi</a>
+               </li>
+
+            </div>
+         </div>
       </div>
       <div id="root" bis_skin_checked="1">
     </div>
@@ -206,4 +244,19 @@
         </div>
      </footer>
    </body>
+   <script>
+        // menu button
+        let btnMenu = document.querySelector(".sub-header-btn");
+         btnMenu.addEventListener('click', function(){
+          document.querySelector(".nav__overlay").style.display = "flex";
+          document.querySelector(".nav-mobile").style.display = "flex";
+          // load data of news
+        });
+        let btnClose = document.querySelector(".nav__mobile-close");
+        btnClose.addEventListener('click', function(){
+          document.querySelector(".nav__overlay").style.display = "none";
+          document.querySelector(".nav-mobile").style.display = "none";
+          // load data of news
+        });
+   </script>
 </html>
