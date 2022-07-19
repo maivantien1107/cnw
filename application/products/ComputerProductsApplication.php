@@ -11,14 +11,15 @@ class ComputerProductsApplication extends ProductsApplication {
     public function insert($computerProducts) {
         // add to products table
         parent::insert($computerProducts);
+        $pro_id= parent::getNewinsert();
                         
         // add to computer_products table
         $query = "insert into computer_products(product_id, s_cpu, s_ram, s_memory, screen, s_card, os)
                     value (" .
-                    $computerProducts->getProductID() . "," .
+                   $pro_id . "," .
                     "'" . $computerProducts->getCpu() . "' ," .
-                    "'" . $computerProducts->getRam() . "' ," .
-                    $computerProducts->getMemory() . "," .
+                    "'" . $computerProducts->getRam() . "' ,'" .
+                    $computerProducts->getMemory() . "'," .
                     "'" . $computerProducts->getScreen() . "' ," .
                     "'" . $computerProducts->getCard() . "' ," .
                     "'" . $computerProducts->getOs() . "'"
@@ -49,6 +50,12 @@ class ComputerProductsApplication extends ProductsApplication {
 
         parent::addQuerry($query);
         parent::updateQuery();             
+    }
+    public function delete($product_id){
+        $query="DELETE FROM computer_products WHERE product_id=$product_id";
+        parent::addQuerry($query);
+        parent::updateQuery();
+        parent::delete($product_id);
     }
 }
 

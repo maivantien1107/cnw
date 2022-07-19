@@ -39,9 +39,9 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                               <div class="news-top__item" bis_skin_checked="1" id="<?php echo $news_top->getNews_id(); ?>">
                                    
                                     <a href="<?php echo "newsdetail/".$news_top->getNews_id()."/".$path ?>" class="news-top__item__img">
-                                    <img src="public/img/news/<?php echo $news_top->getNews_id(); ?>_image1.webp" alt="" width="490" height="326">
+                                    <img src="public/img/news/<?php echo $news_top->getNews_id(); ?>_image1.png" alt="" width="490" height="326">
                                     </a>
-                                    <a href="/tin-tuc/danh-gia/tren-tay-oppo-a57-147296">
+                                    <a href="<?php echo "newsdetail/".$news_top->getNews_id()."/".$path ?>">
                                        <h3 class="news-top__item__tit"><?php echo $news_top->getTitle();?></h3>
                                     </a>
                                     <p class="news-top__item__time">
@@ -63,7 +63,7 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                                             ?>
                                     <div class="news-hor__item" bis_skin_checked="1" id="<?php echo $new->getNews_id(); ?>">
                                        <a href="<?php echo "newsdetail/".$new->getNews_id()."/".$path1 ?>" class="news-hor__item__img">
-                                       <img src="public/img/news/<?php echo $new->getNews_id(); ?>_image1.webp" alt="" width="120" height="80">
+                                       <img src="public/img/news/<?php echo $new->getNews_id(); ?>_image1.png" alt="" width="120" height="80">
                                        </a>
                                        <div class="news-hor__item__info" bis_skin_checked="1">
                                           <a href="<?php echo "newsdetail/".$new->getNews_id()."/".$path1 ?>">
@@ -93,7 +93,7 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
  
                                        ?>
                                   <div class="news__item" bis_skin_checked="1" id="<?php echo $new_tmp->getNews_id(); ?>">
-                                    <a href="<?php echo "newsdetail/".$new_tmp->getNews_id()."/".$path2 ?>" class="news__item__img"><img src="public/img/news/<?php echo $new_tmp->getNews_id(); ?>_image1.webp" 
+                                    <a href="<?php echo "newsdetail/".$new_tmp->getNews_id()."/".$path2 ?>" class="news__item__img"><img src="public/img/news/<?php echo $new_tmp->getNews_id(); ?>_image1.png" 
                                                 alt="AirPods Pro 2 và AirPods Max 2 sắp ra mắt có gì hấp dẫn?" width="300" height="200"></a>
                                     <div class="news-item__info" bis_skin_checked="1">
                                        <a class="news__item__cate" href="/tin-tuc/danh-gia"><?php echo $new_tmp->getCategory(); ?></a>
@@ -219,7 +219,7 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                               ?> 
                                  <li class="promo__item" id="<?php echo $promotion->getNews_id(); ?>">
                                  <a href="<?php echo "newsdetail/".$promotion->getNews_id()."/".$path3 ?>" class="promo__link">
-                                    <span><img style="width:300px; height:200px;" src="public/img/news/<?php echo $promotion->getNews_id(); ?>_image1.webp"></span>
+                                    <span><img style="width:300px; height:200px;" src="public/img/news/<?php echo $promotion->getNews_id(); ?>_image1.png"></span>
                                     <h3 class="promo__title"><?php echo $promotion->getTitle(); ?></h3>
                                  </a>
                               </li>

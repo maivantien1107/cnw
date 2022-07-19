@@ -14,7 +14,7 @@
     RewriteCond %{REQUEST_URI} /details [OR]
     RewriteCond %{REQUEST_URI} /admin$ [OR]
     RewriteCond %{REQUEST_URI} /account-management [OR]
-    RewriteCond %{REQUEST_URI} /product-management [OR]
+    RewriteCond %{REQUEST_URI} /admin-product [OR]
     RewriteCond %{REQUEST_URI} /filter [OR]
     RewriteCond %{REQUEST_URI} /login-admin [OR]
     RewriteCond %{REQUEST_URI} /news$ [OR]

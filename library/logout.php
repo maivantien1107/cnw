@@ -16,4 +16,5 @@ if(array_key_exists("admin_username", $_SESSION)){
     header("Location: ../login-admin");
 }
 header("Location: home");
+exit();
 ?>

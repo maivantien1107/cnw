@@ -12,11 +12,11 @@ function update_quantity(this_row) {
         let quantity = parseInt(document.getElementsByClassName("quantity")[i - 1].value);
         if (list[i].contains(this_row)) {
             let ele_price = document.getElementsByClassName("price")[i - 1].value;
-            if (quantity >= 6) {
-                alert("Chọn tối đa 5 sản phầm thôi! Vì chúng tôi biết chả ai mua nhiều máy tính tới thế!");
-                document.getElementsByClassName("quantity")[i - 1].value = 5;
-                return;
-            }
+            // if (quantity >= 6) {
+            //     alert("Chọn tối đa 5 sản phầm thôi! Vì chúng tôi biết chả ai mua nhiều máy tính tới thế!");
+            //     document.getElementsByClassName("quantity")[i - 1].value = 5;
+            //     return;
+            // }
 
             let new_price = String(parseInt(ele_price) * quantity);
             list[i].cells[2].innerHTML = new_price;

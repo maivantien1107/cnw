@@ -1,11 +1,11 @@
 <?php
 
 require_once ROOT . DS . 'database' . DS . 'MySqlConnect.php';
-require_once ROOT . DS . 'application' . DS . 'TypeProductsApplication.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Users.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'Bill.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Products.php';
-require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . "Type.php";
+require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
+
 
 class UsersApplication extends MySqlConnect {
     public function insert($users) {
@@ -166,22 +166,11 @@ class UsersApplication extends MySqlConnect {
         while($row = mysqli_fetch_array($result)){
             $product_id = $row["product_id"];
 
-            if(TypeProductsApplication::checkType($product_id) == Type::LAP){
+           
                 $service = new LaptopApplication();
                 $laptop = $service->get($product_id);
                 array_push($listCartProducts, $laptop);
-            } else if (TypeProductsApplication::checkType($product_id) == Type::PC){
-                $service = new PCApplication();
-                $pc = $service->get($product_id);
-                array_push($listCartProducts, $pc);
-            } else if(TypeProductsApplication::checkType($product_id) == Type::MOUSE){
-                $service = new MouseProductsApplication();
-                $mouse = $service->get($product_id);
-                array_push($listCartProducts, $mouse);
-            } else {
-                echo "hello";
-                array_push($listCartProducts, null);
-            }
+            
 
         }
 
@@ -196,9 +185,8 @@ class UsersApplication extends MySqlConnect {
      */
     public function insertProduct($username, $product, $quantity){
         $cart_id = self::getCartID($username);
-        $product_id = $product->getProductID();
         $query = "insert into cart_products(cart_id, product_id, quantity)
-                    value($cart_id, $product_id, $quantity)
+                    value($cart_id, $product, $quantity)
                   ";
 
         parent::addQuerry($query);

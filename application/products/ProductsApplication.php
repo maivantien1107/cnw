@@ -10,11 +10,9 @@ class ProductsApplication extends  MySqlConnect {
      */
     public function insert($product) {
         // add to products table
-        $query = "insert into products(product_id, model,size, price, weigh, color, number_of_product, supplier, p_description, dis,overview,
+        $query = "insert into products(model,size, price, weigh, color, number_of_product, supplier, p_description, dis,overview,
                        des1,des2,des3,des4,des5,des6,des7,des8,des9,des10,des11)
-                    value (" .
-                    $product->getProductID() . "," .
-                    "'" . $product->getModel() . "' ," .
+                    value ('" . $product->getModel() . "' ," .
                     $product->getPrice() . ",'" .
                     $product->getSize() . "'," .
                     $product->getWeigh() . "," .
@@ -46,28 +44,12 @@ class ProductsApplication extends  MySqlConnect {
      */
     public function delete($product_id){
         //  delete row with product_id in pc table
-        $query = "delete from pc
-                  where product_id = " . $product_id;
-        parent::addQuerry($query);
-        parent::updateQuery();
-
         // delete row with product_id in rate table
         $query = "delete from rate
                   where product_id = " . $product_id;
         parent::addQuerry($query);
         parent::updateQuery();
 
-        // delete row with product_id in computer_mouse_products table
-        $query = "delete from mouse_products
-                  where product_id = " . $product_id;
-        parent::addQuerry($query);
-        parent::updateQuery();
-
-        // next, delete row with product_id in laptop table
-        $query = "delete from laptop
-                  where product_id = " . $product_id;
-        parent::addQuerry($query);
-        parent::updateQuery();
 
         // next, delete row with product_id in cart_products table
         $query = "delete from cart_products
@@ -75,12 +57,9 @@ class ProductsApplication extends  MySqlConnect {
         parent::addQuerry($query);
         parent::updateQuery();
 
-        // next, delete row with product_id in computer_products table
-        $query = "delete from computer_products
-                  where product_id = " . $product_id;
+        $query = "delete from bill where product_id =$product_id";
         parent::addQuerry($query);
         parent::updateQuery();
-
         // next, delete row with product_id in products table
         $query = "delete from products
                   where product_id = " . $product_id;
@@ -144,6 +123,18 @@ class ProductsApplication extends  MySqlConnect {
 
         parent::addQuerry($query);
         parent::updateQuery();
+    }
+    public function getNewinsert(){
+        $query=("select * from products where 1 order by product_id DESC LIMIT 1");
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        $row=mysqli_fetch_array($result);
+        if ($row){
+            return $row['product_id'];
+        }
+        else {
+            return null;
+        }
     }
 }
 

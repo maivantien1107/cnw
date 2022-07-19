@@ -31,7 +31,7 @@ class Products {
     public $type = Type::NONE;
 
     public function __construct($productID, $model, $price,$size, $weigh, $color, $number, $supplier, $des,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$des9,$des10,$des11) {
-        self::setDisable(0);  // new products is no disable
+        // new products is no disable
         self::setProductID($productID);
         self::setModel($model);
         self::setPrice($price);
@@ -51,7 +51,7 @@ class Products {
         self::setDes5($des5);
         self::setDes6($des6);
         self::setDes7($des7);
-        self::setDes8( $des8);
+        self::setDes8($des8);
         self::setDes9($des9);
         self::setDes10($des10);
         self::setDes11($des11);
@@ -140,7 +140,7 @@ class Products {
         return $this->des7;
     }
     public function getDes8(){
-        return  $this->dedes9;}
+        return  $this->des8;}
     public function getDes9(){
         return  $this->des9;
     }
