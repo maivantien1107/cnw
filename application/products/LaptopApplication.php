@@ -11,11 +11,11 @@ class LaptopApplication extends ComputerProductsApplication {
     public function insert($laptop) {
         // add to products table and computer_products table
         parent::insert($laptop);
-
+       $produ_id= parent::getNewinsert();
         // add to pc table
         $query = "insert into laptop(product_id, pin)
                     value (" .
-                    $laptop->getProductID() . "," .
+                    $produ_id . "," .
                     $laptop->getPin()
                         . ")";
         parent::addQuerry($query);
@@ -146,5 +146,12 @@ class LaptopApplication extends ComputerProductsApplication {
 
         parent::addQuerry($query);
         parent::updateQuery();
+    }
+    public function delete($lap_id){
+       
+        $query = "delete from laptop where product_id = $lap_id";
+        parent::addQuerry($query);
+        parent::updateQuery();
+        parent::delete($lap_id);
     }
 }

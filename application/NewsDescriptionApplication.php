@@ -2,10 +2,11 @@
 require_once ROOT . DS . 'mvc'.DS.'models'.DS.'NewsDescription.php';
 require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
 class NewsDescriptionApplication extends NewsApplication{
-    public function insert($newsdes){
+    public function insert( $newsdes){
         parent::insert($newsdes);
+        $newstop=parent::getButtom();
         $query="INSERT INTO news_description(news_id,des1,des2,des3,des4,des5,des6,des7,des8,des9,des10) VALUES(
-            ".$newsdes->getNews_id().",'".
+            ".$newstop->getNews_id().",'".
             $newsdes->getDes1()."','".
             $newsdes->getDes2()."','".
             $newsdes->getDes3()."','".
@@ -19,19 +20,27 @@ class NewsDescriptionApplication extends NewsApplication{
         parent::addQuerry($query);
         parent::updateQuery();
     }
+    public function delete($news_id){
+        $query="delete from news_description where news_id = $news_id";
+        parent::addQuerry($query);
+        parent::updateQuery();
+        parent::delete($news_id);
+
+    }
     public function update($newsdes){
         parent::update($newsdes);
         $query="Update news_description set des1='".
-        $newsdes->getDes1()."','".
+        $newsdes->getDes1()."',".
         "des2='".$newsdes->getDes2()."',".
         "des3='".$newsdes->getDes3()."',".
         "des4='".$newsdes->getDes4()."',".
         "des5='".$newsdes->getDes5()."',".
-        "des6='".$newsdes->getDes6()."',".
-        "des7='".$newsdes->getDes7()."',".
-        "des8='".$newsdes->getDes8()."',".
-        "des9='".$newsdes->getDes9()."',".
-        "des10='".$newsdes->getDes10()."');";
+        "des6='".$newsdes->getDes6()."'
+        where news_id=".$newsdes->getNews_id();
+        // "des7='".$newsdes->getDes7()."',".
+        // "des8='".$newsdes->getDes8()."',".
+        // "des9='".$newsdes->getDes9()."',".
+        // "des10='".$newsdes->getDes10()."');";
     parent::addQuerry($query);
     parent::updateQuery();
 

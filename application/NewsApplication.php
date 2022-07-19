@@ -6,10 +6,10 @@ class NewsApplication extends MySqlConnect{
         $query="INSERT INTO news(title,category,description,time,img,overview) VALUES('"
         .$news->getTitle()."','"
         .$news->getCategory()."','"
-        .$news->getDescription()."',"
-        .$news->getTime().",'"
+        .$news->getDescription()."','"
+        .$news->getTime()."','"
         .$news->getImg()."','"
-        .$news->getOverview()."');";
+        .$news->getOverview()."')";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -17,11 +17,11 @@ class NewsApplication extends MySqlConnect{
         $query="UPDATE news SET title='".
         $news->getTitle()."',category='".
         $news->getCategory()."',description='".
-        $news->getDescription()."',time=".
-        $news->getTime().",img='".
+        $news->getDescription()."',time='".
+        $news->getTime()."',img='".
         $news->getImg()."',overview='".
         $news->getOverview()."' where news_id=".
-        $news->getNews_id().");";
+        $news->getNews_id().";";
         parent::addQuerry($query);
         parent::updateQuery();
         

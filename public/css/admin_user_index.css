@@ -375,7 +375,21 @@ justify-content: space-between;
 
 .bg-modal{
   width: 100%;
-  height: 100%;
+  height: auto;
+  background-color: rgba(0,0,0,0.7);
+  position: absolute;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.bg-modal1{
+  left: 0;
+
+  width: 100%;
+  height: auto;
   background-color: rgba(0,0,0,0.7);
   position: absolute;
   top: 0;
@@ -388,7 +402,21 @@ justify-content: space-between;
 .bg-modal .modal-content{
   border-radius: 10px;
   width: 50%;
-  height: 70%;
+  height: auto;
+  background-color: white;
+  position: relative;
+  -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 1s; /* Firefox < 16 */
+        -ms-animation: fadein 1s; /* Internet Explorer */
+         -o-animation: fadein 1s; /* Opera < 12.1 */
+            animation: fadein 1s;
+}
+.bg-modal1 .modal-content{
+  border-radius: 10px;
+  top:-35px;
+  top:30px;
+  width: 65%;
+  height: auto;
   background-color: white;
   position: relative;
   -webkit-animation: fadein 1s; /* Safari, Chrome and Opera > 12.1 */
@@ -404,7 +432,20 @@ justify-content: space-between;
   font-weight: 500;
   font-size: 20px;
 }
-
+.class-form-update{
+  display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.class-form-update .modal-title{
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  font-weight: 500;
+  font-size: 20px;
+}
 form{
   display: flex;
   flex-direction: column;
@@ -457,6 +498,9 @@ textarea{
 .news-title{
   margin-top: 10px;
   margin-bottom: 8px;
+  
+  text-align: left;
+
 }
 .image-container{
   display: flex;
@@ -513,8 +557,13 @@ textarea{
 /* Delete modal */
 
 .delete-modal{
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 75%;
+  margin-top: 100px;
+  left: 10%;
+  right: 10%;
+  top: 10%;
+  bottom: 10%;
   background-color: rgba(0,0,0,0.7);
   position: absolute;
   top: 0;
@@ -662,4 +711,14 @@ a {
     left: 60px;
     width: calc(100% - 60px);
   }
+}
+.news_category{
+  height: 35px;
+  border: 1px solid #ccc!important;
+    border-radius: 5px
+}
+form.form-submit-newsid{
+  flex-direction: row;
+  padding-left:0;
+  padding-right:0;
 }

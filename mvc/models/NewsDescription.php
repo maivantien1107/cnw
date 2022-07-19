@@ -12,7 +12,7 @@
     private $des9; //string
     private $des10; //string
  
- public function __construct($news_id, $title,$category, $description,$time, $img, $overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$des9,$des10){
+ public function __construct($news_id, $title,$category, $description,$time, $img, $overview,$des1,$des2,$des3,$des4,$des5,$des6){
     parent::__construct($news_id,$title,$category,$description,$time,$img,$overview);
     self::setDes1($des1);
     self::setDes2($des2);
@@ -20,10 +20,7 @@
     self::setDes4($des4);
     self::setDes5($des5);
     self::setDes6($des6);
-    self::setDes7($des7);
-    self::setDes8($des8);
-    self::setDes9($des9);
-    self::setDes10($des10);
+    
  }
  public function getDes1(){ 
    return $this->des1;

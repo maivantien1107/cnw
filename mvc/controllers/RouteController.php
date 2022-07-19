@@ -30,7 +30,7 @@ class RouteController {
         $id = -1;
 
         // check if details -> add id to url
-        var_dump($controller);
+        
         if(strcmp($controller, "newsdetail") == 0){
             $id = intval($urlArray[0]); 
             array_shift($urlArray);
@@ -41,8 +41,8 @@ class RouteController {
         }
         // check if admin -> no footer
         if(strcmp($controller, "admin") == 0
-            || strcmp($controller, "product-management") == 0
-            || strcmp($controller, "account-management") == 0
+            || strcmp($controller, "admin-product") == 0
+            || strcmp($controller, "admin-accout") == 0
             || strcmp($controller, "login-admin") === 0){
             $this->_is_footer = 0;
         }

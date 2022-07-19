@@ -1,13 +1,13 @@
 <?php 
 session_start();
-require_once ROOT . DS . 'application' . DS . 'NewsApplication.php';
-$app_news= new NewsApplication();
+require_once ROOT . DS . 'application'.DS.'products' . DS . 'LaptopApplication.php';
+$app= new LaptopApplication();
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="public/css/admin_news_index.css">
+    <!-- <link rel="stylesheet" href="public/css/admin_news_index.css"> -->
     <link rel="stylesheet" href="public/css/admin_user_index.css">
 
     <link
@@ -85,49 +85,74 @@ $app_news= new NewsApplication();
     <tr>
         <th>ID</th>
         <th>Tiêu đề</th>
-        <th>Loại</th>
-        <th>Ngày tạo</th>
+        <th>Giá</th>
+        <th>CPU</th>
+        <th>RAM</th>
+        <th>Bộ nhớ</th>
         <th>Tác vụ</th>
 
     </tr>
     <?php  
-      $listnews=$app_news->getAll(0,100);
+      $listnews=$app->getAll(0,100);
       foreach($listnews as $news){
-        $path=$news->getTitle();
-        $path = str_replace(' ', '-', $path);?>
+        $path=$news->getModel();
+        $path = str_replace(' ', '-', $path);
+        $info1=$news->getCpu().", ".$news->getRam().", ".$news->getMemory();
+        $info2=$news->getScreen()."__".$news->getCard();
+        $info3=$news->getOs().", ".$news->getPin();
+        $des=array();
+        $des[0]=$news->getDes1();
+        $des[1]=$news->getDes2();
+        $des[2]=$news->getDes3();
+        $des[3]=$news->getDes4();
+        $des[4]=$news->getDes5();
+        $des[5]=$news->getDes6();
+        $description=implode("\n",$des);
+        ?>
+        
           <tr>
-        <td><a href="#"><?php echo $news->getNews_id(); ?></a></td>
-        <td><a href="#"><?php echo $news->getTitle(); ?></a></td> 
+        <td><?php echo $news->getProductID(); ?></td>
+        <td><a href="detail/"><?php echo $news->getModel(); ?></a></td> 
+        <td><?php echo $news->getPrice(); ?></td>
+        <td><?php echo $news->getCpu();  ?></td>
+        <td><?php echo $news->getRam();  ?></td>
+        <td><?php echo $news->getMemory();  ?></td>
         <td>
-            <a href="#"><?php echo $news->getCategory(); ?></a>
-    </td>
-        <td><?php echo $news->getTime();  ?></td>
-        <td>
-        <li class="btn-action">
-             
-                  <button class="btn" name="btn-update" value="<?php echo $news->getNews_id(); ?>">
+        <li class="btn-action">             
+                  <button class="btn" name="btn-update" value="<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-edit" style="font-size: 25px"></i>
                   </button>
-                  <button class="btn" name="btn-delete" value="<?php echo $news->getNews_id(); ?>">
+                  <button class="btn" name="btn-delete" value="<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-trash" style="font-size: 25px"></i>
                   </button>
-                  <form action="validate/admin_insertnews.php" method="post"> 
+                  <form action="validate/admin_products.php" method="post"> 
                     <div class="bg-modal1">
                       <div class="modal-content">
                         <span class="modal-title">Cập nhật thông tin</span>
                         <div class="class-form-update">
-                        <label class="news-title">Tiêu đề</label>
-                          <input name="news_title" type="text" value="<?php echo $news->getTitle(); ?>" placeholder="Tiêu đề tin tức"/>
-                          <label class="news-title">Thể loại</label>
-                        <select class="news_category" name="news_category" value="<?php echo $news->getCategory(); ?>">
-                            <option value="Tin tức">Tin tức</option>
-                            <option value="Khuyến mãi">Khuyến mãi</option>
-                            <option value="Thông tin">Thông tin</option>
-                        </select>
-                          <label class="news-title">Tổng quan</label>
-                          <input type="text" placeholder="Thông tin tổng quan tin tức" name="news_overview" value="<?php $news->getOverview(); ?>"/>
-                          <label class="news-title">Miêu tả</label>
-                          <textarea rows="8" name="news_description" value="" ></textarea>
+                          <label class="news-title">Tên sản phẩm</label>
+                          <input name="model" type="text" value="<?php echo $news->getModel(); ?>" placeholder="Tiêu đề tin tức"/>
+                          <label class="news-title">Mức giá</label>
+                          <input type="text" placeholder="" name="price" value="<?php echo $news->getPrice(); ?>"/>
+                          <label class="news-title">Kích thước</label>
+                          <input type="text" placeholder="" name="size" value="<?php echo $news->getSize(); ?>"/>
+                          <label class="news-title">Trọng lượng</label>
+                          <input type="text" placeholder="" name="weigh" value="<?php echo $news->getWeigh(); ?>"/>
+                          <label class="news-title">Màu sắc</label>
+                          <input type="text" placeholder="" name="color" value="<?php echo $news->getColor(); ?>"/>
+                         
+                          <label class="news-title">Số lượng sản phẩm</label>
+                          <input type="text" placeholder="" name="number" value="<?php echo $news->getNumber(); ?>"/>
+                          <label class="news-title">Thông tin</label>
+                          <input type="text" placeholder="" name="info1" value="<?php echo $info1 ?>"/>
+                          <label class="news-title">Màn hình, Card đồ họa</label>
+                          <input type="text" placeholder="" name="info2" value="<?php echo $info2 ?>"/>
+                          <label class="news-title">Hệ điều hành, Pin</label>
+                          <input type="text" placeholder="" name="info3" value="<?php echo $info3 ?>"/>
+                          <label class="news-title">Tính năng</label>
+                          <textarea rows="4" name="feature" value="<?php echo $news->getFeature(); ?>" ></textarea>
+                          <label class="news-title">Thông tin chi tiết</label>
+                          <textarea rows="8" name="description" value="<?php echo $description; ?>" ></textarea>
 
                           <label class="news-title">Hình ảnh</label>
                           <div class="image-container">
@@ -171,10 +196,9 @@ $app_news= new NewsApplication();
 
                           <div class="bottom-modal-button">
                             <button class="modal-button-close  close-add-modal1">Đóng</button>
-                            <button class="modal-button-accept accept-add-modal1" type="submit" name="btn-submit-update" value="<?php echo $news->getNews_id(); ?>">Cập nhật</button>
+                            <button class="modal-button-accept accept-add-modal1" type="submit" name="btn-submit-update" value="<?php echo $news->getProductID(); ?>">Cập nhật</button>
                           </div>
-                        </div>
-                         
+                        </div>                         
                       </div>
                     </div>
                     <div class="delete-modal">
@@ -187,7 +211,7 @@ $app_news= new NewsApplication();
                       <span> Bạn có chắc chắn muốn xóa không? </span>
                       <div class="bottom-modal-button">
                         <button class="modal-button-close close-delete-modal">Không</button>
-                        <button class="modal-button-accept accept-delete-modal"  value="<?php echo $news->getNews_id(); ?>" name="btn-delete">Có</button>
+                        <button class="modal-button-accept accept-delete-modal"  value="<?php echo $news->getProductID(); ?>" name="btn-delete">Có</button>
                       </div>
                     </div>
                     </div>
@@ -209,19 +233,31 @@ $app_news= new NewsApplication();
     <div class="bg-modal">
       <div class="modal-content">
         <span class="modal-title">Thêm mới</span>
-        <form action="validate/admin_insertnews.php" method="post">
-          <label class="news-title">Tiêu đề</label>
-          <input name="news_title" type="text" value="" placeholder="Tiêu đề tin tức"/>
-          <label class="news-title">Thể loại</label>
-         <select class="news_category" name="news_category" value="">
-            <option value="Tin tức">Tin tức</option>
-            <option value="Khuyến mãi">Khuyến mãi</option>
-            <option value="Thông tin">Thông tin</option>
-         </select>
-          <label class="news-title">Tổng quan</label>
-          <input type="text" placeholder="Thông tin tổng quan tin tức" name="news_overview" value=""/>
-          <label class="news-title">Miêu tả</label>
-          <textarea rows="8" name="news_description" value="" ></textarea>
+        <form action="validate/admin_products.php" method="post">
+                          <label class="news-title">Tên sản phẩm</label>
+                          <input name="model" type="text" value="" placeholder="Tiêu đề tin tức"/>
+                          <label class="news-title">Mức giá</label>
+                          <input type="text" placeholder="" name="price" value=""/>
+                          <label class="news-title">Kích thước</label>
+                          <input type="text" placeholder="" name="size" value=""/>
+                          <label class="news-title">Trọng lượng</label>
+                          <input type="text" placeholder="" name="weigh" value=""/>
+                          <label class="news-title">Màu sắc</label>
+                          <input type="text" placeholder="" name="color" value=""/>
+                         
+                          <label class="news-title">Số lượng sản phẩm</label>
+                          <input type="text" placeholder="" name="number" value=""/>
+                          <label class="news-title">Thông tin</label>
+                          <input type="text" placeholder="Nhập theo định dạng CPU, RAM, Memory" name="info1" value=""/>
+                          <label class="news-title">Màn hình, Card đồ họa</label>
+                          <input type="text" placeholder="Thông tin Màn hình__Card đồ họa" name="info2" value=""/>
+                          <label class="news-title">Hệ điều hành, Pin</label>
+                          <input type="text" placeholder="Thông tin Hệ điều hành__Pin" name="info3" value=""/>
+                          <label class="news-title">Tính năng</label>
+                          <textarea rows="4" name="feature" value="" ></textarea>
+                          <label class="news-title">Thông tin chi tiết</label>
+                          <textarea rows="8" name="description" value="" ></textarea>
+
 
           <label class="news-title">Hình ảnh</label>
           <div class="image-container">
