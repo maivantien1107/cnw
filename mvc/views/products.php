@@ -1,5 +1,4 @@
 <?php session_start();
-	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
   require_once ROOT . DS . 'application' . DS .'products' . DS . 'SupplierApplication.php';
   require_once ROOT . DS . 'application' . DS .'products' . DS . 'RamApplication.php';
@@ -19,26 +18,25 @@
     <title>Sản phẩm</title>
     <link rel="stylesheet" href="public/css/base.css">
     <link rel="stylesheet" href="public/css/main_header.css">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"> -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="public/css/main_banner.css">
     <link rel="stylesheet" href="public/css/main_product.css">
     <link rel="stylesheet" href="public/css/footer_container.css" type="text/css">
 		<link rel="stylesheet" type="text/css" href="public/css/nav_bar.css" >
-    <!-- <link rel="stylesheet" href="assets/fonts/fontawesome-free-6.1.1-web/css/all.css"> -->
+   
+    <!-- <link rel="stylesheet" href="public/fonts/themify-icons/themify-icons.css">
+    <script src="https://kit.fontawesome.com/daab9b5831.js" crossorigin="anonymous"></script> -->
+
 </head>
 <body>
     <div class="app">
         <?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'nav_bar.php'; ?>
         <div class="container">
             <main>
-                <div class="category_container">
-                    <div class="row header-container">
-                        <p>Trang san pham</p>
-                    </div>
+           
 
                     <div class="cdt-banner m-b-20">
-                        <div class="img-slider">
+                        <div class="img-slider" >
                         <?php $newss=new NewsApplication();
                                            $news_discounts=$newss->getPromotion();
                                            $cnt_newsdis=1;
@@ -46,82 +44,14 @@
                                             if ($cnt_newsdis<=10){                                    
                                            $path=$news_discount->getTitle();
                                            $path = str_replace(' ', '-', $path);?>
-                              <div class="slide">
+                              <div class="slide" style="height:100%;">
                               <a href="<?php echo "newsdetail/".$news_discount->getNews_id()."/".$path ?>">
-                              <img src="../../public/img/news/<?php echo $news_discount->getNews_id(); ?>_image1.webp" alt="">
+                              <img style="height:100%; object-fit:inherit;" src="public/img/news/<?php echo $news_discount->getNews_id(); ?>_image1.png" alt="">
                               </a>                                                       
                             </div>
                                          <?php
                                            }
                                            $cnt_newsdis++;}?>
-                            <!-- <div class="slide active">
-                              <img src="public/html/assets/img/Slider/1.webp" alt="">
-                              
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/2.webp" alt="">
-                              
-                                
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/3.webp" alt="">
-                              
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/4.webp" alt="">
-                              
-                            </div>
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/5.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/6.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/7.webp" alt="">
-                              
-                            </div>
-                            
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/8.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/9.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/10.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/11.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/12.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/13.webp" alt="">
-                              
-                            </div>
-                      
-                            <div class="slide">
-                              <img src="public/html/assets/img/Slider/14.webp" alt="">
-                              
-                            </div> -->
-                      
-                      
                             
                             <div class="navigation">
                               <div class="btn active"></div>
@@ -463,64 +393,6 @@
                                ?>                                                                               
                             </div>
                           </div>
-                          <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Nhu cầu
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Gaming đồ hoạ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Gaming đồ hoạ</label>
-                                   
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Sinh viên">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Sinh viên</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Văn phòng">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Văn phòng</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Doanh nhân">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Doanh nhân</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Mỏng nhẹ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Mỏng nhẹ</label>
-                                  
-                                </a>
-                              </div>                                                                                         
-                            </div>
-                          </div> -->
                         </div>
 
                       </div>
@@ -528,67 +400,6 @@
                       <div class="col-9 p-0">
                         <div class="card fplistbox">
                           
-                          <!-- <div class="card-body p-0 p-t-15 p-b-30 fplistbox">
-
-                            <div class="cdt-normal p-l-15 p-r-15 m-b-25 sortfirstbox">
-                              <div class="cdt-list-tab" >
-                                <span>Ưu tiên xem: </span>
-
-                                <div class="btn-group">
-                                  <ul class="listfilterv4">
-                                    <li class="frowitem sort sort default active">
-
-                                      <a href="" class="btn btn-outline-secondary">Bán chạy nhất</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Trả góp 0%</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Giá thấp</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Giá cao</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Ưu đãi online</a>
-                                    </li>
-                                  </ul>
-
-                                </div>
-                              </div>
-
-
-
-                              <div class="cdt-grid-list">
-                                <label class="cdt-dropdown">
-                                  <div class="cdt-dropdown-button">Bán chạy nhất
-                                    
-                                  </div>
-                                    
-                                  <ul class="cdt-dropdown-menu">
-                                     <li class="frowitem sort sortdefault active">Bán chạy nhất</li>
-
-                                     <li class="frowitem sort ">Trả góp 0%</li>
-
-                                     <li class="frowitem sort ">Giá cao</li>
-
-                                     <li class="frowitem sort ">Giá thấp</li>
-
-                                     <li class="frowitem sort ">Ưu đãi online</li>
-
-
-                                  </ul>
-                                </label>
-
-                                <span class="fa-solid fa-grid">
-
-                                </span>
-
-                                <span class="fa-solid fa-list"></span>
-                              </div>
-
-                            </div>
-                          </div> -->
                          <!-- // Sản phẩm -->
                             <div class="cdt-product-wrapper m-b-20">
                               <?php
@@ -614,14 +425,15 @@
                                 </div>
 
                                 <div class="cdt-product-info">
-                                  <h3><a href="<?php echo "details/".$laptop->getProductID()."/".$path; ?>" title="<?php echo $laptop->getModel(); ?>" class="cdt-product__name"><?php echo $laptop->getModel(); ?></a>
+                                  <h3><a href="<?php echo "details/".$laptop->getProductID()."/".$path; ?>" title="<?php echo $laptop->getModel(); ?>"
+                                   class="cdt-product__name"><?php echo $laptop->getModel(); ?></a>
                                   </h3>
 
                                   <div class="cdt-product__show-promo">
                                     <div class="progress pdiscount2"><?php echo $laptop->getPrice(); ?> ₫
                                       <div class="progress-bar" style="width: 87%;"></div>
                                     </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
+                                    <div class="strike-price"><strike><?php echo $laptop->getPrice()+2000000 ;?>₫</strike></div>
                                   </div>
 
                                   <div class="cdt-product__config">
@@ -634,16 +446,6 @@
                                         <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i><?php echo $laptop->getCard(); ?></span>
                                         <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i><?php echo $laptop->getWeigh(); ?> kg</span>
                                     </div>
-
-                                    <!-- <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div> -->
 
                                   </div>
 
@@ -660,63 +462,6 @@
                              }
                              ?>
 
-                              <!-- <div class="cdt-product prd-lap product-sale">
-                                <div class="cdt-product__img" style="background-image: url(./assets/img/Img_product/backgroundproduct.webp); background-position: center center;
-                                background-repeat: no-repeat;">
-                                  <a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H ">
-                                    <img src="./assets/img/Img_product/Acernitrogamingan515-58-52sp.webp" alt="" height="215">
-                                  </a>
-
-                                  <div class="cdt-product__label">
-                                    <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
-                                  </div>
-
-                                </div>
-
-                                <div class="cdt-product-info">
-                                  <h3><a href="" title="Acer Nitro Gaming AN515-58-52SP/i5-12500H" class="cdt-product__name">Acer Nitro Gaming AN515-58-52SP/i5-12500H</a>
-                                  </h3>
-
-                                  <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2">24.490.000 ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
-                                    </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
-                                  </div>
-
-                                  <div class="cdt-product__config">
-                                    <div class="cdt-product__config__param">
-                                      <span data-title="Màn hình">
-                                        <i class="fa-thin fa-laptop"></i>15.6 inch</span>
-                                        <span data-title="CPU"><i class="fa-solid fa-microchip"></i>Core i5</span>
-                                        <span data-title="RAM"><i class="fa-solid fa-memory"></i>8 GB (1 thanh 8 GB)</span>
-                                        <span data-title="Ổ cứng"><i class="fa-solid fa-hard-drive"></i>SSD 512 GB</span>
-                                        <span data-title="Đồ họa"><i class="fa-brands fa-fantasy-flight-games"></i>NVIDIA GeForce RTX 3050 4GB</span>
-                                        <span data-title="Trọng lượng"><i class="fa-solid fa-weight-hanging"></i>2.5 kg</span>
-                                    </div>
-
-                                    <div class="cdt-product__img-promo">
-                                      <span class=""><img src="./assets/img/Img_promo/balo.webp" alt="Tặng Balo Gaming cao cấp"></span>
-                                      <span class=""><img src="/assets/img/Img_promo/mousegaming.webp" alt="Tặng Chuột Gaming GM03"></span>
-                                      <span class=""><img src="/assets/img/Img_promo//mocavoucher.webp" alt="Giảm thêm đến 400.000 đồng khi thanh toán qua ví Moca trên ứng dụng Grab"></span>
-                                      <span class="active"><img src="/assets/img/Img_promo/Tpbankvoucher.webp" alt="Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO"></span>
-                                      <div id="plistppromotion40156" class="cdt-product__text-promo">Ưu đãi đến 1.1 triệu khi mở thẻ TPBANK EVO
-
-                                      </div>
-                                    </div>
-
-                                  </div>
-
-                                  <div class="cdt-product__btn">
-                                    <a href="" class="btn btn-primary btn-sm btn-main">MUA NGAY</a>
-                                    <a href="" class="btn btn-secondary btn-sm btn-sub">SO SÁNH</a>
-                                  </div>
-                                </div>
-
-                              </div>
-
-                              -->
                             </div>
 
                             <div class="cdt-product--loadmore">

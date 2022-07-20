@@ -2,7 +2,6 @@
 
 require_once ROOT . DS . 'config' . DS . 'db_config.php';
 require_once ROOT . DS . 'mvc' . DS . 'models' . DS . 'products' . DS . 'Type.php';
-require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
 require_once ROOT . DS . 'application' . DS . 'products' . DS . 'LaptopApplication.php';
 require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
 
@@ -13,12 +12,7 @@ class TypeProductsApplication {
      * @return int
      */
     public static function checkType($product_id){
-        $service = new PCApplication();
-        $product = $service->get($product_id);
-
-        if($product != null){
-            return Type::PC;
-        } else {
+        
             $service = new LaptopApplication();
             $product = $service->get($product_id);
 
@@ -32,7 +26,7 @@ class TypeProductsApplication {
                     return Type::MOUSE;
                 }
             }
-        }
+        
 
         return Type::NONE;
     }

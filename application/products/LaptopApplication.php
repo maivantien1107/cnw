@@ -14,10 +14,10 @@ class LaptopApplication extends ComputerProductsApplication {
        $produ_id= parent::getNewinsert();
         // add to pc table
         $query = "insert into laptop(product_id, pin)
-                    value (" .
+                    values (" .
                     $produ_id . "," .
                     $laptop->getPin()
-                        . ")";
+                        . ");";
         parent::addQuerry($query);
         parent::updateQuery();
     }
@@ -30,7 +30,7 @@ class LaptopApplication extends ComputerProductsApplication {
         $listLaptop = array();
         $query = "select * from
                     products p inner join computer_products cp on p.product_id = cp.product_id
-                    inner join laptop l on p.product_id = l.product_id";
+                    inner join laptop l on p.product_id = l.product_id order by p.product_id desc";
         parent::addQuerry($query);
         $result = parent::executeQuery();
 

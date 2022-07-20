@@ -1,3 +1,8 @@
+.container {
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
 .fspdbox{
     margin-bottom: 30px;
 }

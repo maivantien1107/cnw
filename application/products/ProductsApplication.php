@@ -10,16 +10,17 @@ class ProductsApplication extends  MySqlConnect {
      */
     public function insert($product) {
         // add to products table
-        $query = "insert into products(model,size, price, weigh, color, number_of_product, supplier, p_description, dis,overview,
+        $query = "insert into products(model,size, price, weigh, color, number_of_product, supplier, p_description,feature, dis,overview,
                        des1,des2,des3,des4,des5,des6,des7,des8,des9,des10,des11)
-                    value ('" . $product->getModel() . "' ," .
-                    $product->getPrice() . ",'" .
+                    value ('" . $product->getModel() . "' ,'" .
                     $product->getSize() . "'," .
+                    $product->getPrice() . "," .
                     $product->getWeigh() . "," .
                     "'" . $product->getColor() . "' ," .
                     $product->getNumber() . "," .
                     "'" . $product->getSupplier() . "' ," .
-                    "'" . $product->getDes() . "' ," .
+                    "'" . $product->getDes() . "' ,'" .
+                   $product->getFeature()."',".
                    $product->getDisable().",'".
                    $product->getOverview()."','".
                    $product->getDes1()."','".

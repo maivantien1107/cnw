@@ -3,6 +3,11 @@
   margin: 0;
   text-decoration: none;
 }
+/* .container {
+  width: 1200px;
+  margin: 0 auto;
+  position: relative;
+} */
 .nav_bar {
   display: flex;
   align-items: center;

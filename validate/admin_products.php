@@ -20,21 +20,31 @@ if (isset($_POST['btn-submit'])){
     $info3=isset($_POST['info3'])?addslashes($_POST['info3']):'';
     $feature=isset($_POST['feature'])?addslashes($_POST['feature']):'';
     $description=isset($_POST['description'])?addslashes($_POST['description']):'';
-    $info1=explode(", ",$info1);
+    $overview=isset($_POST['overview'])?addslashes($_POST['overview']):'';
+    $info1=explode("__ ",$info1);
     $cpu=isset($info1[0])? $info1[0]:'';
+    trim($cpu);
     $ram=isset($info1[1])? $info1[1]:'';
+    trim($ram);
     $memory=isset($info1[2])? $info1[2]:'';
+    trim($memory);
     $info2=explode("__",$info2);
     $screen=isset($info2[0])? $info2[0]:'';
+    trim($screen);
     $card=isset($info2[1])? $info2[1]:'';
+    trim($card);
     $info3=explode("__",$info3);
     $os=isset($info3[0])? $info3[0]:'';
+    trim($os);
     $pin=isset($info3[1])? $info3[1]:'';
+    trim($pin);
     $supp=explode(" ",$model);
     $supplier=$supp[0];
     $des=explode("\n",$description);
-    $laptop =new Laptop(1,$model,$price,$size,$weight,$color,$number,$supplier,$description,$feature,1,'a',$des[0],$des[1],$des[2],$des[3],$des[4],$des[5]
+    $laptop =new Laptop(1,$model,$price,$size,$weight,$color,$number,$supplier,$description,$feature,1,$overview,$description,$des[1],$des[2],$des[3],$des[4],$des[5]
     ,'a','a','a','a','a',$cpu,$ram,$memory, $screen, $card, $os,$pin);
+
+
     $app->insert($laptop);
 }
 if (isset($_POST['btn-delete'])){

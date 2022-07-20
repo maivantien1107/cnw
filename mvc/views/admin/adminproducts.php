@@ -102,9 +102,9 @@ $app= new LaptopApplication();
       foreach($listnews as $news){
         $path=$news->getModel();
         $path = str_replace(' ', '-', $path);
-        $info1=$news->getCpu().", ".$news->getRam().", ".$news->getMemory();
+        $info1=$news->getCpu()."__".$news->getRam()."__".$news->getMemory();
         $info2=$news->getScreen()."__".$news->getCard();
-        $info3=$news->getOs().", ".$news->getPin();
+        $info3=$news->getOs()."__".$news->getPin();
         $des=array();
         $des[0]=$news->getDes1();
         $des[1]=$news->getDes2();
@@ -253,11 +253,13 @@ $app= new LaptopApplication();
                           <label class="news-title">Số lượng sản phẩm</label>
                           <input type="text" placeholder="" name="number" value=""/>
                           <label class="news-title">Thông tin</label>
-                          <input type="text" placeholder="Nhập theo định dạng CPU, RAM, Memory" name="info1" value=""/>
+                          <input type="text" placeholder="Nhập theo định dạng CPU__RAM__ Memory" name="info1" value=""/>
                           <label class="news-title">Màn hình, Card đồ họa</label>
                           <input type="text" placeholder="Thông tin Màn hình__Card đồ họa" name="info2" value=""/>
                           <label class="news-title">Hệ điều hành, Pin</label>
                           <input type="text" placeholder="Thông tin Hệ điều hành__Pin" name="info3" value=""/>
+                          <label class="news-title">Tổng quan</label>
+                          <textarea rows="2" name="overview" value="" ></textarea>
                           <label class="news-title">Tính năng</label>
                           <textarea rows="4" name="feature" value="" ></textarea>
                           <label class="news-title">Thông tin chi tiết</label>

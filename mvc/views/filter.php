@@ -1,6 +1,4 @@
 <?php session_start();
-
-	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'PCApplication.php';
 	require_once ROOT . DS . 'application' . DS . 'products' . DS . 'MouseProductsApplication.php';
   require_once ROOT . DS . 'application' . DS .'products' . DS . 'SupplierApplication.php';
   require_once ROOT . DS . 'application' . DS .'products' . DS . 'RamApplication.php';
@@ -305,64 +303,7 @@
                                ?>                                                                               
                             </div>
                           </div>
-                          <!-- <div class="cdt-filter__block">
-                            
-                            <div class="cdt-filter__title" >Nhu cầu
-
-                            </div>
-
-                            <div class="cdt-filter__checklist listfilterv4 ">
-                              <div class="checkbox checkboxAll frowitem active">
-                                <a title="Tất cả">
-                                  <i class="fa-thin fa-square"></i>Tất cả</a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Gaming đồ hoạ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Gaming đồ hoạ</label>
-                                   
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Sinh viên">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Sinh viên</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Văn phòng">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Văn phòng</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Doanh nhân">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Doanh nhân</label>
-                                  
-                                </a>
-                              </div>
-
-                              <div class="checkbox frowitem" >
-                                <a href="" title="Mỏng nhẹ">
-
-                                  <i class="fa-thin fa-square"></i>
-                                  <label>Mỏng nhẹ</label>
-                                  
-                                </a>
-                              </div>                                                                                         
-                            </div>
-                          </div> -->
+                         
                         </div>
 
                       </div>
@@ -371,65 +312,6 @@
                         <div class="card fplistbox">
                           
                           <div class="card-body p-0 p-t-15 p-b-30 fplistbox">
-
-                            <div class="cdt-normal p-l-15 p-r-15 m-b-25 sortfirstbox">
-                              <div class="cdt-list-tab" >
-                                <span>Ưu tiên xem: </span>
-
-                                <div class="btn-group">
-                                  <ul class="listfilterv4">
-                                    <li class="frowitem sort sort default active">
-
-                                      <a href="" class="btn btn-outline-secondary">Bán chạy nhất</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Trả góp 0%</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Giá thấp</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Giá cao</a>
-                                    </li>
-                                    <li class="frowitem sort">
-                                      <a class="btn btn-outline-secondary">Ưu đãi online</a>
-                                    </li>
-                                  </ul>
-
-                                </div>
-                              </div>
-
-
-
-                              <div class="cdt-grid-list">
-                                <label class="cdt-dropdown">
-                                  <div class="cdt-dropdown-button">Bán chạy nhất
-                                    
-                                  </div>
-                                    
-                                  <ul class="cdt-dropdown-menu">
-                                     <li class="frowitem sort sortdefault active">Bán chạy nhất</li>
-
-                                     <li class="frowitem sort ">Trả góp 0%</li>
-
-                                     <li class="frowitem sort ">Giá cao</li>
-
-                                     <li class="frowitem sort ">Giá thấp</li>
-
-                                     <li class="frowitem sort ">Ưu đãi online</li>
-
-
-                                  </ul>
-                                </label>
-
-                                <span class="fa-solid fa-grid">
-
-                                </span>
-
-                                <span class="fa-solid fa-list"></span>
-                              </div>
-
-                            </div>
                          <!-- // Sản phẩm -->
                             <div class="cdt-product-wrapper m-b-20">
                               <?php
@@ -439,6 +321,7 @@
                                   foreach($listLaptop as $laptop){
                                     $path = $laptop->getModel();
 					                          $path = str_replace(' ', '-', $path);
+                                    
                               ?>
                                   <div class="cdt-product prd-lap product-sale">
                                 <div class="cdt-product__img" style="background-image: url(public/img/Img_product/backgroundproduct.webp); background-position: center center;
@@ -462,7 +345,7 @@
                                     <div class="progress pdiscount2"><?php echo $laptop->getPrice(); ?> ₫
                                       <div class="progress-bar" style="width: 87%;"></div>
                                     </div>
-                                    <div class="strike-price"><strike>27.990.000 ₫</strike></div>
+                                    <div class="strike-price"><strike><?php echo $laptop->getPrice()+2000000; ?> ₫</strike></div>
                                   </div>
 
                                   <div class="cdt-product__config">
@@ -497,14 +380,7 @@
 
                            <?php }
                              ?>
-                            </div>
-
-                            <div class="cdt-product--loadmore">
-                              <a class="btn btn-light">Xem thêm</a>
-                            </div>
-
-
-
+                            </div>                           
                           </div>
 
 
