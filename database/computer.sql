@@ -246,3 +246,10 @@ create TABLE card (
     star int(11) default null,
     content text COLLATE utf8_unicode_ci DEFAULT null,
     date_cmt datetime DEFAULT null)
+
+----------------
+CREATE TABLE admin(
+    users varchar(50) COLLATE utf8_unicode_ci PRIMARY key not null,
+    pass varchar(50) COLLATE utf8_unicode_ci not null)
+
+    ALTER TABLE `products` CHANGE `product_id` `product_id` INT(11) NOT NULL AUTO_INCREMENT;

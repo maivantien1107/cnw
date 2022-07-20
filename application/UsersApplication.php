@@ -94,8 +94,8 @@ class UsersApplication extends MySqlConnect {
                     where user_name='" . $username . "'";
         parent::addQuerry($query);
         $result = parent::executeQuery();
-
-        if($row = mysqli_fetch_array($result)){
+        $row = mysqli_fetch_array($result);
+        if($row ){
             $username = $row["user_name"];
             $password = $row["user_pass"];
             $address = $row["address"];
@@ -107,7 +107,13 @@ class UsersApplication extends MySqlConnect {
 
         return null;
     }
-
+    public function insertAdmin($username){
+        $user=self::get($username);
+        $pass=$user->getPassword();
+        $query="INSERT INTO admin(users,pass) values('$username', '$pass')";
+        parent::addQuerry($query);
+        parent::updateQuery();
+    }
    
     public function update($guest) {
 
@@ -222,6 +228,17 @@ class UsersApplication extends MySqlConnect {
             return False;
         }
     }
+    public function checkAccountAdmin($username, $password){
+        $query = "select * from admin where users = '$username' and pass = '$password'";
+        parent::addQuerry($query);
+
+        $result = parent::executeQuery();
+        if(mysqli_fetch_array($result)){
+            return True;
+        } else {
+            return False;
+        }
+    }
 
     /**
     * Get all product in bill
@@ -244,9 +261,9 @@ class UsersApplication extends MySqlConnect {
             $status = $row["bill_status"];
             $bill_id = $row["bill_id"];
 
-            $bill = new Bill($product_id, $username, $date_bill, $total_money, $quantity);
-            $bill->setStatus($status);
-            $bill->setBillID($bill_id);
+            $bill = new Bill($bill_id,$product_id, $username, $date_bill, $total_money, $quantity, $status);
+            // $bill->setStatus($status);
+            // $bill->setBillID($bill_id);
 
             array_push($listProductsBill, $bill);
         }
@@ -275,9 +292,9 @@ class UsersApplication extends MySqlConnect {
             $status = $row["bill_status"];
             $bill_id = $row["bill_id"];
 
-            $bill = new Bill($product_id, $username, $date_bill, $total_money, $quantity);
-            $bill->setStatus($status);
-            $bill->setBillID($bill_id);
+            $bill = new Bill($bill_id,$product_id, $username, $date_bill, $total_money, $quantity, $status);
+            // $bill->setStatus($status);
+            // $bill->setBillID($bill_id);
 
             array_push($listProductsBill, $bill);
         }
@@ -325,9 +342,9 @@ class UsersApplication extends MySqlConnect {
             $status = $row["bill_status"];
             $bill_id = $row["bill_id"];
 
-            $bill = new Bill($product_id, $username, $date_bill, $total_money, $quantity);
-            $bill->setStatus($status);
-            $bill->setBillID($bill_id);
+            $bill = new Bill($bill_id,$product_id, $username, $date_bill, $total_money, $quantity, $status);
+            // $bill->setStatus($status);
+            // $bill->setBillID($bill_id);
 
             return $bill;
         }

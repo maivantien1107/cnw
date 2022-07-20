@@ -4,6 +4,6 @@ require_once ROOT . DS . 'mvc' . DS . 'controllers' . DS . 'DefaultController.ph
 
 class LoginAdminController extends DefaultController implements Controller {
 	public function __render(){
-        require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'login_admin.php';
+        require_once ROOT . DS . 'mvc' . DS . 'views'.DS.'admin' . DS . 'login_admin.php';
     }
 }

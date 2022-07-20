@@ -42,7 +42,7 @@ class RouteController {
         // check if admin -> no footer
         if(strcmp($controller, "admin") == 0
             || strcmp($controller, "admin-product") == 0
-            || strcmp($controller, "admin-accout") == 0
+            || strcmp($controller, "admin-user") == 0
             || strcmp($controller, "login-admin") === 0){
             $this->_is_footer = 0;
         }

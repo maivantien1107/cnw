@@ -12,8 +12,8 @@ if(array_key_exists("username", $_SESSION)){
 
 if(array_key_exists("admin", $_SESSION)){
     unset($_SESSION['admin']);
-    unset($_SESSION['admin']);
-    header("Location: ../login-admin");
+    header("Location: ../home");
+    exit();
 }
 header("Location: home");
 exit();

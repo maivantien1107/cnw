@@ -81,7 +81,7 @@ global $path_project;
 			    <?php 
 				    if (isset($_SESSION['username'])!=''){
 						?>
-					<li><a href="library/logout.php">Logout</a></li>
+					<li><a href="validate/logout.php">Logout</a></li>
 					<?php 
 					}
 				?>

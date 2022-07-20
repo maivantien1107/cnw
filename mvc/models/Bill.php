@@ -11,14 +11,14 @@ class Bill {
     private $quantity;    // int
     private $status;      // int
 
-    public function __construct($product_id, $user_name, $date_bill, $total_money, $quantity) {
+    public function __construct($bill_id,$product_id, $user_name, $date_bill, $total_money, $quantity,$status) {
+        self::setBillID($bill_id);
         self::setProductID($product_id);
         self::setUsername($user_name);
         self::setDateBill($date_bill);
         self::setTotalMoney($total_money);
         self::setQuantity($quantity);
-
-        self::setStatus(0);
+        self::setStatus($status);
     }
 
     public function getBillID(){

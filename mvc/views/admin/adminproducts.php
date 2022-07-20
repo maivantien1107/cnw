@@ -1,7 +1,12 @@
 <?php 
 session_start();
+if(!isset($_SESSION['admin'])){
+  header('Location: login-admin');
+  exit();
+}
 require_once ROOT . DS . 'application'.DS.'products' . DS . 'LaptopApplication.php';
 $app= new LaptopApplication();
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -24,37 +29,37 @@ $app= new LaptopApplication();
       </div>
       <ul class="nav-links">
         <li>
-          <a href="#" class="active">
+          <a href="#" >
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="admin-product" class="active">
             <i class="bx bx-box"></i>
             <span class="links_name">Quản lý sản phẩm</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="admin-bill">
             <i class="bx bx-cart-alt cart"></i>
             <span class="links_name">Quản lý đơn hàng</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="admin" >
             <i class="bx bx-news"></i>
             <span class="links_name">Tin Tức</span>
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="admin-user" >
             <i class="bx bx-user"></i>
             <span class="links_name">Quản lý tài khoản</span>
           </a>
         </li>
         <li class="log_out">
-          <a href="#">
+          <a href="validate/logoutadmin.php">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>
