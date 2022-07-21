@@ -89,8 +89,8 @@ global $path_project;
 
 	</nav>
 	<div class="cart-logo">
-		<a href=<?php echo "/" . $path_project . "/" . "cart" ?>><img src=<?php echo "/" . $path_project . "/" . "images/logo/cart.png" ?> width="30px"> &nbsp;</a>
-		<a href=<?php echo "/" . $path_project . "/" . "search" ?>><img src=<?php echo "/" . $path_project . "/" . "images/logo/searchbox.jpg" ?> width="30px"></a>
+		<a href=<?php echo "/" . $path_project . "/" . "cart" ?>><img src=<?php echo "/" . $path_project . "/" . "images/logo1/cart.png" ?> width="30px"> &nbsp;</a>
+		
 		<!-- <div class="menu"> -->
 		<img src=<?php echo "/" . $path_project . "/" . "images/logo/menu.png" ?> alt="" class = "menu" onclick="menuToggle()" />
 		<!-- </div> -->

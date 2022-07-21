@@ -117,29 +117,14 @@ $path = str_replace(' ', '-', $path);
                $path_post=str_replace(' ','-',$path_post);
                ?>
                <div class="post" bis_skin_checked="1">
-                 <div class="thumb" bis_skin_checked="1"><a href="<?php echo "/cnw-1/newsdetail/".$news_post->getNews_id()."/".$path_post ?>"><img src="../../public/img/news/<?php echo $news_post->getNews_id();?>_image1.png" width="350" height="199"></a></div>
-                 <div class="title" bis_skin_checked="1"><a href="<?php echo "/cnw-1/newsdetail/".$news_post->getNews_id()."/".$path_post ?>"><?php echo $news_post->getTitle(); ?></a></div>
+                 <div class="thumb" bis_skin_checked="1"><a href="<?php echo "/cnw/newsdetail/".$news_post->getNews_id()."/".$path_post ?>"><img src="../../public/img/news/<?php echo $news_post->getNews_id();?>_image1.png" width="350" height="199"></a></div>
+                 <div class="title" bis_skin_checked="1"><a href="<?php echo "/cnw/newsdetail/".$news_post->getNews_id()."/".$path_post ?>"><?php echo $news_post->getTitle(); ?></a></div>
                  <div class="desc" bis_skin_checked="1"><?php echo $news_post->getDescription(); ?></div>
               </div>
              <?php  
              }
 
             ?>
-              <!-- <div class="post" bis_skin_checked="1">
-                 <div class="thumb" bis_skin_checked="1"><a href="https://www.tncstore.vn/noi-lo-website-lua-dao-khong-con-nho-vao-ung-dung-visafe.html"><img src="https://www.tncstore.vn/image/catalog/Tin%20t%E1%BB%A9c%20website/Nvidia/1.png" width="350" height="199"></a></div>
-                 <div class="title" bis_skin_checked="1"><a href="https://www.tncstore.vn/noi-lo-website-lua-dao-khong-con-nho-vao-ung-dung-visafe.html">Nvidia cố “tháo chạy” khi thị trường crytpo sụp đổ, nhưng có lẽ đã quá muộn…</a></div>
-                 <div class="desc" bis_skin_checked="1">Sự sụp đổ của thị trường crypto giống như một cơn mưa sau ngày nắng hạn đối với các tín đồ PC, nhưng đồng thời cũng là dấu hiệu cho sự đi xuống về doanh thu của các công ty công nghệ. Cả Nvidia hay AMD đều đang cố gắng tránh khỏi những hệ lụy của tiền điện tử, nhưng thực tế thì có vẻ không như họ mong muốn.</div>
-              </div>
-              <div class="post" bis_skin_checked="1">
-                <div class="thumb" bis_skin_checked="1"><a href="https://www.tncstore.vn/noi-lo-website-lua-dao-khong-con-nho-vao-ung-dung-visafe.html"><img src="https://www.tncstore.vn/image/catalog/Tin%20t%E1%BB%A9c%20website/Nvidia/1.png" width="350" height="199"></a></div>
-                <div class="title" bis_skin_checked="1"><a href="https://www.tncstore.vn/noi-lo-website-lua-dao-khong-con-nho-vao-ung-dung-visafe.html">Nvidia cố “tháo chạy” khi thị trường crytpo sụp đổ, nhưng có lẽ đã quá muộn…</a></div>
-                <div class="desc" bis_skin_checked="1">Sự sụp đổ của thị trường crypto giống như một cơn mưa sau ngày nắng hạn đối với các tín đồ PC, nhưng đồng thời cũng là dấu hiệu cho sự đi xuống về doanh thu của các công ty công nghệ. Cả Nvidia hay AMD đều đang cố gắng tránh khỏi những hệ lụy của tiền điện tử, nhưng thực tế thì có vẻ không như họ mong muốn.</div>
-             </div>
-             <div class="post" bis_skin_checked="1">
-                <div class="thumb" bis_skin_checked="1"><a href="https://www.tncstore.vn/noi-lo-website-lua-dao-khong-con-nho-vao-ung-dung-visafe.html"><img src="https://www.tncstore.vn/image/catalog/Tin%20t%E1%BB%A9c%20website/Nvidia/1.png" width="350" height="199"></a></div>
-                <div class="title" bis_skin_checked="1"><a href="https://www.tncstore.vn/noi-lo-website-lua-dao-khong-con-nho-vao-ung-dung-visafe.html">Nvidia cố “tháo chạy” khi thị trường crytpo sụp đổ, nhưng có lẽ đã quá muộn…</a></div>
-                <div class="desc" bis_skin_checked="1">Sự sụp đổ của thị trường crypto giống như một cơn mưa sau ngày nắng hạn đối với các tín đồ PC, nhưng đồng thời cũng là dấu hiệu cho sự đi xuống về doanh thu của các công ty công nghệ. Cả Nvidia hay AMD đều đang cố gắng tránh khỏi những hệ lụy của tiền điện tử, nhưng thực tế thì có vẻ không như họ mong muốn.</div>
-             </div> -->
            </div>
         </div>
      </div>

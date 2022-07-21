@@ -77,7 +77,7 @@ class ProductsApplication extends  MySqlConnect {
         $query = "update products
                     set " .
                     "model = " . "'" . $product->getModel() . "' ," .
-                    "image = " . "'" . $product->getImage() . "' ," .
+               
                     "price = " . $product->getPrice() . "," .
                     "size = '" . $product->getSize() . "'," .
                     "weigh = " . $product->getWeigh() . "," .
@@ -95,9 +95,9 @@ class ProductsApplication extends  MySqlConnect {
                     "des6= '".$product->getDes6(). "'," .
                     "des7= '".$product->getDes7(). "'," .
                     "des8= '".$product->getDes8(). "'," .
-                    "image1 '".$product->getDes9()."',".
-                    "image2 '".$product->getDes10()."',".
-                    "image3 '".$product->getDes11()."'".
+                    "des9= '".$product->getDes9()."',".
+                    "des10= '".$product->getDes10()."',".
+                    "des11= '".$product->getDes11()."'".
                     "where product_id = " . $product->getProductID()
                     . "";
         parent::addQuerry($query);

@@ -7,7 +7,7 @@
 			<div class="footer-col-1">
 				<h3>About Us</h3>
 				<p>
-					<a href="">+842232323</a>
+					<a href="">123456789</a>
 				</p>
 				<a href="#">hust$sis.edu.com</a>
 				<p>
@@ -26,7 +26,7 @@
 			</ul>
 		</div>
 		<div class="footer-col-3">
-			<img src=<?php echo "/" . $path_project . "/" . "images/logo/logo.png" ?> width="125px">
+			
 			<p>Chúng tôi cam kết mang tới sự an tâm cho công việc của bạn</p>
 		</div>
 		<div class="footer-col-4">
@@ -47,11 +47,11 @@
 		<div class="footer-col-5">
 			<h3>Our Apps</h3>
 			<p>Download our iOS app</p>
-			<img src=<?php echo "/" . $path_project . "/" . "images/logo/app-store.png" ?> class="first_img"> <img
-			src=<?php echo "/" . $path_project . "/" . "images/logo/app-store2.png" ?> class="second-img">
+			<img src=<?php echo "/" . $path_project . "/" . "images/logo1/app-store.png" ?> class="first_img"> <img
+			src=<?php echo "/" . $path_project . "/" . "images/logo1/app-store2.png" ?> class="second-img">
 			<p>Download our Android app</p>
-			<img src=<?php echo "/" . $path_project . "/" . "images/logo/play-store.png" ?> class="first_img"> <img
-			src=<?php echo "/" . $path_project . "/" . "images/logo/play-store2.png" ?> class="second-img">
+			<img src=<?php echo "/" . $path_project . "/" . "images/logo1/play-store.png" ?> class="first_img"> <img
+			src=<?php echo "/" . $path_project . "/" . "images/logo1play-store2.png" ?> class="second-img">
 		</div>
 	</div>
 </div>

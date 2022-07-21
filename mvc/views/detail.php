@@ -84,7 +84,7 @@ $service = new UsersApplication();
 
       <div class="son-middle">
         <div class="left">
-          <img src="../../../public/img/products/<?php echo $product->getProductID(); ?>_image1.webp" alt="637639340541330187_msi-gaming-gf63-den-1" class="" />
+          <img src="../../../public/img/products/<?php echo $product->getProductID(); ?>_image1.png" alt="637639340541330187_msi-gaming-gf63-den-1" class="" style="width:300px;" />
         </div>
 
         <div class="right">

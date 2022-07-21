@@ -45,8 +45,7 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                                        <h3 class="news-top__item__tit"><?php echo $news_top->getTitle();?></h3>
                                     </a>
                                     <p class="news-top__item__time">
-                                       <i class="fa-regular fa-comments"></i>
-                                       </i> 1 - <time datetime="1656986889930"><?php echo $news_top->getTime(); ?></time>
+                                        <time datetime="1656986889930"><?php echo $news_top->getTime(); ?></time>
                                     </p>
                                  </div>
                               </div>
@@ -70,7 +69,7 @@ require_once ROOT . DS . 'application'. DS . 'NewsApplication.php';
                                              <h3 class="news-hor__item__title"><?php echo $new->getTitle(); ?></h3>
                                           </a>
                                           <p class="news-hor__item__time">
-                                             <i class="fa-regular fa-comments"></i>16947 - <time datetime="1656664454000"><?php echo $new->getTime();?></time>
+                                             <time datetime="1656664454000"><?php echo $new->getTime();?></time>
                                           </p>
                                        </div>
                                     </div>

@@ -41,7 +41,7 @@ class ComputerProductsApplication extends ProductsApplication {
                     set " .
                     "s_cpu = " . "'" . $computerProducts->getCpu() . "' ," .
                     "s_ram = " . "'" . $computerProducts->getRam() . "' ," .
-                    "s_storage = " . $computerProducts->getMemory() . "," .
+                    "s_memory = '" . $computerProducts->getMemory() . "'," .
                     "screen = " . "'" . $computerProducts->getScreen() . "' ," .
                     "s_card = " . "'" . $computerProducts->getCard() . "' ," .
                     "os = " . "'" . $computerProducts->getOs() . "'" .

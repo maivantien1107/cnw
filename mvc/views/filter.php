@@ -327,7 +327,7 @@
                                 <div class="cdt-product__img" style="background-image: url(public/img/Img_product/backgroundproduct.webp); background-position: center center;
                                 background-repeat: no-repeat;">
                                   <a href="<?php echo "details/".$laptop->getProductID()."/".$path; ?>" title="<?php  echo $laptop->getModel(); ?> ">
-                                    <img src="<?php echo $laptop->getImage();?>" alt="" height="215">
+                                    <img src="public/img/products/<?php echo $laptop->getProductID();?>_image1.png" alt="" height="215">
                                   </a>
 
                                   <div class="cdt-product__label">

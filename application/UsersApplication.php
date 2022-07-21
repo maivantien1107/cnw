@@ -439,6 +439,22 @@ class UsersApplication extends MySqlConnect {
         }
 
     }
+    public function checkAdmin($username){
+        $query="select* from admin where 1";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        while($row = mysqli_fetch_array($result)){
+            if ($row['users']==$username){
+                return true;
+            }
+        }
+        return false;
+    }
+    public function deleteAdmin($username){
+        $query="delete from admin where users='$username'";
+        parent::addQuerry($query);
+        parent::updateQuery();
+    }
 }
 
 

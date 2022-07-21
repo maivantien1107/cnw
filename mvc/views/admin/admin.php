@@ -5,7 +5,38 @@ if(!isset($_SESSION['admin'])){
   exit();
 }
 require_once ROOT . DS . 'application' . DS . 'NewsApplication.php';
+require_once ROOT . DS . 'application'.DS.'NewsDescriptionApplication.php';
 $app_news= new NewsApplication();
+$app=new NewsDescriptionApplication();
+if (isset($_POST['btn-submit'])){
+  $news_id=1;
+  $title =isset($_POST['news_title']) ? addslashes($_POST['news_title']):'';
+  $category =isset($_POST['news_category']) ? addslashes($_POST['news_category']):'';
+  $overview = isset($_POST['news_overview']) ? addslashes($_POST['news_overview']):'';
+  $description = isset($_POST['news_description']) ? addslashes($_POST['news_description']):'';
+  date_default_timezone_set('Asia/Ho_Chi_Minh');
+  $date2 =date("Y-m-d H:i:s"); 
+  $des=explode("\n",$description);
+  $news= new NewsDescription($news_id,$title,$category,'a1a',$date2,'a12',$overview,$des[0],$des[1],$des[2],$des[3],$des[4],$des[5]);
+  $app->insert($news);
+}
+if (isset($_POST['btn-delete'])){
+  $news_id=intval($_POST['btn-delete']);
+  $app->delete($news_id);
+}
+if (isset($_POST['btn-submit-update'])){
+  $news_id=intval($_POST['btn-submit-update']);
+  $title=isset($_POST['news_title'])?addslashes($_POST['news_title']):'';
+  $category=isset($_POST['news_category'])? addslashes($_POST['news_category']):'';
+  $overview=isset($_POST['news_overview'])? addslashes($_POST['news_overview']):'';
+  $description=isset($_POST['news_description'])? addslashes($_POST['news_description']):'';
+  date_default_timezone_set('Asia/Ho_Chi_Minh');
+  $time =date("Y-m-d H:i:s"); 
+  $des=explode("\n",$description);
+  $news=new NewsDescription($news_id,$title,$category,'1a2',$time,'a12',$overview,$des[0],$des[1],$des[2],$des[3],$des[4],$des[5]);
+ 
+  $app_news->update($news);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -123,16 +154,18 @@ $app_news= new NewsApplication();
     </td>
         <td><?php echo $news->getTime();  ?></td>
         <td>
-        <li class="btn-action">
-             
+        <li class="btn-action" style="display:inline-flex;">
+                  
                   <button class="btn" name="btn-update" value="<?php echo $news->getNews_id(); ?>">
                   <a href="update-news&id=<?php echo $news->getNews_id(); ?>">
                     <i class="bx bxs-edit" style="font-size: 25px"></i>
                     </a>
                   </button>
+                  <form action="" method="post" style="padding:0 0;margin-top:0">
                   <button class="btn" name="btn-delete" value="<?php echo $news->getNews_id(); ?>">
                     <i class="bx bxs-trash" style="font-size: 25px"></i>
                   </button>
+                  </form>
         </li>
         </td>
     </tr>
@@ -176,7 +209,7 @@ $app_news= new NewsApplication();
     <div class="bg-modal" style="height:900px;">
       <div class="modal-content" style="height:100%;">
         <span class="modal-title">Thêm mới</span>
-        <form action="validate/admin_insertnews.php" method="post">
+        <form action="" method="post">
           <label class="news-title">Tiêu đề</label>
           <input name="news_title" type="text" value="" placeholder="Tiêu đề tin tức"/>
           <label class="news-title">Thể loại</label>

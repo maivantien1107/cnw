@@ -140,7 +140,7 @@ class LaptopApplication extends ComputerProductsApplication {
         // update pc table
         $query = "update laptop
                     set " .
-                    "battery = " . $laptop->getPin() . " " .
+                    "pin = " . $laptop->getPin() . " " .
                     "where product_id = " . $laptop->getProductID()
                     . "";
 

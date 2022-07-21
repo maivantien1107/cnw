@@ -6,6 +6,48 @@ if(!isset($_SESSION['admin'])){
 }
 require_once ROOT . DS . 'application'.DS.'products' . DS . 'LaptopApplication.php';
 $app= new LaptopApplication();
+if (isset($_POST['btn-submit-update'])){
+  $model=isset($_POST['model'])?addslashes($_POST['model']):'';
+  $price=isset($_POST['price'])?intval(addslashes($_POST['price'])):'';
+  $size=isset($_POST['size'])?addslashes($_POST['size']):'';
+  $weight=isset($_POST['weigh'])?intval(addslashes($_POST['weigh'])):'';
+  $color=isset($_POST['color'])?addslashes($_POST['color']):'';
+  $number=isset($_POST['number'])?intval(addslashes($_POST['number'])):'';
+  $info1=isset($_POST['info1'])?addslashes($_POST['info1']):'';
+  $info2=isset($_POST['info2'])?addslashes($_POST['info2']):'';
+  $info3=isset($_POST['info3'])?addslashes($_POST['info3']):'';
+  $feature=isset($_POST['feature'])?addslashes($_POST['feature']):'';
+  $description=isset($_POST['description'])?addslashes($_POST['description']):'';
+  $overview=isset($_POST['overview'])?addslashes($_POST['overview']):'';
+  $info1=explode("__",$info1);
+  $cpu=isset($info1[0])? $info1[0]:'';
+  $cpu=trim($cpu);
+  $ram=isset($info1[1])? $info1[1]:'';
+  $ram=trim($ram);
+  $memory=isset($info1[2])? $info1[2]:'';
+  $memory=trim($memory);
+  $info2=explode("__",$info2);
+  $screen=isset($info2[0])? $info2[0]:'';
+  $screen=trim($screen);
+  $card=isset($info2[1])? $info2[1]:'';
+  $card=trim($card);
+  $info3=explode("__",$info3);
+  $os=isset($info3[0])? $info3[0]:'';
+  $os=trim($os);
+  $pin=isset($info3[1])? $info3[1]:'';
+  $pin=trim($pin);
+  $pin=intval($pin);
+  $supp=explode(" ",$model);
+  $supplier=$supp[0];
+  $des=explode("__",$description);
+  $product_id=intval($_POST['btn-submit-update']);
+  $laptop =new Laptop($product_id,$model,$price,$size,$weight,$color,$number,$supplier,$description,$feature,1,$overview,$description,$des[1],$des[2],$des[3],$des[4],$des[5]
+  ,'a','a','a','a','a',$cpu,$ram,$memory, $screen, $card, $os,$pin);
+ $app->update($laptop);
+ header('Location: ../../admin-product');
+ exit();
+
+}
 $id=intval($_GET['id']);
 $news=$app->get($id);
 $info1=$news->getCpu()."__".$news->getRam()."__".$news->getMemory();
@@ -30,7 +72,7 @@ $info1=$news->getCpu()."__".$news->getRam()."__".$news->getMemory();
 </head>
 <body>
 <div class="bg-modal1" style="display:flex;">
-                    <form action="validate/admin_products.php" method="post" style="width:70%;"> 
+                    <form action="" method="post" style="width:70%;"> 
                     
                         <div class="modal-content">
                           <span class="modal-title">Cập nhật thông tin</span>
@@ -54,6 +96,8 @@ $info1=$news->getCpu()."__".$news->getRam()."__".$news->getMemory();
                             <input type="text" placeholder="" name="info2" value="<?php echo $info2 ?>"/>
                             <label class="news-title">Hệ điều hành, Pin</label>
                             <input type="text" placeholder="" name="info3" value="<?php echo $info3 ?>"/>
+                            <label class="news-title">Tổng quan</label>
+                            <textarea rows="4" name="overview" value="" ></textarea>
                             <label class="news-title">Tính năng</label>
                             <textarea rows="4" name="feature" value="<?php echo $news->getFeature(); ?>" ></textarea>
                             <label class="news-title">Thông tin chi tiết</label>

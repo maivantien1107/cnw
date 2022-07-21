@@ -6,6 +6,14 @@ if(!isset($_SESSION['admin'])){
 }
 require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
 $app_news= new UsersApplication();
+if (isset($_POST['btn-delete1'])){
+  $username=isset($_POST['btn-delete1']) ?addslashes($_POST['btn-delete1']):'';
+  $app_news->insertAdmin($username);
+}
+if (isset($_POST['btn-delete2'])){
+  $username=isset($_POST['btn-delete2'])?addslashes($_POST['btn-delete2']):'';
+  $app_news->deleteAdmin($username);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -115,29 +123,28 @@ $app_news= new UsersApplication();
          </td>
         <td>
          <li class="btn-action">
-         
+                 <?php 
+                  if($app_news->checkAdmin($news->getUsername())){
+                    ?>
+                     <form action="" method="post">
+                  <button class="btn" name="btn-delete2" value="<?php echo $news->getUsername(); ?>">
+                  <i class='bx bxs-user-minus' style="font-size: 25px"></i>
+                    
+                  </button>
+                  </form>
+                  <?php
+                       }
+                  else{
+                    ?>
+                    <form action="" method="post">
                   <button class="btn" name="btn-delete1" value="<?php echo $news->getUsername(); ?>">
                     
                     <i class='bx bx-user-plus' style="font-size: 25px"></i>
                   </button>
-                  
-                  <form action="validate/admin_user.php" method="post">   
-                    <div class="delete-modal">
-                    <div class="delete-modal-content">
-                      <img
-                        class="aleart-image"
-                        src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"
-                        style="width: 100px; height: 100px"
-                      />
-                      <span> Bạn có chắc chắn muốn thêm người này làm admin? </span>
-                      <div class="bottom-modal-button">
-                        <button class="modal-button-close close-delete-modal">Không</button>
-                        <button class="modal-button-accept accept-delete-modal"  value="<?php echo $news->getUsername(); ?>" name="btn-delete">Có</button>
-                      </div>
-                    </div>
-                    </div>
                   </form>
-   
+                  <?php }
+                  ?>
+                 
                 </li>
         </td>
     </tr>
@@ -177,70 +184,6 @@ $app_news= new UsersApplication();
         </div>
       </div>
 </section>
-    <!-- <div class="bg-modal">
-      <div class="modal-content">
-        <span class="modal-title">Thêm mới</span>
-        <form action="validate/admin_insertnews.php" method="post">
-          <label class="news-title">Tiêu đề</label>
-          <input name="news_title" type="text" value="" placeholder="Tiêu đề tin tức"/>
-          <label class="news-title">Thể loại</label>
-         <select class="news_category" name="news_category" value="">
-            <option value="Tin tức">Tin tức</option>
-            <option value="Khuyến mãi">Khuyến mãi</option>
-            <option value="Thông tin">Thông tin</option>
-         </select>
-          <label class="news-title">Tổng quan</label>
-          <input type="text" placeholder="Thông tin tổng quan tin tức" name="news_overview" value=""/>
-          <label class="news-title">Miêu tả</label>
-          <textarea rows="8" name="news_description" value="" ></textarea>
-
-          <label class="news-title">Hình ảnh</label>
-          <div class="image-container">
-            <div
-              class="image"
-              style="
-                background-image: url('http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png');
-                border: none;
-              "
-            >
-              <button>
-                <i class="bx bx-x"></i>
-              </button>
-            </div>
-            <div
-              class="image"
-              style="
-                background-image: url('http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png');
-                border: none;
-              "
-            >
-              <button>
-                <i class="bx bx-x"></i>
-              </button>
-            </div>
-            <div
-              class="image"
-              style="
-                background-image: url('http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png');
-                border: none;
-              "
-            >
-              <button>
-                <i class="bx bx-x"></i>
-              </button>
-            </div>
-            <div class="add-image">
-              <i class="bx bx-image-add" style="font-size: 50px"></i>
-            </div>
-          </div>
-
-          <div class="bottom-modal-button">
-            <button class="modal-button-close  close-add-modal">Đóng</button>
-            <button class="modal-button-accept accept-add-modal" type="submit" name="btn-submit">Xác nhận</button>
-          </div>
-        </form>
-      </div>
-    </div> -->
     
 
     <script>

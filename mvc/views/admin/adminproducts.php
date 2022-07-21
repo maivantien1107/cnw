@@ -42,6 +42,11 @@ if (isset($_POST['btn-submit'])){
   $laptop =new Laptop(1,$model,$price,$size,$weight,$color,$number,$supplier,$description,$feature,1,$overview,$description,'a','a','a','a'
   ,'a','a','a','a','a','a',$cpu,$ram,$memory, $screen, $card, $os,$pin);
   $app->insert($laptop);}
+  if (isset($_POST['btn-delete'])){
+    $product_id=intval($_POST['btn-delete']);
+ 
+    $app->delete($product_id);
+}
 
 ?>
 <!DOCTYPE html>
@@ -161,19 +166,18 @@ if (isset($_POST['btn-submit'])){
         <td><?php echo $news->getRam();  ?></td>
         <td><?php echo $news->getMemory();  ?></td>
         <td>
-        <li class="btn-action">   
-              
+        <li class="btn-action" style="display:inline-flex;">      
                   <button class="btn" name="btn-update" value="<?php echo $news->getProductID(); ?>">
                   <a href="update-product&id=<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-edit" style="font-size: 25px"></i>
                     </a>
                   </button>
-                  <form action="validate/admin_products.php" method="post" style="flex-direction: row;">    
+                <form action="" method="post" style="padding:0 0;margin-top:0">
                   <button class="btn" name="btn-delete" value="<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-trash" style="font-size: 25px"></i>
                   </button>
                   </form>
-   
+
         </li>
         </td>
     </tr>
