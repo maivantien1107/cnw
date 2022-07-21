@@ -84,6 +84,25 @@ class UsersApplication extends MySqlConnect {
 
         return $listUsers;
     }
+    public function getListUsser($start,$limit){
+        $listUsers= array();
+        $query = "select * from users limit $start,$limit";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+
+        while($row = mysqli_fetch_array($result)){
+            $username = $row["user_name"];
+            $password = $row["user_pass"];
+            $address = $row["address"];
+            $telephone = $row["telephone"];
+
+            $users = new Users($username, $password, $address, $telephone);
+
+            array_push($listUsers, $users);
+        }
+
+        return $listUsers;
+    }
 
     /**
      * @param String $username
@@ -277,7 +296,34 @@ class UsersApplication extends MySqlConnect {
 
         return $listProductsBill;
     }
+    public function getListBill($start,$limit){
+        $listProductsBill = array();
 
+        $query = "select * from bill where 1 order by bill_id desc limit $start,$limit";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+
+        while($row = mysqli_fetch_array($result)){
+            $username = $row["user_name"];
+            $product_id = $row["product_id"];
+            $bill_id = $row["bill_id"];
+            $date_bill = $row["date_bill"];
+            $total_money = $row["total_money"];
+            $quantity = $row["quantity"];
+            $status = $row["bill_status"];
+            $bill_id = $row["bill_id"];
+
+            $bill = new Bill($bill_id,$product_id, $username, $date_bill, $total_money, $quantity, $status);
+            // $bill->setStatus($status);
+            // $bill->setBillID($bill_id);
+
+            array_push($listProductsBill, $bill);
+        }
+
+        return $listProductsBill;
+
+
+    }
     /**
     * Get all product in bill
     * @return array
@@ -366,6 +412,32 @@ class UsersApplication extends MySqlConnect {
 
         parent::addQuerry($query);
         parent::updateQuery();
+    }
+    public function getCountAll(){
+        $query = "select count(bill_id) as count from bill where 1";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        $row=mysqli_fetch_array($result);
+        if ($row){
+            return $row['count'];
+        }
+        else {
+            return 0;
+        }
+
+    }
+    public function getCountAllUser(){
+        $query = "select count(user_name) as count from users where 1";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        $row=mysqli_fetch_array($result);
+        if ($row){
+            return $row['count'];
+        }
+        else {
+            return 0;
+        }
+
     }
 }
 

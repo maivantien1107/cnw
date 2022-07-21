@@ -94,7 +94,17 @@ $app_news= new UsersApplication();
 
     </tr>
     <?php  
-      $listnews=$app_news->getAll();
+    $page=isset($_GET["page"])?intval($_GET["page"]):1;
+    if ($page==1){
+      $start=0;
+      $limit=10;
+    }
+    else {
+      $start=($page-1)*10;
+      $limit=$start+10;
+
+    }   
+      $listnews=$app_news->getListUsser($start,$limit);
       foreach($listnews as $news){
       ?>
           <tr>
@@ -136,6 +146,32 @@ $app_news= new UsersApplication();
     
     
   </table>
+  <div class="pagination">
+                  <?php 
+                  $total_page=intval($app_news->getCountAllUser()/10)+1;
+                    // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                    if ($page > 1 && $total_page > 1){
+                        echo '<a href="admin-user&page='.($page-1).'">Prev</a> | ';
+                    }
+        
+                    // Lặp khoảng giữa
+                    for ($i = 1; $i <= $total_page; $i++){
+                        // Nếu là trang hiện tại thì hiển thị thẻ span
+                        // ngược lại hiển thị thẻ a
+                        if ($i == $page){
+                            echo '<span>'.$i.'</span> | ';
+                        }
+                        else{
+                            echo '<a href="admin-user&page='.$i.'">'.$i.'</a> | ';
+                        }
+                    }
+        
+                    // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                    if ($page < $total_page && $total_page > 1){
+                        echo '<a href="admin-user&page='.($page+1).'">Next</a> | ';
+                    }
+                  ?>
+        </div>
            
           </div>
         </div>

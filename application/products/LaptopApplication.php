@@ -154,4 +154,17 @@ class LaptopApplication extends ComputerProductsApplication {
         parent::updateQuery();
         parent::delete($lap_id);
     }
+    public function getCountAll(){
+        $query="select count(product_id) as count from products where 1 ";
+        parent::addQuerry($query);
+        $result = parent::executeQuery();
+        $row=mysqli_fetch_array($result);
+        if ($row){
+            return $row['count'];
+        }
+        else {
+            return 0;
+        }
+
+    }
 }

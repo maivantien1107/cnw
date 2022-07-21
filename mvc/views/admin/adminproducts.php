@@ -6,6 +6,42 @@ if(!isset($_SESSION['admin'])){
 }
 require_once ROOT . DS . 'application'.DS.'products' . DS . 'LaptopApplication.php';
 $app= new LaptopApplication();
+if (isset($_POST['btn-submit'])){
+  $model=isset($_POST['model'])?addslashes($_POST['model']):'';
+  $price=isset($_POST['price'])?intval(addslashes($_POST['price'])):'';
+  $size=isset($_POST['size'])?addslashes($_POST['size']):'';
+  $weight=isset($_POST['weigh'])?addslashes($_POST['weigh']):'';
+  $color=isset($_POST['color'])?addslashes($_POST['color']):'';
+  $number=isset($_POST['number'])?intval(addslashes($_POST['number'])):'';
+  $info1=isset($_POST['info1'])?addslashes($_POST['info1']):'';
+  $info2=isset($_POST['info2'])?addslashes($_POST['info2']):'';
+  $info3=isset($_POST['info3'])?addslashes($_POST['info3']):'';
+  $feature=isset($_POST['feature'])?addslashes($_POST['feature']):'';
+  $description=isset($_POST['description'])?addslashes($_POST['description']):'';
+  $overview=isset($_POST['overview'])?addslashes($_POST['overview']):'';
+  $info1=explode("__",$info1);
+  $cpu=isset($info1[0])? $info1[0]:'';
+  trim($cpu);
+  $ram=isset($info1[1])? $info1[1]:'';
+  trim($ram);
+  $memory=isset($info1[2])? $info1[2]:'';
+  trim($memory);
+  $info2=explode("__",$info2);
+  $screen=isset($info2[0])? $info2[0]:'';
+  trim($screen);
+  $card=isset($info2[1])? $info2[1]:'';
+  trim($card);
+  $info3=explode("__",$info3);
+  $os=isset($info3[0])? $info3[0]:'';
+  trim($os);
+  $pin=isset($info3[1])? $info3[1]:'';
+  trim($pin);
+  $supp=explode(" ",$model);
+  $supplier=$supp[0];
+  $des=explode("__",$description);
+  $laptop =new Laptop(1,$model,$price,$size,$weight,$color,$number,$supplier,$description,$feature,1,$overview,$description,'a','a','a','a'
+  ,'a','a','a','a','a','a',$cpu,$ram,$memory, $screen, $card, $os,$pin);
+  $app->insert($laptop);}
 
 ?>
 <!DOCTYPE html>
@@ -98,7 +134,17 @@ $app= new LaptopApplication();
 
     </tr>
     <?php  
-      $listnews=$app->getAll(0,100);
+     $page=isset($_GET["page"])?intval($_GET["page"]):1;
+     if ($page==1){
+       $start=0;
+       $limit=10;
+     }
+     else {
+       $start=($page-1)*10;
+       $limit=$start+10;
+
+     }   
+      $listnews=$app->getAll($start,$limit);
       foreach($listnews as $news){
         $path=$news->getModel();
         $path = str_replace(' ', '-', $path);
@@ -116,13 +162,13 @@ $app= new LaptopApplication();
         <td><?php echo $news->getMemory();  ?></td>
         <td>
         <li class="btn-action">   
-        <form action="validate/admin_products.php" method="post" style="flex-direction: row;">          
+              
                   <button class="btn" name="btn-update" value="<?php echo $news->getProductID(); ?>">
                   <a href="update-product&id=<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-edit" style="font-size: 25px"></i>
                     </a>
                   </button>
-                 
+                  <form action="validate/admin_products.php" method="post" style="flex-direction: row;">    
                   <button class="btn" name="btn-delete" value="<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-trash" style="font-size: 25px"></i>
                   </button>
@@ -136,6 +182,32 @@ $app= new LaptopApplication();
     
     
   </table>
+  <div class="pagination">
+                  <?php 
+                  $total_page=intval($app->getCountAll()/10)+1;
+                    // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                    if ($page > 1 && $total_page > 1){
+                        echo '<a href="admin-product&page='.($page-1).'">Prev</a> | ';
+                    }
+        
+                    // Lặp khoảng giữa
+                    for ($i = 1; $i <= $total_page; $i++){
+                        // Nếu là trang hiện tại thì hiển thị thẻ span
+                        // ngược lại hiển thị thẻ a
+                        if ($i == $page){
+                            echo '<span>'.$i.'</span> | ';
+                        }
+                        else{
+                            echo '<a href="admin-product&page='.$i.'">'.$i.'</a> | ';
+                        }
+                    }
+        
+                    // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                    if ($page < $total_page && $total_page > 1){
+                        echo '<a href="admin-product&page='.($page+1).'">Next</a> | ';
+                    }
+                  ?>
+        </div>
            
           </div>
         </div>
@@ -144,7 +216,7 @@ $app= new LaptopApplication();
     <div class="bg-modal">
       <div class="modal-content">
         <span class="modal-title">Thêm mới</span>
-        <form action="validate/admin_products.php" method="post">
+        <form action="" method="post">
                           <label class="news-title">Tên sản phẩm</label>
                           <input name="model" type="text" value="" placeholder="Tiêu đề tin tức"/>
                           <label class="news-title">Mức giá</label>

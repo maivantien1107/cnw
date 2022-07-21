@@ -102,7 +102,17 @@ $app_news= new UsersApplication();
 
     </tr>
     <?php  
-      $listbill=$app_news->getAllListProductsBill();
+     $page=isset($_GET["page"])?intval($_GET["page"]):1;
+     if ($page==1){
+       $start=0;
+       $limit=10;
+     }
+     else {
+       $start=($page-1)*10;
+       $limit=$start+10;
+
+     }   
+      $listbill=$app_news->getListBill($start,$limit);
       foreach($listbill as $news){
         ?>
           <tr>
@@ -153,6 +163,32 @@ $app_news= new UsersApplication();
     
     
   </table>
+  <div class="pagination">
+                  <?php 
+                  $total_page=intval($app_news->getCountAll()/10)+1;
+                    // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+                    if ($page > 1 && $total_page > 1){
+                        echo '<a href="admin-bill&page='.($page-1).'">Prev</a> | ';
+                    }
+        
+                    // Lặp khoảng giữa
+                    for ($i = 1; $i <= $total_page; $i++){
+                        // Nếu là trang hiện tại thì hiển thị thẻ span
+                        // ngược lại hiển thị thẻ a
+                        if ($i == $page){
+                            echo '<span>'.$i.'</span> | ';
+                        }
+                        else{
+                            echo '<a href="admin-bill&page='.$i.'">'.$i.'</a> | ';
+                        }
+                    }
+        
+                    // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+                    if ($page < $total_page && $total_page > 1){
+                        echo '<a href="admin-bill&page='.($page+1).'">Next</a> | ';
+                    }
+                  ?>
+        </div>
            
           </div>
         </div>
@@ -167,7 +203,7 @@ $app_news= new UsersApplication();
           <label class="news-title">Tài khoản người mua</label>
           <input name="username" type="text" value="" placeholder="tài khoản"/>
           <label class="news-title">Trạng thái đơn hàng</label>
-         <select class="news_category" name="bill_status" >
+         <select class="news_category" name="bill_status" value="Đang chuẩn bị" >
             <option value="Đang chuẩn bị">Đang chuẩn bị</option>
             <option value="Đang giao hàng">Đang giao hàng</option>
             <option value="Đã hoàn thành">Đã hoàn thành</option>
