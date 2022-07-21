@@ -107,7 +107,8 @@ $app_news= new UsersApplication();
          <li class="btn-action">
          
                   <button class="btn" name="btn-delete1" value="<?php echo $news->getUsername(); ?>">
-                    <i class="bx bxs-trash" style="font-size: 25px"></i>
+                    
+                    <i class='bx bx-user-plus' style="font-size: 25px"></i>
                   </button>
                   
                   <form action="validate/admin_user.php" method="post">   

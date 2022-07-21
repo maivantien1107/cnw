@@ -21,7 +21,7 @@ if (isset($_POST['btn-submit'])){
     $feature=isset($_POST['feature'])?addslashes($_POST['feature']):'';
     $description=isset($_POST['description'])?addslashes($_POST['description']):'';
     $overview=isset($_POST['overview'])?addslashes($_POST['overview']):'';
-    $info1=explode("__ ",$info1);
+    $info1=explode("__",$info1);
     $cpu=isset($info1[0])? $info1[0]:'';
     trim($cpu);
     $ram=isset($info1[1])? $info1[1]:'';

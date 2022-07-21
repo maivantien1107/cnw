@@ -190,7 +190,14 @@ class UsersApplication extends MySqlConnect {
      * @return array
      */
     public function insertProduct($username, $product, $quantity){
-        $cart_id = self::getCartID($username);
+        $cart_id =intval( self::getCartID($username));
+        // $que="Select * from cart_products where product_id=".$product ."and card_id=".$card_id;
+        // parent::addQuerry($que);
+        // $result = parent::executeQuery();
+        // if($row= mysqli_fetch_array($result)){
+        //     return;
+        // }
+        // else {
         $query = "insert into cart_products(cart_id, product_id, quantity)
                     value($cart_id, $product, $quantity)
                   ";
@@ -315,7 +322,7 @@ class UsersApplication extends MySqlConnect {
         $status = $bill->getStatus();
 
         $query = "insert into bill(product_id, user_name, date_bill, total_money, quantity, bill_status)
-                  value($product_id, '$username', '$date_bill', $total_money, $quantity, $status)
+                  values($product_id, '$username', '$date_bill', $total_money, $quantity, '$status')
                   ";
 
         parent::addQuerry($query);
@@ -355,7 +362,7 @@ class UsersApplication extends MySqlConnect {
     * @param int $bill_id
     */
     public function updateStatusBill($bill_id, $status){
-        $query = "update bill set bill_status = $status where bill_id = $bill_id";
+        $query = "update bill set bill_status = '$status' where bill_id = $bill_id";
 
         parent::addQuerry($query);
         parent::updateQuery();

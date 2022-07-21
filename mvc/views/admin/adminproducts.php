@@ -105,14 +105,6 @@ $app= new LaptopApplication();
         $info1=$news->getCpu()."__".$news->getRam()."__".$news->getMemory();
         $info2=$news->getScreen()."__".$news->getCard();
         $info3=$news->getOs()."__".$news->getPin();
-        $des=array();
-        $des[0]=$news->getDes1();
-        $des[1]=$news->getDes2();
-        $des[2]=$news->getDes3();
-        $des[3]=$news->getDes4();
-        $des[4]=$news->getDes5();
-        $des[5]=$news->getDes6();
-        $description=implode("\n",$des);
         ?>
         
           <tr>
@@ -123,106 +115,20 @@ $app= new LaptopApplication();
         <td><?php echo $news->getRam();  ?></td>
         <td><?php echo $news->getMemory();  ?></td>
         <td>
-        <li class="btn-action">             
+        <li class="btn-action">   
+        <form action="validate/admin_products.php" method="post" style="flex-direction: row;">          
                   <button class="btn" name="btn-update" value="<?php echo $news->getProductID(); ?>">
+                  <a href="update-product&id=<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-edit" style="font-size: 25px"></i>
+                    </a>
                   </button>
+                 
                   <button class="btn" name="btn-delete" value="<?php echo $news->getProductID(); ?>">
                     <i class="bx bxs-trash" style="font-size: 25px"></i>
                   </button>
-                  <form action="validate/admin_products.php" method="post"> 
-                    <div class="bg-modal1">
-                      <div class="modal-content">
-                        <span class="modal-title">Cập nhật thông tin</span>
-                        <div class="class-form-update">
-                          <label class="news-title">Tên sản phẩm</label>
-                          <input name="model" type="text" value="<?php echo $news->getModel(); ?>" placeholder="Tiêu đề tin tức"/>
-                          <label class="news-title">Mức giá</label>
-                          <input type="text" placeholder="" name="price" value="<?php echo $news->getPrice(); ?>"/>
-                          <label class="news-title">Kích thước</label>
-                          <input type="text" placeholder="" name="size" value="<?php echo $news->getSize(); ?>"/>
-                          <label class="news-title">Trọng lượng</label>
-                          <input type="text" placeholder="" name="weigh" value="<?php echo $news->getWeigh(); ?>"/>
-                          <label class="news-title">Màu sắc</label>
-                          <input type="text" placeholder="" name="color" value="<?php echo $news->getColor(); ?>"/>
-                         
-                          <label class="news-title">Số lượng sản phẩm</label>
-                          <input type="text" placeholder="" name="number" value="<?php echo $news->getNumber(); ?>"/>
-                          <label class="news-title">Thông tin</label>
-                          <input type="text" placeholder="" name="info1" value="<?php echo $info1 ?>"/>
-                          <label class="news-title">Màn hình, Card đồ họa</label>
-                          <input type="text" placeholder="" name="info2" value="<?php echo $info2 ?>"/>
-                          <label class="news-title">Hệ điều hành, Pin</label>
-                          <input type="text" placeholder="" name="info3" value="<?php echo $info3 ?>"/>
-                          <label class="news-title">Tính năng</label>
-                          <textarea rows="4" name="feature" value="<?php echo $news->getFeature(); ?>" ></textarea>
-                          <label class="news-title">Thông tin chi tiết</label>
-                          <textarea rows="8" name="description" value="<?php echo $description; ?>" ></textarea>
-
-                          <label class="news-title">Hình ảnh</label>
-                          <div class="image-container">
-                            <div
-                              class="image"
-                              style="
-                                background-image: url('http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png');
-                                border: none;
-                              "
-                            >
-                              <button>
-                                <i class="bx bx-x"></i>
-                              </button>
-                            </div>
-                            <div
-                              class="image"
-                              style="
-                                background-image: url('http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png');
-                                border: none;
-                              "
-                            >
-                              <button>
-                                <i class="bx bx-x"></i>
-                              </button>
-                            </div>
-                            <div
-                              class="image"
-                              style="
-                                background-image: url('http://ww1.prweb.com/prfiles/2014/04/10/11752526/gI_134971_best-image-web-hosting.png');
-                                border: none;
-                              "
-                            >
-                              <button>
-                                <i class="bx bx-x"></i>
-                              </button>
-                            </div>
-                            <div class="add-image">
-                              <i class="bx bx-image-add" style="font-size: 50px"></i>
-                            </div>
-                          </div>
-
-                          <div class="bottom-modal-button">
-                            <button class="modal-button-close  close-add-modal1">Đóng</button>
-                            <button class="modal-button-accept accept-add-modal1" type="submit" name="btn-submit-update" value="<?php echo $news->getProductID(); ?>">Cập nhật</button>
-                          </div>
-                        </div>                         
-                      </div>
-                    </div>
-                    <div class="delete-modal">
-                    <div class="delete-modal-content">
-                      <img
-                        class="aleart-image"
-                        src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"
-                        style="width: 100px; height: 100px"
-                      />
-                      <span> Bạn có chắc chắn muốn xóa không? </span>
-                      <div class="bottom-modal-button">
-                        <button class="modal-button-close close-delete-modal">Không</button>
-                        <button class="modal-button-accept accept-delete-modal"  value="<?php echo $news->getProductID(); ?>" name="btn-delete">Có</button>
-                      </div>
-                    </div>
-                    </div>
                   </form>
    
-                </li>
+        </li>
         </td>
     </tr>
       <?php }
@@ -367,11 +273,14 @@ $app= new LaptopApplication();
       btnAcceptAdd1.addEventListener("click", function () {
         document.querySelector(".bg-modal1").style.display = "none";
       });
-
+   console.log(document.querySelector(".bg-modal1"));
+   let bgModal = document.querySelectorAll(".bg-modal1");
+   console.log(bgModal[1]);
+  //  bgModal[2].style.display = "flex";
       //button edit show modal
-      for(const editButton  of btnEdits) {
-        editButton.addEventListener('click', function(){
-          document.querySelector(".bg-modal1").style.display = "flex";
+      for(var i=0; i<btnEdits.length;i++) {
+        btnEdits[i].addEventListener('click', function(){
+          bgModal[i].style.display = "flex";
           // load data of news
         })
       };

@@ -135,6 +135,17 @@ class NewsApplication extends MySqlConnect{
 
         return null;
     }
+    
+    public function getCountAll(){
+        $query="select count(news_id) as count from news where 1";
+        parent::addQuerry($query);
+        $result=parent::executeQuery();
+        $row=mysqli_fetch_array($result);
+        if ($row){
+            return $row['count'];
+        }
+        else return 0;
+    }
 }
 
 ?>

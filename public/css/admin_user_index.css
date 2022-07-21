@@ -397,7 +397,7 @@ justify-content: space-between;
   display: flex;
   justify-content: center;
   align-items: center;
-  display: none;
+  display: flex;
 }
 .bg-modal .modal-content{
   border-radius: 10px;

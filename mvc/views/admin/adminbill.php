@@ -115,37 +115,21 @@ $app_news= new UsersApplication();
         <td><?php echo $news->getTotalMoney();  ?></td>
         <td><?php echo $news->getQuantity();  ?></td>
         <td>
-            <select value="<?php echo $news->getSatus();?>">
+          <form action="validate/admin_bill.php" method="post">
+            <select name ="bill-select">
                 <option value="Đang chuẩn bị">Đang chuẩn bị</option>
                 <option value="Đang giao hàng">Đang giao hàng</option>
                 <option value="Đã hoàn thành">Đã hoàn thành</option>
             </select>
+          </form>
         </td>
         <td>
         <li class="btn-action">
-             
-                  <button class="btn" name="btn-update" value="<?php echo $news->getBillID(); ?>">
-                    <i class="bx bxs-edit" style="font-size: 25px"></i>
-                  </button>
-                  <button class="btn" name="btn-delete" value="<?php echo $news->getBillID(); ?>">
-                    <i class="bx bxs-trash" style="font-size: 25px"></i>
+                  <button class="btn" name="btn-delete1" value="<?php echo $news->getBillID(); ?>">
+                    <i class='bx bxs-chevron-up' style="font-size: 25px"></i>
                   </button>
                   <form action="validate/admin_bill.php" method="post"> 
                     <div class="delete-modal">
-                        <div class="delete-modal-content">
-                        <img
-                            class="aleart-image"
-                            src="https://cdn-icons-png.flaticon.com/512/1828/1828843.png"
-                            style="width: 100px; height: 100px"
-                        />
-                        <span> Bạn có chắc chắn muốn xóa không? </span>
-                        <div class="bottom-modal-button">
-                            <button class="modal-button-close close-delete-modal">Không</button>
-                            <button class="modal-button-accept accept-delete-modal"  value="<?php echo $news->getBillID(); ?>" name="btn-delete">Có</button>
-                        </div>
-                        </div>
-                    </div>
-                    <div class="update-modal">
                         <div class="delete-modal-content">
                         <img
                             class="aleart-image"
@@ -179,17 +163,19 @@ $app_news= new UsersApplication();
         <span class="modal-title">Thêm mới</span>
         <form action="validate/admin_bill.php" method="post">
           <label class="news-title">ID sản phẩm</label>
-          <input name="news_title" type="text" value="" placeholder="id sản phẩm"/>
+          <input name="product_id" type="text" value="" placeholder="id sản phẩm"/>
           <label class="news-title">Tài khoản người mua</label>
-         <select class="news_category" name="news_category" value="">
+          <input name="username" type="text" value="" placeholder="tài khoản"/>
+          <label class="news-title">Trạng thái đơn hàng</label>
+         <select class="news_category" name="bill_status" >
             <option value="Đang chuẩn bị">Đang chuẩn bị</option>
             <option value="Đang giao hàng">Đang giao hàng</option>
             <option value="Đã hoàn thành">Đã hoàn thành</option>
          </select>
           <label class="news-title">Số lượng</label>
-          <input type="text" placeholder="Số lượng sản phẩm cần mua" name="news_overview" value=""/>
+          <input type="text" placeholder="Số lượng sản phẩm cần mua" name="quantity" value=""/>
           <label class="news-title">Tổng số tiền</label>
-          <input type="text" placeholder="Tổng số tiền" name="news_overview" value=""/>
+          <input type="text" placeholder="Tổng số tiền" name="total-money" value=""/>
           <div class="bottom-modal-button">
             <button class="modal-button-close  close-add-modal">Đóng</button>
             <button class="modal-button-accept accept-add-modal" type="submit" name="btn-submit">Xác nhận</button>
@@ -208,14 +194,8 @@ $app_news= new UsersApplication();
       let btnCloseAddModal = document.querySelector(".close-add-modal");
       // button accept add
       let btnAcceptAdd = document.querySelector(".accept-add-modal");
-      let btnCloseAddModal1 = document.querySelector(".close-add-modal1");
-      // button accept add
-      let btnAcceptAdd1 = document.querySelector(".accept-add-modal1");
-      //btn  show edit
-      let btnEdits = document.querySelectorAll(".bxs-edit");
-
       //btn show delete modal
-      let btnDeletes = document.querySelectorAll(".bxs-trash");
+      let btnDeletes = document.querySelectorAll(".bxs-chevron-up");
 
       // btn close Delete modal
       let btnCloseDeleteModal = document.querySelector(".close-delete-modal");
@@ -240,25 +220,15 @@ $app_news= new UsersApplication();
       btnCloseAddModal.addEventListener("click", function () {
         document.querySelector(".bg-modal").style.display = "none";
       });
-      btnCloseAddModal1.addEventListener("click", function () {
-        document.querySelector(".bg-modal1").style.display = "none";
-      });
+
 
       // Add news to list news
       btnAcceptAdd.addEventListener("click", function () {
         document.querySelector(".bg-modal").style.display = "none";
       });
-      btnAcceptAdd1.addEventListener("click", function () {
-        document.querySelector(".bg-modal1").style.display = "none";
-      });
 
       //button edit show modal
-      for(const editButton  of btnEdits) {
-        editButton.addEventListener('click', function(){
-          document.querySelector(".update-modal").style.display = "flex";
-          // load data of news
-        })
-      };
+
       // show delete modal
       for(const deleteButton of btnDeletes){
         deleteButton.addEventListener('click', function(){

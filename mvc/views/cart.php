@@ -17,7 +17,7 @@ require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
 		<link rel="stylesheet" href="public/css/nav_bar.css">
     <link rel="stylesheet" href="public/css/home.css">
 		<script type="text/javascript" src = "public/javascript/cart.js"></script>
-		<title>Products | MTHH</title>
+		<title>Giỏ hàng</title>
 	</head>
 	<body>
 		<?php require_once ROOT . DS . 'mvc' . DS . 'views' . DS . 'nav_bar.php'; ?>

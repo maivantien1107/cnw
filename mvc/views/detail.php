@@ -5,13 +5,13 @@ require_once ROOT . DS . 'application'.DS.'RateApplication.php';
 require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
 $service = new UsersApplication();
 
-if (isset($_POST['mua-ngay'])){
-   var_dump(22);
-    $product_id1=intval(addslashes($_POST['buy_now']));
-    $service->insertProduct($username,$product_id1,1);
-    header("Location: ../cart");
-    exit();
-}
+// if (isset($_POST['mua-ngay'])){
+//    var_dump(22);
+//     $product_id1=intval(addslashes($_POST['buy_now']));
+//     $service->insertProduct($username,$product_id1,1);
+//     header("Location: ../cart");
+//     exit();
+// }
 ?>
 <!DOCTYPE html>
 <html lang = "en">
@@ -141,9 +141,8 @@ if (isset($_POST['mua-ngay'])){
           </div>
 
           <div class="st-price-main" style="color: rgb(245, 18, 6);"><?php echo $product->getPrice(); ?>₫</div>
-          <?php if (isset($_SESSION['username'])){ ?>
-            <a href=<?php echo "/".$path_project . "/"."cart"?> style="display: none;" class="link-header_cart"></a>
-          <form action="validate/insert_cart.php" class="form-button_cart" method="post">
+           <?php if (isset($_SESSION['username'])){ ?>
+          <form action="../../../validate/insert_cart.php" class="form-button_cart" method="post">
           <input type="text" name="buy_now" value="<?php echo $product->getProductID();?>" style="display:none;">
           <button class="btn btn-primary btn-xl btn-full " type="submit" id="btn_buy_now" name="mua-ngay"style="background: rgb(245, 18, 6); color: #fff;">
            

@@ -24,7 +24,9 @@ for($i=0; $i<$lens; $i++){
     $product = $listProducts[$i];
     $quantity = $list_quantity[$i];
     $total_money = $product->getPrice() * $quantity;
-    $bill = new Bill($product->getProductID(), $_SESSION['username'], date_create()->format('Y-m-d h:i:s'), $total_money, $quantity);
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+           $date2 =date("Y-m-d H:i:s");   
+    $bill = new Bill(1,$product->getProductID(), $_SESSION['username'], $date2, $total_money, $quantity,'Đang chuẩn bị hàng');
 
     $service->submitBill($bill);
     $service->removeProduct($product->getProductID(), $_SESSION['username']);
