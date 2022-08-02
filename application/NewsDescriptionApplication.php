@@ -61,16 +61,16 @@ class NewsDescriptionApplication extends NewsApplication{
             $des5=$row['des5'];
             $des6=$row['des6'];
             $des7=$row['des7'];
-            $image1=$row['des8'];
-            $image2=$row['des9'];
-            $image3=$row['des10'];
+            // $image1=$row['des8'];
+            // $image2=$row['des9'];
+            // $image3=$row['des10'];
             $title=$row['title'];
             $description=$row['description'];
             $category=$row['category'];
             $time=$row['time'];
             $img=$row['img'];
             $overview=$row['overview'];
-            $new=new NewsDescription($news_id,$title,$category,$description,$time,$img,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$image1,$image2,$image3);
+            $new=new NewsDescription($news_id,$title,$category,$description,$time,$img,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7);
             return $new;
         }
         return null;

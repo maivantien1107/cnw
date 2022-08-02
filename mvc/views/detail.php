@@ -4,14 +4,9 @@ require_once ROOT . DS . 'application'. DS .'products'.DS. 'LaptopApplication.ph
 require_once ROOT . DS . 'application'.DS.'RateApplication.php';
 require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
 $service = new UsersApplication();
-
-// if (isset($_POST['mua-ngay'])){
-//    var_dump(22);
-//     $product_id1=intval(addslashes($_POST['buy_now']));
-//     $service->insertProduct($username,$product_id1,1);
-//     header("Location: ../cart");
-//     exit();
-// }
+$apps_laptop= new LaptopApplication();
+$price=$product->getPrice();
+$price=$apps_laptop->processPrice($price);
 ?>
 <!DOCTYPE html>
 <html lang = "en">
@@ -140,7 +135,7 @@ $service = new UsersApplication();
             </div>
           </div>
 
-          <div class="st-price-main" style="color: rgb(245, 18, 6);"><?php echo $product->getPrice(); ?>₫</div>
+          <div class="st-price-main" style="color: rgb(245, 18, 6);"><?php echo $price; ?>₫</div>
            <?php if (isset($_SESSION['username'])){ ?>
           <form action="../../../validate/insert_cart.php" class="form-button_cart" method="post">
           <input type="text" name="buy_now" value="<?php echo $product->getProductID();?>" style="display:none;">
@@ -320,9 +315,9 @@ $service = new UsersApplication();
             <div class="c-rate__right text-center">
               <p class="small-para">Bạn đã dùng sản phẩm này?</p>
               <form class="form-rate" action="" method="post">
-                <a href="#user">
+                <a id="btn-link-user-rate" href="#user"></a>
               <button type="submit" name="submit_rate" class="btn detail_btn-primary">Gửi đánh giá của bạn</button>
-              </a>
+              
               </form>
              
 
@@ -341,7 +336,7 @@ $service = new UsersApplication();
                 }
                 else {
                   ?>
-                  <div class="c-user-rate" id="user">
+      <div class="c-user-rate" id="user">
         <form class="c-user-rate-form" method="post" action="">
                     <div class="c-user-list_star">
                       <div class="c-user-star">
@@ -384,6 +379,7 @@ $service = new UsersApplication();
         if (isset($_POST['user-submit-rate'])){
           $user_rate=isset($_POST["rate"])?addslashes($_POST['rate']):'';
           $user_comment=isset($_POST["submit_comment"])?addslashes($_POST["submit_comment"]):'';
+          $user_comment=htmlentities($user_comment);
           if ($user_rate=='' && $user_comment==''){
             ?>
           <?php 

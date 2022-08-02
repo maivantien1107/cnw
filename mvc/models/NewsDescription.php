@@ -44,13 +44,13 @@
     return  $this->des7;
  }
  public function getDes8(){
-    return  $this->image1;
+    return  $this->des8;
  }
  public function getDes9(){
-    return $this->image2;
+    return $this->des9;
  }
  public function getDes10(){
-    return  $this->image3;
+    return  $this->des10;
  }
  public function setDes1($des1){
     $this->des1 = $des1;

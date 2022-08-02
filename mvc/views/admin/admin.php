@@ -212,8 +212,8 @@ if (isset($_POST['btn-submit-update'])){
         <form action="" method="post">
           <label class="news-title">Tiêu đề</label>
           <input name="news_title" type="text" value="" placeholder="Tiêu đề tin tức"/>
-          <label class="news-title">Thể loại</label>
-         <select class="news_category" name="news_category" value="">
+          <label class="news-title" for="news-category">Thể loại</label>
+         <select class="news_category" id="news-category" name="news_category" value="">
             <option value="Tin tức">Tin tức</option>
             <option value="Khuyến mãi">Khuyến mãi</option>
             <option value="Thông tin">Thông tin</option>

@@ -33,6 +33,8 @@ if (isset($_POST['btn-submit-update'])){
     $news=new NewsDescription($news_id,$title,$category,'1a2',$time,'a12',$overview,$des[0],$des[1],$des[2],$des[3],$des[4],$des[5]);
    
     $app_news->update($news);
+    header('Location: ../admin');
+exit();
 }
 header('Location: ../admin');
 exit();

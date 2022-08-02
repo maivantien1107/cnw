@@ -1,5 +1,4 @@
 star_larges=document.querySelectorAll('.large');
-console.log(star_larges);
 var i,j;
 for( i=0;i<star_larges.length;i++) {
     star_larges[i].addEventListener('mousemove',function(e){
@@ -60,4 +59,7 @@ for( i=0;i<star_larges.length;i++) {
 // button2.addEventListener('click',function(){
 //     button2.querySelector('input').click();
 // })
-
+var button1=document.querySelector('.detail_btn-primary');
+button1.addEventListener('click',function(){
+    document.getElementById('btn-link-user-rate').click();
+})

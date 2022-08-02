@@ -167,4 +167,71 @@ class LaptopApplication extends ComputerProductsApplication {
         }
 
     }
+    public function searchLaptop($content)
+    {  
+        $listLaptop=array();
+       $query = "select * from
+       products p inner join computer_products cp on p.product_id = cp.product_id
+       inner join laptop l on p.product_id = l.product_id
+        where match(p.model)  against('$content' WITH QUERY EXPANSION) limit 6";
+       parent::addQuerry($query);
+       $result = parent::executeQuery();
+       while($row= mysqli_fetch_array($result)){
+        $productID = $row["product_id"];
+            $model = $row["model"];
+            $price = $row["price"];
+            $size= $row["size"];
+            $weigh = $row["weigh"];
+            $color = $row["color"];
+            $numberOfProducts = $row["number_of_product"];
+            $supplier = $row["supplier"];
+            $description = $row["p_description"];
+            $feature= $row["feature"];
+            $cpu = $row["s_cpu"];
+            $ram = $row["s_ram"];
+            $memory = $row["s_memory"];
+            $screen = $row["screen"];
+            $card = $row["s_card"];
+            $os = $row["os"];
+            $pin = $row["pin"];
+            $disable = $row["dis"];
+            $overview = $row["overview"];
+            $des1 = $row["des1"];
+            $des2 = $row["des2"];
+            $des3 = $row["des3"];
+            $des4 = $row["des4"];
+            $des5 = $row["des5"];
+            $des6 = $row["des6"];
+            $des7 = $row["des7"];
+            $des8 = $row["des8"];
+            $image1= $row["des9"];
+            $image2= $row["des10"];
+            $image3= $row["des11"];
+            $disable= $row["dis"];
+            $laptop = new Laptop($productID, $model, $price,$size, $weigh, $color, $numberOfProducts, $supplier, $description,$feature,$disable,$overview,$des1,$des2,$des3,$des4,$des5,$des6,$des7,$des8,$image1,$image2,$image3, $cpu, $ram, $memory, $screen, $card, $os, $pin);
+          $listLaptop[]=$laptop;
+       }
+       return $listLaptop;
+    }
+    public function processPrice($price1)
+    {  
+        $price1=strval($price1);
+        $arrPrice=array();
+        $price=array();
+        $count=strlen($price1);
+        for ($i=0;$i<$count;$i++){
+            $price[]=$price1[$i];
+        }
+       $cnt=count($price);
+       foreach($price as $val){
+           $arrPrice[]=$val;
+        if ($cnt%3==1 && $cnt!=1){
+            $arrPrice[]='.';
+        }
+        $cnt--;
+       }
+       
+       $str=implode('',$arrPrice);
+       return $str;
+    }
 }

@@ -409,6 +409,13 @@
                                   foreach($listLaptop as $laptop){
                                     $path = $laptop->getModel();
 					                          $path = str_replace(' ', '-', $path);
+                                    $price=$laptop->getPrice();
+                                    $virPrice=$price+2000000;
+                                    $percent=$price/$virPrice *100;
+                                    $price=$apps->processPrice($price);
+                                    $virPrice=$apps->processPrice($virPrice);
+
+
                               ?>
                                   <div class="cdt-product prd-lap product-sale">
                                 <div class="cdt-product__img" style="background-image: url(public/img/Img_product/backgroundproduct.webp); background-position: center center;
@@ -419,7 +426,7 @@
 
                                   <div class="cdt-product__label">
                                     <span class="badge badge-warning">Trả góp 0%</span>
-                                    <span class="badge badge-primary">Giảm 3.500.000đ</span>
+                                    <span class="badge badge-primary">Giảm 2.000.000đ</span>
                                   </div>
 
                                 </div>
@@ -430,10 +437,10 @@
                                   </h3>
 
                                   <div class="cdt-product__show-promo">
-                                    <div class="progress pdiscount2"><?php echo $laptop->getPrice(); ?> ₫
-                                      <div class="progress-bar" style="width: 87%;"></div>
+                                    <div class="progress pdiscount2"><?php echo $price; ?> ₫
+                                      <div class="progress-bar" style="width: <?php echo $percent; ?>%;"></div>
                                     </div>
-                                    <div class="strike-price"><strike><?php echo $laptop->getPrice()+2000000 ;?>₫</strike></div>
+                                    <div class="strike-price"><strike><?php echo $virPrice ;?>₫</strike></div>
                                   </div>
 
                                   <div class="cdt-product__config">

@@ -24,7 +24,7 @@ ul {
   
   flex-wrap: wrap;
   align-items: center;
-  background: radial-gradient(white, green);
+  background: linear-gradient(rgb(230, 113, 107), rgb(237, 233, 233));
   margin-right: 10px;
 }
 .about-list{

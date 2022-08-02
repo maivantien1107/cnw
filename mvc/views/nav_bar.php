@@ -7,59 +7,38 @@ global $path_project;
 		<a href=<?php echo "/" . $path_project . "/" ?> style="font-weight:900; font-size:20px"> Group 11</a>
 	</div>
 	<div class="fs-search">
-                            <form action="" method="get" autocomplete="off">
-                                <label for="key" class="mf-vhiditem">Nhập tên điện thoại, máy tính, phụ kiện... cần tìm</label>
-                                <input class="fs-stxt" type="text" id="key" name="" placeholder="Nhập tên điện thoại, máy tính, phụ kiện... cần tìm" autocomplete="off" maxlength="50">
-                                <span class="icon-cance" id="icon-cance" style="display:none" title="Xóa">✕</span>
-                                <button type="submit" aria-label="Tìm kiếm" class="search-button" title="Tìm kiếm">
-                                <i class="fa-light fa-magnifying-glass"></i>
-                                </button>
-                                <div class="fs-sresult" id="result" style="display : none !important;">
-                                    <div class="fs-sremain">
-                                        <ul></ul>
-                                    </div>
-                                </div>
+        <form action="" method="get" autocomplete="off">
+            <label for="key" class="mf-vhiditem">Nhập tên điện thoại, máy tính, phụ kiện... cần tìm</label>
+            <input class="fs-stxt" type="text" id="key-search" name="" placeholder="Nhập tên điện thoại, máy tính, phụ kiện... cần tìm" autocomplete="off" maxlength="50">
+            <span class="icon-cancel" id="icon-cancel" style="display:none;" title="Xóa">✕</span>
+            <button type="submit" aria-label="Tìm kiếm" class="search-button" title="Tìm kiếm">
+            <img src="public/images/logo/iconsearch.png" alt="" style="width:100%; height:100%;">
+            </button>
+            <div class="fs-result suggest suggest-box" id ="pc-search-filter" >
+                                   
+                                    
+                                        
+                                    <!-- <div class="suggest-right" bis_skin_checked="1">
+                                        <div class="fs-result-box fs-suggest-product" bis_skin_checked="1">
+                                        <div class="suggest-title suggest-news" bis_skin_checked="1" style="">Bài viết phù hợp
+                                        </div>
+                                        <ul class="news-list">
                                 
-                                <div class="fs-result suggest-box sugg-his" style="display: none;">
-                                    <div class="suggest-title">Lịch sử tìm kiếm
-                                        <span class="ic-clear">Xóa</span>
-                                    </div>
-                                    <ul>
-                                    </ul>
-                                </div>
-                                <div class="fs-result suggest-box suggest-box-propensity" style="display: none;">
-                                    <div class="suggest-title">Xu hướng tìm kiếm
-                                    </div>
-                                    <ul>
-                                    </ul>
-                                </div>
-                                <div class="fs-result suggest suggest-box" style="display: none;">
-                                    <div class="suggest-left">
-                                    <div class="fs-result-box fs-suggest-page" style="display: none;">
-                                                
-                                        </div>
-                                        <div class="fs-result-box fs-suggest-text">
-                                            <ul></ul>
-                                        </div>
-                                        <!--<div class="line"></div> -->
-                                        <div class="fs-result-box fs-suggest-cate">
-                                            <ul></ul>
+                            
+                                    <li class="ais-Hits-item news-hits-item hits-js">
+                                    <div class="pr-item news-item" queryid="f14295e94fe441aef55aec0f285a38be" objid="147791" position="2" bis_skin_checked="1">
+                                        <div class="pr-item__info" bis_skin_checked="1">
+                                            <h3 class="pr-item__name m-b-4"><a href="/tin-tuc/danh-gia/iphone-14-co-ra-mat-khong-147791" class="news-js">Phone Mới mini có ra mắt không? Liệu dòng <em>iPhone</em> mini có chấm dứt năm nay?</a></h3>
+                                                    <a href="/tin-tuc/danh-gia" class="tag-link btn-light news-js">Đánh Giá – Tư Vấn</a>
+                                                    <a href="/tin-tuc/tags/flagship" class="tag-link btn-light news-js">Flagship</a>
                                         </div>
                                     </div>
-                                    <div class="suggest-right">
-                                        <div class="fs-result-box fs-suggest-product">
-                                            <div class="suggest-title">Sản phẩm được tìm nhiều
-                                            </div>
-                                            <ul></ul>
-                                            <div class="suggest-title suggest-news">Bài viết được tìm nhiều
-                                            </div>
-                                            <ul class="news-list"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end new -->
-                            </form>
+                                    </li>              
                         </div>
+                     </div> -->
+             </div>                                                                                                                                                            
+        </form>
+    </div>
 	<nav id = "nav">
 			<ul id = "menuitem">
 				<li><a href=<?php echo "/" . $path_project . "/"?>><span>Trang chủ</span></a></li>

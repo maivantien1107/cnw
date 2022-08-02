@@ -17,7 +17,7 @@ if (isset($_POST['btn-submit'])){
   date_default_timezone_set('Asia/Ho_Chi_Minh');
   $date2 =date("Y-m-d H:i:s");   
   $bill=new Bill(1,$product_id,$username,$date2,$total_money,$quantity,$status);
-
+  // var_dump($bill);die;
   $app_news->submitBill($bill);
 
 
@@ -147,7 +147,8 @@ if(isset($_POST['btn-delete'])){
         <td><?php echo $news->getQuantity();  ?></td>
         <td>
           <form action="validate/admin_bill.php" method="post">
-            <select name ="bill-select">
+            <label for="bill-select"></label>            
+            <select name ="bill-select" id="bill-select" value="<?php echo $news->getStatus(); ?>">
                 <option value="Đang chuẩn bị">Đang chuẩn bị</option>
                 <option value="Đang giao hàng">Đang giao hàng</option>
                 <option value="Đã hoàn thành">Đã hoàn thành</option>
@@ -223,8 +224,8 @@ if(isset($_POST['btn-delete'])){
           <input name="product_id" type="text" value="" placeholder="id sản phẩm"/>
           <label class="news-title">Tài khoản người mua</label>
           <input name="username" type="text" value="" placeholder="tài khoản"/>
-          <label class="news-title">Trạng thái đơn hàng</label>
-         <select class="news_category" name="bill_status" value="Đang chuẩn bị" >
+          <label class="news-title" for="bill_status">Trạng thái đơn hàng</label>
+         <select class="news_category" name="bill_status" id="bill_status" value="" >
             <option value="Đang chuẩn bị">Đang chuẩn bị</option>
             <option value="Đang giao hàng">Đang giao hàng</option>
             <option value="Đã hoàn thành">Đã hoàn thành</option>
@@ -306,6 +307,19 @@ if(isset($_POST['btn-delete'])){
         // delete news 
         document.querySelector(".update-modal").style.display = "none";
       });
+
+      var select = document.querySelector('#bill-select');
+      console.log(select);
+      let val_select=select.value;
+      console.log(val_select);
+      var select_child=select.children;
+      let tmp=0;
+      for (tmp=0;tmp<select_child.length;tmp++){
+
+          if (select_child[tmp].value==val_select){
+            select_child[tmp].setAttribute('selected','');
+          }
+      }
     </script>
   </body>
 </html>

@@ -146,6 +146,25 @@ class NewsApplication extends MySqlConnect{
         }
         else return 0;
     }
+    public function searchNews($content)
+    {
+        $listNews=array();
+        $query="select * from news where match(title) against('$content' WITH QUERY EXPANSION ) limit 6";
+        parent::addQuerry($query);
+        $result=parent::executeQuery();
+        while ($row=mysqli_fetch_array($result)){
+            $title=$row['title'];
+            $news_id=$row['news_id'];
+            $category=$row['category'];
+            $description=$row['description'];
+            $time=$row['time'];
+            $img=$row['img'];
+            $overview=$row['overview'];
+            $news= new News($news_id,$title,$category,$description,$time,$img,$overview) ;
+            $listNews[]=$news;
+        }
+        return $listNews;
+    }
 }
 
 ?>

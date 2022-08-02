@@ -25,8 +25,8 @@ $path = str_replace(' ', '-', $path);
     <div class="container single-post" bis_skin_checked="1">
         <div class="breadcrumb" bis_skin_checked="1">
            <ul class="breadcrumb__list">
-              <li><a href="/cnw-1/home"><i aria-hidden="true" class="fa fa-home"></i></a> <i aria-hidden="true" class="ti-angle-right"></i></li>
-              <li><a href="/cnw-1/news">Tin Tức</a> <i aria-hidden="true" class="ti-angle-right"></i></li>
+              <li><a href="/cnw/home"><i aria-hidden="true" class="fa fa-home"></i></a> <i aria-hidden="true" class="ti-angle-right"></i></li>
+              <li><a href="/cnw/news">Tin Tức</a> <i aria-hidden="true" class="ti-angle-right"></i></li>
               <li><a href="<?php echo "/cnw/newsdetail/".$news_detail->getNews_id()."/".$path;?>"><?php echo $news_detail->getTitle(); ?></a></li>
            </ul>
         </div>

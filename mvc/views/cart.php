@@ -41,7 +41,7 @@ require_once ROOT . DS . 'application' . DS . 'UsersApplication.php';
 					<tr>
 						<td>
 							<div class="cart-info">
-								<img src="<?php echo "public/img/products/".$product->getProductID()."_image1.webp" ?>">
+								<img src="<?php echo "public/img/products/".$product->getProductID()."_image1.png" ?>">
 								<div>
 									<p><?php echo $product->getModel() ?></p>
 									<small>Price: <?php echo $product->getPrice() ?> VNĐ</small>
